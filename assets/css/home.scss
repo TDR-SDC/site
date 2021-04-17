@@ -1,9 +1,17 @@
 body {
     margin: 0;
     background-color: rgb(241, 241, 241);
+    overflow-x: hidden;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+#car_photo {
+    background-image: url('/imgs/car.jpeg');
+    background-size: 100vw 100vh;
+    height: 100vh;
+    width: 100vw;
 }

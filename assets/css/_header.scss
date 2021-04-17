@@ -5,11 +5,47 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // margin-left: -4vw;
+    position: fixed;
+}
+
+@keyframes scroll_down {
+    0% {
+        background-color: unset;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+@keyframes scroll_up {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: unset;
+    }
+}
+
+@keyframes logo_grow {
+    0%{
+        height: 13vh;
+    }
+    100%{
+        height: 20vh;
+    }
+}
+
+@keyframes logo_shrink {
+    0%{
+        height: 20vh;
+    }
+    100%{
+        height: 13vh;
+    }
 }
 
 #logo {
-    height: 14vh;
+    height: 20vh;
     transform: translate(0%, -10%);
 }
 
@@ -19,12 +55,12 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Play';
+    font-family: "Play";
     font-size: 1.5rem;
     margin: 0vh 17vw;
 }
 
-#nav_bar a{
+#nav_bar a {
     margin: 0vh 1.5vw;
     width: max-content;
 }
@@ -34,15 +70,20 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Play';
+    font-family: "Play";
     font-size: 1.5rem;
 }
 
 #login button {
-    all :inherit;
+    all: inherit;
     justify-content: center;
     background-color: rgba(255, 0, 0, 0.5);
     width: 6vw;
     height: 5vh;
     border-radius: 9999px;
 }
+
+// body::-webkit-scrollbar {
+//     visibility: hidden;
+//     width: 0px;
+// }
