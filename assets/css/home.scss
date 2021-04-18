@@ -10,8 +10,34 @@ a {
 }
 
 #car_photo {
-    background-image: url('/imgs/car.jpeg');
+    background-image: url("/imgs/car.jpeg");
     background-size: 100vw 100vh;
     height: 100vh;
     width: 100vw;
+    font-weight: bold;
+}
+
+#intro_1 {
+    margin-left: 42vw;
+    font-size: 5rem;
+    color: black;
+}
+
+#intro_21 {
+    font-size: 5rem;
+    color: red;
+    text-shadow: -8px 5px 3px black;
+    margin-left: 50vw;
+}
+
+#intro_22 {
+    font-size: 5rem;
+    text-shadow: -8px 5px 3px black;
+    color: aqua;
+}
+
+#intro_3 {
+    margin-left: 75vw;
+    font-size: 5rem;
+    color: black;
 }
