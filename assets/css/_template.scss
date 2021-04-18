@@ -4,8 +4,11 @@ body {
     background-color: rgb(241, 241, 241);
 }
 
+a {
+    text-decoration: none;
+}
 
-// background-image: url('/imgs/car.jpeg');
-// background-size: 100vw 80vh;
-// background-position: center;
-// background-repeat: no-repeat;
+#heading_background {
+    width: 100vw;
+    height: 10vh;
+}
