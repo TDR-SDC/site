@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/_footer.scss">
 </head>
 
-<body>
+<body id="body" onload="load()">
     <%- include('_header'); %>
         <div id="heading_background"></div>
 
@@ -21,6 +21,7 @@
         </div>
 
         <%- include('_footer'); %>
+        <script type="text/javascript" src="/js/load.js"></script>
 </body>
 
 </html>
