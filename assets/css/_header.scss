@@ -6,6 +6,7 @@ header {
     flex-direction: row;
     justify-content: center;
     position: fixed;
+    z-index: 100;
 }
 
 @keyframes scroll_down {
