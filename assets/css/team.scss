@@ -2,6 +2,7 @@ body {
     margin: 0;
     overflow-x: hidden;
     font-family: 'Play';
+    background-color: #33333310;
 }
 
 a {
@@ -51,15 +52,18 @@ main {
 
 .member {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin: 1rem;
+    width: 12.5vw;
+    height: 37vh;
+    box-shadow: 0px 0px 20px -5px #0000004b;
 }
 
 .member img {
     width: 12vw;
     height: 25vh;
-    background-color: red;
 }
 
 .member_card {
@@ -69,10 +73,10 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(15, 207, 255, 0.25);
     width: 12.5vw;
-    height: 15vh;
-    transform: translate(-25%, 0%);
+    height: 12vh;
+    margin-bottom: -1vh;
+    // transform: translate(-25%, 0%);
     z-index: 0;
 }
 
@@ -90,6 +94,7 @@ main {
     height: 1.5rem;
     background-color: transparent;
     margin-right: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .dept_end {
