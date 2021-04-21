@@ -16,12 +16,22 @@
         <main>
             <div id="heading_background"></div>
             <div class="d-f-r jc-c">
-                <img id="profile_photo" src="/imgs/team_members/krushnal.jpeg" >
+                <img id="profile_photo" src="/imgs/team_members/placeholder.png">
                 <div id="details">
                     <span class="d-f-r ai-c">
+                        <span>Username:</span>
+                        &numsp;&numsp;&emsp;
+                        <%= user.user %>
+                    </span>
+                    <span class="d-f-r ai-c">
                         <span>Name:</span>
-                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        &emsp;&emsp;&emsp;&emsp;
                         <%= user.name %>
+                    </span>
+                    <span class="d-f-r ai-c">
+                        <span>Password:</span>
+                        &emsp;&emsp;&numsp;
+                        <div id="password"><%= user.password %>&numsp;</div>
                     </span>
                     <span class="d-f-r ai-c">
                         <span>Department:</span>
@@ -30,21 +40,26 @@
                     </span>
                     <span class="d-f-r ai-c">
                         <span>Year:</span>
-                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        &emsp;&emsp;&emsp;&emsp;&numsp;
                         <%= user.year %>
                     </span>
                     <span class="d-f-r ai-c">
-                        <span>Name:</span>
-                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
-                        <%= user.name %>
+                        <span>Position:</span>
+                        &numsp;&numsp;&numsp;&numsp;&numsp;
+                        <%= user.position %>
                     </span>
                     <span class="d-f-r ai-c">
-                        <span>Name:</span>
-                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
-                        <%= user.name %>
+                        <span>Management:</span>
+                        &numsp;
+                        <% if(user.management) {%>
+                        Yes
+                        <%} else {%>
+                        No
+                        <% } %>
                     </span>
                 </div>
             </div>
+            <br><br>
         </main>
 
         <%- include('_footer'); %>
