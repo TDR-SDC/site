@@ -1,9 +1,6 @@
 #gallery {
     width: 100vw;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 #gallery_heading {
@@ -14,11 +11,7 @@
 }
 
 #photos {
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     width: 70vw;
 }
 

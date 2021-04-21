@@ -2,14 +2,14 @@
 
 <header id="header">
     <a href="/"><img id="logo" src="/imgs/logos/black_transparent.png" ></a>
-    <div class="container borderYtoX" id="nav_bar">
+    <div class="container borderYtoX d-f-r jc-sb ai-c" id="nav_bar">
         <a href="/team">Team</a>
         <a class="container borderYtoX" href="/sponsors">Sponsors</a>
         <a class="container borderYtoX" href="/gallery">Gallery</a>
         <a class="container borderYtoX" href="/contact">Contact Us</a>
     </div>
-    <div id="login">
-        <a href="/login">
+    <div class="d-f jc-c ai-c" id="login">
+        <a class="d-f ai-c jc-c" href="/login">
             <% if(locals.user) {%>
                 <%= user.user %>
                     <% } else {%>

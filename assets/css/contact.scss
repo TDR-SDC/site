@@ -1,12 +1,4 @@
-main {
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
 #contact_address {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     width: 15vw;
 }
 
@@ -31,11 +23,6 @@ main {
 #contact_form {
     width: 30vw;
     height: 50vh;
-    // border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 #form_heading {
@@ -43,11 +30,6 @@ main {
     font-weight: 900;
     margin: 2rem;
     text-transform: uppercase;
-}
-
-form label {
-    display: flex;
-    flex-direction: column;
 }
 
 .input {

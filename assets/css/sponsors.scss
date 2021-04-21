@@ -1,17 +1,9 @@
 #dark_mode span {
-    display: flex;
-    flex-direction: column;
     width: 85vw;
     height: 5vh;
-    align-items: flex-end;
-    justify-content: center;
 }
 
 #sponsor_list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 70vw;
 }
 
@@ -24,9 +16,7 @@
 }
 
 #sponsor_div {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     width: 100%;
 }
 
@@ -45,10 +35,6 @@
 
 #sponsor_tier {
     width: 60vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 #tier_heading {
@@ -59,11 +45,7 @@
 }
 
 #tiers_list {
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .tier {
@@ -93,10 +75,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
