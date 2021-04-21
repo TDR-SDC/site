@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const multer = require('multer');
 const process = require('process');
 const passport = require('passport');
 const app = express();
@@ -15,6 +16,7 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, '/assets')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/assets', express.static(path.join(__dirname, '/assets')));
 
 app.use(session({
     secret: process.env.COOKIE_SECRET,

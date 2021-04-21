@@ -16,7 +16,19 @@
         <main>
             <div id="heading_background"></div>
             <div class="d-f-r jc-c">
-                <img id="profile_photo" src="/imgs/team_members/placeholder.png">
+                <div class="d-f-c">
+                    <% if(user.avatar) {%>
+                        <img id="profile_photo" src="<%= user.avatar %>">
+                        <%} else {%>
+                            <img id="profile_photo" src="/imgs/team_members/placeholde r.png">
+                            <% } %>
+                            <br>
+                            <form action="/user/upload_avatar" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="avatar" placeholder="Update Photo" required>
+                                <br><br>
+                                <input type="submit" value="Upload">
+                            </form>
+                </div>
                 <div id="details">
                     <span class="d-f-r ai-c">
                         <span>Username:</span>
@@ -31,7 +43,9 @@
                     <span class="d-f-r ai-c">
                         <span>Password:</span>
                         &emsp;&emsp;&numsp;
-                        <div id="password"><%= user.password %>&numsp;</div>
+                        <div id="password">
+                            <%= user.password %>&numsp;
+                        </div>
                     </span>
                     <span class="d-f-r ai-c">
                         <span>Department:</span>
@@ -52,10 +66,10 @@
                         <span>Management:</span>
                         &numsp;
                         <% if(user.management) {%>
-                        Yes
-                        <%} else {%>
-                        No
-                        <% } %>
+                            Yes
+                            <%} else {%>
+                                No
+                                <% } %>
                     </span>
                 </div>
             </div>
