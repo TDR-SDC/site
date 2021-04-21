@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR-SDC Website</title>
+    <link rel="stylesheet" href="/css/common.scss">
+    <link rel="stylesheet" href="/css/profile.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+</head>
+
+<body id="body" onload="load()">
+    <%- include('_header'); %>
+        <main>
+            <div id="heading_background"></div>
+            <div class="d-f-r jc-c">
+                <img id="profile_photo" src="/imgs/team_members/placeholder.png" alt="">
+                <div id="details">
+                    <span class="d-f-r ai-c">
+                        <span>Name:</span>
+                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        <%= user.name %>
+                    </span>
+                    <span class="d-f-r ai-c">
+                        <span>Department:</span>
+                        &numsp;&numsp;
+                        <%= user.dept %>
+                    </span>
+                    <span class="d-f-r ai-c">
+                        <span>Year:</span>
+                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        <%= user.year %>
+                    </span>
+                    <span class="d-f-r ai-c">
+                        <span>Name:</span>
+                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        <%= user.name %>
+                    </span>
+                    <span class="d-f-r ai-c">
+                        <span>Name:</span>
+                        &numsp;&numsp;&numsp;&numsp;&numsp;&numsp;&numsp;
+                        <%= user.name %>
+                    </span>
+                </div>
+            </div>
+        </main>
+
+        <%- include('_footer'); %>
+            <script type="text/javascript" src="/js/scroll.js"></script>
+            <script type="text/javascript" src="/js/load.js"></script>
+</body>
+
+</html>

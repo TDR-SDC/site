@@ -1,0 +1,25 @@
+main {
+    padding: 15vh 10vw;
+    align-items: baseline;
+    justify-content: flex-start;
+}
+
+#profile_photo {
+    border: 2px solid black;
+    width: 12vw;
+    height: 25vh;
+    margin-right: 3vw;
+}
+
+#details {
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+#details span span {
+    font-weight: 700;
+}
+
+#details span {
+    margin: 0.2rem 0;
+}

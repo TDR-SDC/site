@@ -1,8 +1,9 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    font-family: 'Play';
-    background-color: #33333310;}
+    font-family: "Play";
+    background-color: #33333310;
+}
 
 a {
     text-decoration: none;
@@ -19,5 +20,31 @@ main {
     padding: 5rem 0rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.d-f-c {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-f-r {
+    display: flex;
+    flex-direction: row;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.jc-c {
+    justify-content: space-evenly;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.ai-c {
     align-items: center;
 }
