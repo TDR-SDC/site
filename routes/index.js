@@ -11,6 +11,6 @@ router.get('/contact', homeController.contact);
 router.use('/user', require('./user'));
 router.use('/login', require('./login'));
 
-// router.get('*', homeController.not_found);
+router.get('*', homeController.not_found);
 
 module.exports = router;
