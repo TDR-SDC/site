@@ -1,15 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const homeController = require('../controller/homeController');
-const loginController = require('../controller/loginController');
 
 router.get('/', homeController.home);
 router.get('/team', homeController.team);
 router.get('/sponsors', homeController.sponsors);
 router.get('/gallery', homeController.gallery);
 router.get('/contact', homeController.contact);
-router.use('/login', loginController.login);
 
-router.get('*', homeController.not_found);
+router.use('/user', require('./user'));
+router.use('/login', require('./login'));
+
+// router.get('*', homeController.not_found);
 
 module.exports = router;

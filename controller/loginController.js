@@ -1,3 +1,7 @@
+const Users = require('../models/users');
+
 module.exports.login = function (req, res) {
-    res.render('login');
+    if(req.isAuthenticated())
+        res.redirect('/user/profile');
+    else res.render('login');
 };

@@ -1,6 +1,5 @@
 function home() {
     var y = document.getElementById("body").scrollTop;
-    console.log(y);
     var nav_bar = document.getElementById("header");
     var logo = document.getElementById("logo");
 
