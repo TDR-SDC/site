@@ -10,11 +10,11 @@ passport.use(new LocalStrategy({
     async function (username, password, done) {
         await User.findOne({ user: username }, function (err, user) {
             if (err) {
-                console.log(`Error in configuring passport-local \n ${err}`);
+                // console.log(`Error in configuring passport-local \n ${err}`);
                 return done(err);
             }
             if (!user || user.password != password) {
-                console.log(`Invalid username or password!!`)
+                // console.log(`Invalid username or password!!`)
                 return done(null, false);
             }
             return done(null, user);
@@ -31,7 +31,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
         if (err) {
-            console.log('Error in finding user --> Passport');
+            // console.log('Error in finding user --> Passport');
             return done(err);
         }
         done(err, user);
@@ -41,7 +41,7 @@ passport.deserializeUser(function (id, done) {
 // check if the user is authenticated
 passport.checkAuthentication = function (req, res, next) {
     let auth_status = req.isAuthenticated() ? "sucess" : "failure";
-    console.log(`Authentication ${auth_status}`);
+    // console.log(`Authentication ${auth_status}`);
     // if the user is signed in, then pass on the request to the next function(controller's action)
     if (req.isAuthenticated()) {
         return next();
