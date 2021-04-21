@@ -10,6 +10,10 @@ module.exports.sponsors = function (req, res) {
     res.render('sponsors');
 };
 
+module.exports.gallery = function (req, res) {
+    res.render('gallery');
+};
+
 module.exports.not_found = function (req, res) {
     res.render('error_404');
 }
