@@ -6,7 +6,7 @@
 
 ## **Build and go live**
 ```bash
-git clone https://github.com/krush11/site/
+git clone https://github.com/TDR-SDC/site2.0
 cd site
 npm install
 npm start
