@@ -11,12 +11,15 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     dept: String,
+    position: String,
+    management: Boolean,
     year: Number,
     name: String,
     permission: {
         type: Number,
         default: 10
         // Permission Level 10: 
+        //      - view profile
     }
 }, {
     timestamps: true
