@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema({
         default: 10
         // Permission Level 10: 
         //      - view profile
+    },
+    social: {
+        insta: String,
+        linkedin: String,
+        twitter: String
     }
 }, {
     timestamps: true
