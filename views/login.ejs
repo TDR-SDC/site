@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR-SDC Website</title>
+    <link rel="stylesheet" href="/css/common.scss">
+    <link rel="stylesheet" href="/css/login.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+</head>
+
+<body id="body" onload="load()">
+    <%- include('_header'); %>
+        <main>
+            <section>
+
+                <div class="login-box">
+                    <h2>Login</h2>
+                    <form action="/login/create_session" method="POST">
+                        <div class="user-box">
+                            <input type="text" name="user" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="password" name="password" required>
+                            <label>Password</label>
+                        </div>
+                        <a href="">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <input type="submit" id="submit" value="Log In">
+                        </a>
+                    </form>
+                </div>
+
+            </section>
+        </main>
+            <script type="text/javascript" src="/js/scroll.js"></script>
+            <script type="text/javascript" src="/js/load.js"></script>
+</body>
+
+</html>
