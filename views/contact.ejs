@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDR-SDC Website</title>
+    <link rel="stylesheet" href="/css/contact.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body id="body" onload="load()">
+    <%- include('_header'); %>
+        <div id="heading_background"></div>
+        <main>
+            <div id="contact_address">
+                <span class="contact_heading">Our Address</span>
+                <span class="contact_descript">
+                    #677, 1st Floor, Suite #663,
+                    13th Cross Road, 27th Main Rd,
+                    1st Sector, HSR Layout,
+                    Bengaluru, Karnataka 560102.
+                </span>
+                <br>
+                <a class="contact_descript" id="google_location" href="https://goo.gl/maps/cKs9jecDmYivDtUz5">
+                    <i class="fa fa-map-marker"></i>&numsp;Google Location
+                </a>
+                <br>
+                <span class="contact_heading">Email</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;">emailemail@email.com</span>
+                <br>
+                <span class="contact_heading">Quick Call</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;">+91-9999999999</span>
+            </div>
+
+            <div id="contact_form">
+                <span id="form_heading">Get in touch</span>
+                <form action="" method="POST">
+                    <label class="text_input">
+                        <input type="text" class="input" name="name" required>
+                        <span class="placeholder">Name</span>
+                    </label>
+                    <label class="text_input">
+                        <input type="text" class="input" name="email" required>
+                        <span class="placeholder">Email</span>
+                    </label>
+                    <label class="text_input">
+                        <input type="text" class="input" name="email" required>
+                        <span class="placeholder">Subject</span>
+                    </label>
+                    <label class="text_input">
+                        <input type="text" class="input" name="message" id="message" required>
+                        <span class="placeholder" id="message_label">Message</span>
+                    </label>
+                    <br>
+                    <input type="button" name="submit" id="submit" value="Submit" onclick="tick()">
+                </form>
+            </div>
+        </main>
+
+        <%- include('_footer'); %>
+            <script type="text/javascript" src="/js/contact.js"></script>
+            <script type="text/javascript" src="/js/load.js"></script>
+</body>
+
+</html>

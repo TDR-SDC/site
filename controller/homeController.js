@@ -14,6 +14,10 @@ module.exports.gallery = function (req, res) {
     res.render('gallery');
 };
 
+module.exports.contact = function (req, res) {
+    res.render('contact');
+};
+
 module.exports.not_found = function (req, res) {
     res.render('error_404');
 }
