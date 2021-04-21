@@ -23,31 +23,25 @@
                 </span>
 
                 <span class="members_list">
-
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
+                    <% users.forEach(function(user){ %>
+                        <% if(user.management==true && user.name !='root' ) {%>
+                            <div class="member">
+                                <img src="/imgs/team_members/krushnal.jpeg">
+                                <div class="member_card">
+                                    <span class="member_name">
+                                        <%= user.name %>
+                                    </span>
+                                    <span class="member_position">
+                                        <%= user.position %>
+                                    </span>
+                                    <span class="member_social">
+                                        <a href=""><img src="/imgs/icons/instagram.svg"></a>
+                                        <a href=""><img src="/imgs/icons/linkedin.svg"></a>
+                                        <a href=""><img src="/imgs/icons/twitter.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }}) %>
                 </span>
             </div>
             <div class="dept_end"></div>
@@ -58,78 +52,25 @@
                 </span>
 
                 <span class="members_list">
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
+                    <% users.forEach(function(user){ %>
+                        <% if(user.dept=="global" && user.name !='root' ) {%>
+                            <div class="member">
+                                <img src="/imgs/team_members/krushnal.jpeg">
+                                <div class="member_card">
+                                    <span class="member_name">
+                                        <%= user.name %>
+                                    </span>
+                                    <span class="member_position">
+                                        <%= user.position %>
+                                    </span>
+                                    <span class="member_social">
+                                        <a href=""><img src="/imgs/icons/instagram.svg"></a>
+                                        <a href=""><img src="/imgs/icons/linkedin.svg"></a>
+                                        <a href=""><img src="/imgs/icons/twitter.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }}) %>
                 </span>
             </div>
             <div class="dept_end"></div>
@@ -140,78 +81,25 @@
                 </span>
 
                 <span class="members_list">
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
+                    <% users.forEach(function(user){ %>
+                        <% if(user.dept=='electrical' && user.name !='root' ) {%>
+                            <div class="member">
+                                <img src="/imgs/team_members/krushnal.jpeg">
+                                <div class="member_card">
+                                    <span class="member_name">
+                                        <%= user.name %>
+                                    </span>
+                                    <span class="member_position">
+                                        <%= user.position %>
+                                    </span>
+                                    <span class="member_social">
+                                        <a href=""><img src="/imgs/icons/instagram.svg"></a>
+                                        <a href=""><img src="/imgs/icons/linkedin.svg"></a>
+                                        <a href=""><img src="/imgs/icons/twitter.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }}) %>
                 </span>
             </div>
             <div class="dept_end"></div>
@@ -222,78 +110,25 @@
                 </span>
 
                 <span class="members_list">
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
+                    <% users.forEach(function(user){ %>
+                        <% if(user.dept=='mechanical' && user.name !='root' ) {%>
+                            <div class="member">
+                                <img src="/imgs/team_members/krushnal.jpeg">
+                                <div class="member_card">
+                                    <span class="member_name">
+                                        <%= user.name %>
+                                    </span>
+                                    <span class="member_position">
+                                        <%= user.position %>
+                                    </span>
+                                    <span class="member_social">
+                                        <a href=""><img src="/imgs/icons/instagram.svg"></a>
+                                        <a href=""><img src="/imgs/icons/linkedin.svg"></a>
+                                        <a href=""><img src="/imgs/icons/twitter.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }}) %>
                 </span>
             </div>
             <div class="dept_end"></div>
@@ -304,80 +139,28 @@
                 </span>
 
                 <span class="members_list">
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="member">
-                        <img src="/imgs/team_members/krushnal.jpeg" >
-                        <div class="member_card">
-                            <span class="member_name">Krushnal P.</span>
-                            <span class="member_position">Sr. Software Architect</span>
-                            <span class="member_social">
-                                <a href=""><img src="/imgs/icons/instagram.svg" ></a>
-                                <a href=""><img src="/imgs/icons/linkedin.svg" ></a>
-                                <a href=""><img src="/imgs/icons/twitter.svg" ></a>
-                            </span>
-                        </div>
-                    </div>
+                    <% users.forEach(function(user){ %>
+                        <% if(user.dept=='corporate' && user.name !="root" ) {%>
+                            <div class="member">
+                                <img src="/imgs/team_members/krushnal.jpeg">
+                                <div class="member_card">
+                                    <span class="member_name">
+                                        <%= user.name %>
+                                    </span>
+                                    <span class="member_position">
+                                        <%= user.position %>
+                                    </span>
+                                    <span class="member_social">
+                                        <a href=""><img src="/imgs/icons/instagram.svg"></a>
+                                        <a href=""><img src="/imgs/icons/linkedin.svg"></a>
+                                        <a href=""><img src="/imgs/icons/twitter.svg"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <% }}) %>
                 </span>
-            </div>        </main>
+            </div>
+        </main>
         <%- include('_footer'); %>
             <script type="text/javascript" src="/js/scroll.js"></script>
             <script type="text/javascript" src="/js/load.js"></script>
