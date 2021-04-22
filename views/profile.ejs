@@ -91,17 +91,27 @@
                     </div>
                 </div>
             </div>
-            <br><br>
+
+            <div class="d-f-c jc-c ai-c" id="update_credentials">
+                Update Credentials
+                <form class="d-f-c" action="/user/create" method="POST">
+                    <input class="update_details" type="text" name="name" id="name" placeholder="Name" required>
+                    <input class="update_details" type="text" name="password" placeholder="Password" required>
+                    <button id="submit">Submit</button>
+                </form>
+            </div>
 
             <!-- Create User (permission level <= 1) -->
             <% if(user.permission <=1) {%>
-                <div class="d-f-r jc-c ai-c" id="create_form">
+                <div class="d-f-c jc-c ai-c" id="create_form">
+                        Add Users
                     <form class="d-f-r" action="/user/create" method="POST">
                         <input class="update_details" type="text" name="user" id="user" placeholder="Username" required>
                         <input class="update_details" type="text" name="name" id="name" placeholder="Name" required>
                         <input class="update_details" type="text" name="password" placeholder="Password" required>
                         <input class="update_details" type="number" name="year" placeholder="Year">
                         <input class="update_details" type="text" name="dept" placeholder="Department">
+                        <input class="update_details" type="text" name="position" placeholder="Position">
                         <input type="checkbox" id="management" name="management" value="management">
                         <label for="management">Management</label>
                         <button id="submit">Submit</button>

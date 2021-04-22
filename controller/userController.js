@@ -31,6 +31,9 @@ module.exports.create = async function (req, res) {
         "user": req.body.user,
         "name": req.body.name,
         "password": req.body.password,
+        "dept": req.body.dept,
+        "year": req.body.year,
+        "position": req.body.position
     });
     res.redirect('/user/profile');
 };
