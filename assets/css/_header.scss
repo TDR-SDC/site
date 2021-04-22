@@ -110,10 +110,20 @@ div.borderYtoX a:hover:after {
     fill: red;
     transform: translate(2px);
 }
-
 body::-webkit-scrollbar {
-    visibility: hidden;
-    width: 0px;
+    width: 10px;
+}
+
+/* scrollbar track */
+body::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* scrollbar handle */
+body::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #00d2ff;
+    background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
 
 #login #logout {
