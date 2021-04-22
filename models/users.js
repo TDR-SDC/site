@@ -34,9 +34,18 @@ const userSchema = new mongoose.Schema({
         //      - view profile
     },
     social: {
-        insta: String,
-        linkedin: String,
-        twitter: String
+        insta: {
+            type: String,
+            default: ""
+        },
+        linkedin: {
+            type: String,
+            default: ""
+        },
+        twitter: {
+            type: String,
+            default: ""
+        }
     },
     avatar: String
 }, {
