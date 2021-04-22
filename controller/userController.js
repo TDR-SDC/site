@@ -47,3 +47,8 @@ module.exports.user_info = async function (req, res) {
     console.log(req.user);
     res.send(req.user);
 };
+
+module.exports.logout = function (req, res) {
+    req.logout();
+    res.redirect('/login');
+};

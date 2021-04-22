@@ -7,5 +7,6 @@ router.get('/profile', passport.checkAuthentication, userController.profile);
 router.post('/upload_avatar', passport.checkAuthentication, userController.upload_avatar);
 router.get('/user_info', userController.user_info);
 router.post('/create', userController.create);
+router.get('/logout', userController.logout);
 
 module.exports = router;
