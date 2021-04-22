@@ -14,9 +14,16 @@ footer {
     width: 20vw;
 }
 
+#about_description {
+    width: 26vw;
+    line-height: 2.25vh;
+    margin-left: -2.5vw;
+}
+
 #about_heading {
     font-size: 1.5rem;
     margin: 1rem 0rem;
+    margin-left: -2.5vw;
 }
 
 #connect_heading {
@@ -90,6 +97,7 @@ footer {
 
 #location {
     width: max-content;
+    line-height: 2.25vh;
 }
 
 iframe {

@@ -37,18 +37,14 @@ module.exports.create = async function (req, res) {
 
 module.exports.user_info = async function (req, res) {
 
-    await Users.updateMany({}, { $set: { 
-        social: {
-            insta: "",
-            linkedin: "",
-            twitter: ""
-        }
-     } });
+    await Users.find({}, function(err, user) {
+    res.send(user);
+
+    })
     console.log(req.user);
-    res.send(req.user);
 };
 
 module.exports.logout = function (req, res) {
     req.logout();
-    res.redirect('/login');
+    res.redirect('back');
 };
