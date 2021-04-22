@@ -2,6 +2,12 @@ main {
     padding: 15vh 10vw;
     align-items: baseline;
     justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+#profile {
+    margin-right: 15vw;
 }
 
 #profile_photo {
@@ -14,6 +20,7 @@ main {
 #details {
     font-size: 1.2rem;
     text-align: left;
+
 }
 
 #details span span {
@@ -32,4 +39,9 @@ main {
 #password:hover {
     color: black;
     text-shadow: none;
+    cursor: default;
+}
+
+#create_form {
+    height: 100%;
 }

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
-const { join } = require('path');
 const path = require('path');
 const AVATAR_PATH = path.join('/assets/imgs/team_members')
 
@@ -14,10 +13,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dept: String,
+    dept: {
+        type: String,
+        default: "general"
+    },
     position: String,
-    management: Boolean,
-    year: Number,
+    management: {
+        type: Boolean,
+        default: false
+    },
+    year: {
+        type: Number,
+        default: 0
+    },
     name: String,
     permission: {
         type: Number,

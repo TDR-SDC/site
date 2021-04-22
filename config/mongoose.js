@@ -7,6 +7,7 @@ mongoose.connect(uri, {
     useCreateIndex: true
 });
 const db = mongoose.connection;
+mongoose.set('useFindAndModify', false);
 
 db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
 db.once('open', function () {

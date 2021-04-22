@@ -25,3 +25,25 @@ module.exports.upload_avatar = async function (req, res) {
         res.redirect('/user/profile');
     });
 };
+
+module.exports.create = async function (req, res) {
+    await Users.create({
+        "user": req.body.user,
+        "name": req.body.name,
+        "password": req.body.password,
+    });
+    res.redirect('/user/profile');
+};
+
+module.exports.user_info = async function (req, res) {
+
+    await Users.updateMany({}, { $set: { 
+        social: {
+            insta: "",
+            linkedin: "",
+            twitter: ""
+        }
+     } });
+    console.log(req.user);
+    res.send(req.user);
+};

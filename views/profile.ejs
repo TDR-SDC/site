@@ -13,67 +13,97 @@
 
 <body id="body" onload="load()">
     <%- include('_header'); %>
-        <main>
-            <div id="heading_background"></div>
-            <div class="d-f-r jc-c">
-                <div class="d-f-c">
-                    <% if(user.avatar) {%>
-                        <img id="profile_photo" src="<%= user.avatar %>">
-                        <%} else {%>
-                            <img id="profile_photo" src="/imgs/team_members/placeholde r.png">
-                            <% } %>
-                            <br>
-                            <form action="/user/upload_avatar" method="POST" enctype="multipart/form-data">
-                                <input type="file" name="avatar" placeholder="Update Photo" required>
-                                <br><br>
-                                <input type="submit" value="Upload">
-                            </form>
-                </div>
-                <div id="details">
-                    <span class="d-f-r ai-c">
-                        <span>Username:</span>
-                        &numsp;&numsp;&emsp;
-                        <%= user.user %>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Name:</span>
-                        &emsp;&emsp;&emsp;&emsp;
-                        <%= user.name %>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Password:</span>
-                        &emsp;&emsp;&numsp;
-                        <div id="password">
-                            <%= user.password %>&numsp;
-                        </div>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Department:</span>
-                        &numsp;&numsp;
-                        <%= user.dept %>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Year:</span>
-                        &emsp;&emsp;&emsp;&emsp;&numsp;
-                        <%= user.year %>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Position:</span>
-                        &numsp;&numsp;&numsp;&numsp;&numsp;
-                        <%= user.position %>
-                    </span>
-                    <span class="d-f-r ai-c">
-                        <span>Management:</span>
-                        &numsp;
-                        <% if(user.management) {%>
-                            Yes
+        <div id="heading_background"></div>
+        <main class="d-f-r">
+            <!-- Profile display section -->
+            <div class="d-f" id="profile">
+                <div class="d-f-r">
+                    <div class="d-f-c">
+                        <% if(user.avatar) {%>
+                            <img id="profile_photo" src="<%= user.avatar %>">
                             <%} else {%>
-                                No
+                                <img id="profile_photo" src="/imgs/team_members/placeholder.png">
                                 <% } %>
-                    </span>
+                                    <br>
+                                    <form action="/user/upload_avatar" method="POST" enctype="multipart/form-data">
+                                        <input type="file" name="avatar" placeholder="Update Photo" required>
+                                        <br><br>
+                                        <input type="submit" value="Upload">
+                                    </form>
+                    </div>
+                    <div id="details">
+                        <span class="d-f-r ai-c">
+                            <span>Username:</span>
+                            &numsp;&numsp;&emsp;
+                            <%= user.user %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Name:</span>
+                            &emsp;&emsp;&emsp;&emsp;
+                            <%= user.name %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Password:</span>
+                            &emsp;&emsp;&numsp;
+                            <div id="password">
+                                <%= user.password %>&numsp;
+                            </div>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Department:</span>
+                            &numsp;&numsp;
+                            <%= user.dept %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Year:</span>
+                            &emsp;&emsp;&emsp;&emsp;&numsp;
+                            <%= user.year %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Position:</span>
+                            &numsp;&numsp;&numsp;&numsp;&numsp;
+                            <%= user.position %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Management:</span>
+                            &numsp;
+                            <% if(user.management) {%>
+                                Yes
+                                <%} else {%>
+                                    No
+                                    <% } %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Insta:</span>
+                            &numsp;&numsp;&numsp;&numsp;&numsp;
+                            <%= user.instagram %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Linkedin:</span>
+                            &numsp;&numsp;&numsp;&numsp;&numsp;
+                            <%= user.linkedin %>
+                        </span>
+                        <span class="d-f-r ai-c">
+                            <span>Twitter:</span>
+                            &numsp;&numsp;&numsp;&numsp;&numsp;
+                            <%= user.twitter %>
+                        </span>
+                    </div>
                 </div>
             </div>
             <br><br>
+
+            <!-- Create User (permission level <= 1) -->
+            <% if(user.permission <= 1) {%>
+                <div id="create_form">
+                    <form class="d-f-c" action="/user/create" method="POST">
+                        <input type="text" name="user" id="user" placeholder="username" required>
+                        <input type="text" name="name" id="name" placeholder="name" required>
+                        <input type="text" name="password" placeholder="password" required>
+                        <input type="submit" value="Create User">
+                    </form>
+                </div>
+                <% } %>
         </main>
 
         <%- include('_footer'); %>
