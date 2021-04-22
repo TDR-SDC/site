@@ -56,14 +56,19 @@ main {
 }
 
 #update_credentials {
-    height: 30vh;
-    width: 15vw;
+    height: 35vh;
+    width: 25vw;
     margin: 2rem 5rem;
     border: 2px solid black;
+    flex-wrap: wrap;
     padding: 1rem 2rem;
     border-radius: 10px;
     background-color: rgb(238, 255, 255);
     transform: translate(0%, -10%);
+}
+
+#update_credentials form {
+    flex-wrap: wrap;
 }
 
 .update_details {

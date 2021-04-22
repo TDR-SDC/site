@@ -38,10 +38,28 @@ module.exports.create = async function (req, res) {
     res.redirect('/user/profile');
 };
 
+module.exports.update_credentials = async function (req, res) {
+    var new_details = {};
+    new_details.social = req.user.social;
+    if (req.body.name)
+        new_details.name = req.body.name;
+    if (req.body.password)
+        new_details.password = req.body.password;
+    if (req.body.insta)
+        new_details.social.insta = req.body.insta;
+    if (req.body.linkedin)
+        new_details.social.linkedin = req.body.linkedin;
+    if (req.body.twitter)
+        new_details.social.twitter = req.body.twitter;
+
+    await Users.findOneAndUpdate({ '_id': req.user._id }, new_details, { upsert: true });
+    res.redirect('back');
+}
+
 module.exports.user_info = async function (req, res) {
 
-    await Users.find({}, function(err, user) {
-    res.send(user);
+    await Users.find({}, function (err, user) {
+        res.send(user);
 
     })
     console.log(req.user);

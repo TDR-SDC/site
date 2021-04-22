@@ -27,22 +27,29 @@
                         <% if(user.management==true) {%>
                             <div class="member d-f-c jc-c ai-c">
                                 <% if(user.avatar) {%>
-                                <img src="<%= user.avatar %>">
-                                <%} else {%>
-                                    <img src="/imgs/team_members/placeholder.png">
-                                    <% } %>                                <div class="d-f-c jc-sb ai-c">
-                                    <span class="member_name">
-                                        <%= user.name %>
-                                    </span>
-                                    <span class="member_position">
-                                        <%= user.position %>
-                                    </span>
-                                    <span class="member_social">
-                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
-                                        <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                        <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
-                                    </span>
-                                </div>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <%= user.position %>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                        <% if(user.social.linkedin) {%>
+                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
+                                                            <% } %>
+                                                            <% if(user.social.twitter) {%>
+                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                                <% } %>
+                                                </span>
+                                            </div>
                             </div>
                             <% }}) %>
                 </span>
@@ -59,22 +66,29 @@
                         <% if(user.dept=='software' ) {%>
                             <div class="member d-f-c jc-c ai-c">
                                 <% if(user.avatar) {%>
-                                <img src="<%= user.avatar %>">
-                                <%} else {%>
-                                    <img src="/imgs/team_members/placeholder.png">
-                                    <% } %>                                <div class="d-f-c jc-sb ai-c">
-                                    <span class="member_name">
-                                        <%= user.name %>
-                                    </span>
-                                    <span class="member_position">
-                                        <%= user.position %>
-                                    </span>
-                                    <span class="member_social">
-                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
-                                        <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                        <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
-                                    </span>
-                                </div>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <%= user.position %>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                        <% if(user.social.linkedin) {%>
+                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
+                                                            <% } %>
+                                                            <% if(user.social.twitter) {%>
+                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                                <% } %>
+                                                </span>
+                                            </div>
                             </div>
                             <% }}) %>
                 </span>
@@ -91,22 +105,29 @@
                         <% if(user.dept=='electrical' ) {%>
                             <div class="member d-f-c jc-c ai-c">
                                 <% if(user.avatar) {%>
-                                <img src="<%= user.avatar %>">
-                                <%} else {%>
-                                    <img src="/imgs/team_members/placeholder.png">
-                                    <% } %>                                <div class="d-f-c jc-sb ai-c">
-                                    <span class="member_name">
-                                        <%= user.name %>
-                                    </span>
-                                    <span class="member_position">
-                                        <%= user.position %>
-                                    </span>
-                                    <span class="member_social">
-                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
-                                        <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                        <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
-                                    </span>
-                                </div>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <%= user.position %>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                        <% if(user.social.linkedin) {%>
+                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
+                                                            <% } %>
+                                                            <% if(user.social.twitter) {%>
+                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                                <% } %>
+                                                </span>
+                                            </div>
                             </div>
                             <% }}) %>
                 </span>
@@ -123,23 +144,29 @@
                         <% if(user.dept=='mechanical' ) {%>
                             <div class="member d-f-c jc-c ai-c">
                                 <% if(user.avatar) {%>
-                                <img src="<%= user.avatar %>">
-                                <%} else {%>
-                                    <img src="/imgs/team_members/placeholder.png">
-                                    <% } %>
-                                <div class="d-f-c jc-sb ai-c">
-                                    <span class="member_name">
-                                        <%= user.name %>
-                                    </span>
-                                    <span class="member_position">
-                                        <%= user.position %>
-                                    </span>
-                                    <span class="member_social">
-                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
-                                        <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                        <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
-                                    </span>
-                                </div>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <%= user.position %>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                        <% if(user.social.linkedin) {%>
+                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
+                                                            <% } %>
+                                                            <% if(user.social.twitter) {%>
+                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                                <% } %>
+                                                </span>
+                                            </div>
                             </div>
                             <% }}) %>
                 </span>
@@ -156,22 +183,29 @@
                         <% if(user.dept=='corporate' ) {%>
                             <div class="member d-f-c jc-se ai-c">
                                 <% if(user.avatar) {%>
-                                <img src="<%= user.avatar %>">
-                                <%} else {%>
-                                    <img src="/imgs/team_members/placeholder.png">
-                                    <% } %>                                <div class="d-f-c jc-sb ai-c">
-                                    <span class="member_name">
-                                        <%= user.name %>
-                                    </span>
-                                    <span class="member_position">
-                                        <%= user.position %>
-                                    </span>
-                                    <span class="member_social">
-                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
-                                        <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                        <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
-                                    </span>
-                                </div>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <%= user.position %>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                        <% if(user.social.linkedin) {%>
+                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
+                                                            <% } %>
+                                                            <% if(user.social.twitter) {%>
+                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                                <% } %>
+                                                </span>
+                                            </div>
                             </div>
                             <% }}) %>
                 </span>
