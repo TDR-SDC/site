@@ -59,10 +59,13 @@ module.exports.update_credentials = async function (req, res) {
 module.exports.user_info = async function (req, res) {
 
     await Users.find({}, function (err, user) {
-        res.send(user);
+        if (user.year == 2) {
+            user.permission = 9;
+            Users.findByIdAndUpdate(user._id, { permission: 9 });
+    }
+            res.send(user);
 
-    })
-    console.log(req.user);
+})
 };
 
 module.exports.logout = function (req, res) {

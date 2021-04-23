@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/TDR-SDC/site#readme",
   "dependencies": {
+    "@azure/storage-blob": "^12.5.0",
     "connect-mongo": "^4.4.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",

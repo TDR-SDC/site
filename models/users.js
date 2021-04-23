@@ -30,8 +30,21 @@ const userSchema = new mongoose.Schema({
     permission: {
         type: Number,
         default: 10
-        // Permission Level 10: 
+        // Permission Level 10: 1st year members
         //      - view profile
+        // Permission Level 9:  2nd year members
+        //      - view profile
+        // Permission Level 6:  3rd Years
+        //      - 
+        // Permission Level 7:  Department Leads
+        //      - 
+        // Permission Level 8:  Team Managers
+        //      - 
+        // Permission Level 1:  Team Lead
+        //      - 
+        // Permission Level 0:  Admin
+        //      - All access
+
     },
     social: {
         insta: {

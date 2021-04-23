@@ -1,15 +1,16 @@
 const express = require('express');
 const session = require('express-session');
-const multer = require('multer');
 const process = require('process');
 const passport = require('passport');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const MongoStore = require('connect-mongo');
+const { BlobServiceClient } = require('@azure/storage-blob');
 require('./config/mongoose');
 require('dotenv').config();
 require('./config/passportLocal');
+require('./config/azure');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -43,5 +44,5 @@ app.listen(port, err => {
         // console.log(`Error found on port ${port}: \n ${err}`);
         return;
     }
-    // console.log('Server up and running on port:', port);
+    // console.info('Server up and running on port:', port);
 });
