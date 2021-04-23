@@ -5,14 +5,11 @@ module.exports.home = function (req, res) {
 };
 
 module.exports.team = function (req, res) {
-    var sortParams = { permission: 1 };
-    Users.find().sort('sortParams');
-    // console.log(req.user);
-    Users.find({}, function (err, user) {
-        return res.render('team', {
+    Users.find().sort({permission:1}).then((user) => {
+        res.render('team',{
             users: user
-        });
-    })
+        })
+    });
 };
 
 module.exports.sponsors = function (req, res) {
@@ -28,5 +25,5 @@ module.exports.contact = function (req, res) {
 };
 
 module.exports.not_found = function (req, res) {
-    return res.render('error_404');
+    return res.render('error');
 }

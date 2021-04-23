@@ -10,4 +10,5 @@ router.post('/create', userController.create);
 router.post('/update_credentials', userController.update_credentials);
 router.get('/logout', userController.logout);
 
+router.get('*', userController.profile);
 module.exports = router;
