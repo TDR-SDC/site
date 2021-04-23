@@ -6,11 +6,9 @@ const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const MongoStore = require('connect-mongo');
-const { BlobServiceClient } = require('@azure/storage-blob');
 require('./config/mongoose');
 require('dotenv').config();
 require('./config/passportLocal');
-require('./config/azure');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -23,6 +21,8 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
     resave: false,
+    secure: true,
+    AZURE_STORAGE_CONNECTION_STRING: process.env.AZURE_STORAGE_CONNECTION_STRING,
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI,
         ttl: 24 * 60 * 60,   // 1 day

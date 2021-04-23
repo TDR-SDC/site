@@ -1,6 +1,7 @@
 const Users = require('../models/users');
 const fs = require('fs');
 const path = require('path');
+const azure = require('azure-storage');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated())
@@ -14,16 +15,15 @@ module.exports.profile = function (req, res) {
 
 module.exports.upload_avatar = async function (req, res) {
     var user = await Users.findById(req.user._id);
-    Users.uploadedAvatar(req, res, function (err) {
-        if (req.file) {
-            if (user.avatar) {
-                fs.unlinkSync(path.join(__dirname, '..', user.avatar));
-            }
-            user.avatar = Users.avatarPath + '/' + req.file.filename;
-        }
+    Users.uploadedAvatar(req, res, async function (err) {
+        var blobService = azure.createBlobService();
+        blobService.createBlockBlobFromLocalFile('team-members', `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { });
+
+        var avatarUrl = blobService.getUrl("team-members", `${req.file.originalname}`);
+        user.avatar = avatarUrl;
         user.save();
-        res.redirect('/user/profile');
     });
+    res.redirect('/user');
 };
 
 module.exports.create = async function (req, res) {
@@ -56,20 +56,19 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.update_credentials = async function (req, res) {
-    var new_details = {};
-    new_details.social = req.user.social;
+    var user = User.findById(req.user._id);
     if (req.body.name)
-        new_details.name = req.body.name;
+        user.name = req.body.name;
     if (req.body.password)
-        new_details.password = req.body.password;
+        user.password = req.body.password;
     if (req.body.insta)
-        new_details.social.insta = req.body.insta;
+        user.social.insta = req.body.insta;
     if (req.body.linkedin)
-        new_details.social.linkedin = req.body.linkedin;
+        user.social.linkedin = req.body.linkedin;
     if (req.body.twitter)
-        new_details.social.twitter = req.body.twitter;
+        user.social.twitter = req.body.twitter;
+    user.save();
 
-    await Users.findOneAndUpdate({ '_id': req.user._id }, new_details, { upsert: true });
     res.redirect('back');
 }
 
