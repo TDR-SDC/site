@@ -7,6 +7,8 @@ header {
     justify-content: center;
     position: fixed;
     z-index: 100;
+    padding-left: 0vw;
+    padding-right: 10vw;
 }
 
 @keyframes scroll_down {
@@ -36,7 +38,7 @@ header {
     width: min-content;
     font-family: "Play";
     font-size: 1.5rem;
-    margin: 0vh 15vw;
+    // margin: 0vh 15vw;
 }
 
 #nav_bar a {
@@ -96,7 +98,7 @@ div.borderYtoX a:hover:after {
     color: rgb(255, 0, 0);
     letter-spacing: 0.1rem;
     text-transform: uppercase;
-    width: 6vw;
+    width: fit-content;
     height: 5vh;
     border-radius: 7px;
     transition: all 0.3s;
@@ -124,6 +126,10 @@ body::-webkit-scrollbar-thumb {
     border-radius: 1rem;
     background-color: #00d2ff;
     background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+
+#username {
+    padding: 0 1vw;
 }
 
 #login #logout {

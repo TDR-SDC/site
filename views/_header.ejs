@@ -1,6 +1,6 @@
 <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet'>
 
-<header id="header">
+<header class="d-f-r jc-se" id="header">
     <a href="/"><img id="logo" src="/imgs/logos/black_transparent.png"></a>
     <div class="container borderYtoX d-f-r jc-sb ai-c" id="nav_bar">
         <a href="/team">Team</a>
@@ -11,7 +11,7 @@
     <div class="d-f jc-c ai-c" id="login">
         <a class="d-f ai-c jc-c" href="/login">
             <% if(locals.user) {%>
-                <%= user.user %>
+                <span id="username"><%= user.user %></span>
                     <% } else {%>
                         Login
                         <svg id="arrow" height="16" viewBox="0 0 16 16" width="16">
