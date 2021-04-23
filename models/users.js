@@ -60,7 +60,10 @@ const userSchema = new mongoose.Schema({
             default: ""
         }
     },
-    avatar: String
+    avatar: {
+        type: String,
+        default: "https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png"
+    }
 }, {
     timestamps: true
 });
