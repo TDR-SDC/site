@@ -110,7 +110,7 @@ div.borderYtoX a:hover:after {
 
 #arrow {
     fill: red;
-    transform: translate(-1vw);
+    transform: translate(2px);
 }
 
 body::-webkit-scrollbar {
@@ -131,6 +131,7 @@ body::-webkit-scrollbar-thumb {
 
 .username {
     padding: 0 1vw;
+    width: fit-content;
 }
 
 #login #logout {
