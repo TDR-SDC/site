@@ -110,8 +110,9 @@ div.borderYtoX a:hover:after {
 
 #arrow {
     fill: red;
-    transform: translate(2px);
+    transform: translate(-1vw);
 }
+
 body::-webkit-scrollbar {
     width: 10px;
 }
@@ -128,7 +129,7 @@ body::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
 
-#username {
+.username {
     padding: 0 1vw;
 }
 
