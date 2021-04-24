@@ -1,14 +1,16 @@
-const Users = require('../models/users');
-const fs = require('fs');
-const path = require('path');
 const azure = require('azure-storage');
+const Users = require('../models/users');
+const Sponsors = require('../models/sponsors');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated())
         Users.findById(req.user._id, function (err, user) {
-            return res.render('profile', {
-                profile_user: user
-            });
+            Sponsors.find({}, function (err, sponsors) {
+                return res.render('profile', {
+                    profile_user: user,
+                    sponsors: sponsors
+                });
+            })
         });
     else res.redirect('/login');
 };

@@ -12,10 +12,6 @@ module.exports.team = function (req, res) {
     });
 };
 
-module.exports.sponsors = function (req, res) {
-    return res.render('sponsors');
-};
-
 module.exports.gallery = function (req, res) {
     return res.render('gallery');
 };

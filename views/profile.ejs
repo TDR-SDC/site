@@ -156,16 +156,51 @@
                         <% } %>
                 </div>
 
-                <!-- Newsletters section -->
+                <!-- Newsletters section (year >= 2 && dept == corporate)-->
                 <div class="content" id="newsletters">
                     Newsletters
                 </div>
 
-                <!-- Sponsors section -->
+                <!-- Sponsors section (year >= 2 && dept == corporate) -->
                 <div class="content" id="sponsors">
-                    Sponsors
+                    <div>
+                        <div class="contain">
+                            <div class="table">
+                                <div class="table-header">
+                                    <div class="header__item"><span id="sponsor_name" class="filter__link">
+                                            Sponsor Name</span>
+                                    </div>
+                                    <div class="header__item"><span id="sponsor_logo"
+                                            class="filter__link filter__link--number">
+                                            Sponsor Logo
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="table-content">
+                                    <% sponsors.forEach(function(sponsor){%>
+                                        <span class="table-row vaccine_hover">
+                                            <div class="table-data">
+                                                <%= sponsor.sponsor%>
+                                            </div>
+                                            <div class="table-data">
+                                                <a href="<%= sponsor.logo%>">logo</a>
+                                            </div>
+                                        </span>
+                                        <%})%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="add_sponsor">
+                        <div>Add Sponsor</div>
+                        <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="logo" id="upload_file" class="upload-box" required>
+                            <input id="sponsor_name_input" type="text" name="sponsor_name" placeholder="Sponsor Name"
+                                required>
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
                 </div>
-            </div>
         </main>
 
         <%- include('_footer'); %>
