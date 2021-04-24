@@ -1,3 +1,5 @@
 .vscode
 node_modules
 assets/imgs/team_members/*
+assets/imgs/sponsors/*
+!assets/imgs/sponsors
