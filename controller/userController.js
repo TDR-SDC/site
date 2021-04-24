@@ -77,6 +77,8 @@ module.exports.update_credentials = async function (req, res) {
 module.exports.user_info = async function (req, res) {
     if (req.isAuthenticated() && (req.user.user == 'krush' || req.user.permission == 0)) {
         await Users.find({}, (err, user) => {
+            if (user.avatar == "https://defianzdtusdc.blob.core.windows.net/team-members/Screenshot%20from%202021-04-20%2012-17-05.png")
+                Users.findByIdAndUpdate(user._id, { avatar: "https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png" });
             res.send(user);
         });
     }

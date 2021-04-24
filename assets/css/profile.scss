@@ -1,8 +1,54 @@
 main {
-    padding: 10vh 10vw;
+    padding: 10vh 0 0 5vw;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
+}
+
+#menu_section {
+    height: 70vh;
+    width: 20vw;
+    // background-color: rgb(196, 196, 196);
+}
+
+#menu_list {
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+#menu_list div {
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    transition: all 0.5s;
+}
+
+#menu_list li {
+    padding-left: 2rem;
+    margin: 2rem 0;
+    cursor: default;
+    width: 100%;
+}
+
+li::after {
+    content: "\00bb";
+    opacity: 0;
+}
+
+#menu_list div:hover {
+    transform: translate(10%, 0);
+    color: red;
+}
+
+#menu_list div:hover li::after {
+    opacity: 1;
+}
+
+.content {
+    margin: 0 10vw;
+    display: none;
 }
 
 #profile {
@@ -56,12 +102,12 @@ main {
 }
 
 #update_credentials {
-    height: 35vh;
-    width: 25vw;
-    margin: 2rem 5rem;
+    height: fit-content;
+    width: 30vw;
+    margin: 5rem 0;
+    padding: 2rem 0 0 0;
     border: 2px solid black;
     flex-wrap: wrap;
-    padding: 1rem 2rem;
     border-radius: 10px;
     background-color: rgb(238, 255, 255);
     transform: translate(0%, -10%);
