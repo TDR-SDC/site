@@ -19,31 +19,33 @@
             <div class="d-f jc-c" id="menu_section">
                 <ul id="menu_list">
                     <div onclick="profile()">
-                        <li>Profile </li>
+                        <li style="visibility: visible;">Profile </li>
                     </div>
-                    <div onclick="add_user()">
-                        <%if(locals.user.permission <=3 ){%>
+                    <%if(locals.user.permission <=3 ){%>
+                        <div onclick="add_user()">
                             <li>Add User </li>
-                            <%}%>
-                    </div>
-                    <div onclick="team_docs()">
-                        <li>Team Documents </li>
-                    </div>
-                    <div onclick="newsletters()">
-                        <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user == 'admin' ){%>
-                            <li>Newletters </li>
-                            <%}%>
-                    </div>
-                    <div onclick="sponsors()">
-                        <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user == 'admin' ){%>
-                            <li>Sponsors </li>
-                            <%}%>
-                    </div>
-                    <div onclick="cad()">
-                        <%if((locals.user.dept=='mechanical') || locals.user.user=='admin' ){%>
-                            <li>CAD Iterations</li>
-                            <%}%>
-                    </div>
+                        </div>
+                        <%}%>
+                            <div onclick="team_docs()">
+                                <li style="visibility: visible;">Team Documents </li>
+                            </div>
+                            <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user ==
+                                'admin' ){%>
+                                <div onclick="newsletters()">
+                                    <li style="visibility: visible;">Newletters </li>
+                                </div>
+                                <%}%>
+                                    <%if((locals.user.dept=='corporate' && locals.user.year>=2) ||
+                                        locals.user.user=='admin' ){%>
+                                        <div onclick="sponsors()">
+                                            <li style="visibility: visible;">Sponsors </li>
+                                        </div>
+                                        <%}%>
+                                            <%if((locals.user.dept=='mechanical') || locals.user.user=='admin' ){%>
+                                                <div onclick="cad()">
+                                                    <li style="visibility: visible;">CAD Iterations</li>
+                                                </div>
+                                                <%}%>
                 </ul>
 
             </div>
@@ -147,8 +149,7 @@
                         <div>Add Document</div>
                         <form class="d-f-r" action="/user/add_team_doc" method="POST" enctype="multipart/form-data">
                             <input type="file" name="file" class="upload-box" required>
-                            <input id="version_number" type="text" name="file_name" placeholder="File Name"
-                                required>
+                            <input id="version_number" type="text" name="file_name" placeholder="File Name" required>
                             <input id="remarks" type="text" name="remarks" placeholder="Remarks">
                             <input type="submit" value="Upload">
                         </form>
@@ -171,13 +172,15 @@
                             <% documents.forEach(function(doc){%>
                                 <span class="table-row vaccine_hover">
                                     <div class="table-data">
-                                        <a href="<%= doc.location %>" target="_blank" download="<%= doc.file_name %>"><%= doc.file_name %></a>
+                                        <a href="<%= doc.location %>" target="_blank" download="<%= doc.file_name %>">
+                                            <%= doc.file_name %>
+                                        </a>
                                     </div>
                                     <div class="table-data">
                                         <%= doc.remarks %>
                                     </div>
                                     <div class="table-data">
-                                        <%= doc.posted_by  %>
+                                        <%= doc.posted_by %>
                                     </div>
                                 </span>
                                 <%})%>
@@ -285,7 +288,9 @@
                             <% cad_list.forEach(function(cad){%>
                                 <span class="table-row vaccine_hover">
                                     <div class="table-data">
-                                        <a href="<%= cad.location %>"><%= cad.iteration %></a>
+                                        <a href="<%= cad.location %>">
+                                            <%= cad.iteration %>
+                                        </a>
                                     </div>
                                     <div class="table-data">
                                         <%= cad.remarks%>
