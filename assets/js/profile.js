@@ -33,3 +33,9 @@ function cad() {
     var current_element = document.getElementById('cad');
     current_element.style.display = "block";
 }
+
+function team_docs() {
+    hide_all();
+    var current_element = document.getElementById('team_docs');
+    current_element.style.display = "block";
+}

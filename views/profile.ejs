@@ -26,6 +26,9 @@
                             <li>Add User </li>
                             <%}%>
                     </div>
+                    <div onclick="team_docs()">
+                        <li>Team Documents </li>
+                    </div>
                     <div onclick="newsletters()">
                         <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user == 'admin' ){%>
                             <li>Newletters </li>
@@ -138,23 +141,69 @@
                     </div>
                 </div>
 
+                <!-- Team Documents (open to all) -->
+                <div class="content" id="team_docs">
+                    <div class="content_section">
+                        <div>Add Document</div>
+                        <form class="d-f-r" action="/user/add_team_doc" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="file" class="upload-box" required>
+                            <input id="version_number" type="number" name="iteration" placeholder="Version No."
+                                required>
+                            <input id="remarks" type="text" name="remarks" placeholder="Remarks">
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
+                    <div class="table">
+                        <div class="table-header">
+                            <div class="header__item">
+                                <span id="cad_version" class="filter__link">Iteration&numsp;(click to download)</span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Remarks
+                                </span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Uploaded By
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-content">
+                            <% cad_list.forEach(function(cad){%>
+                                <span class="table-row vaccine_hover">
+                                    <div class="table-data">
+                                        <a href="<%= cad.location %>">logo</a>
+                                    </div>
+                                    <div class="table-data">
+                                        <%= cad.remarks%>
+                                    </div>
+                                    <div class="table-data">
+                                        <%= cad.posted_by %>
+                                    </div>
+                                </span>
+                                <%})%>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Create User (permission level <= 1) -->
                 <div class="content" id="add_user">
-                    <% if(user.permission <=1) {%>
-                        <div class="d-f-c jc-c ai-c">
-                            Add Users
-                            <form class="d-f-r" action="/user/create" method="POST">
-                                <input class="update_details" type="text" name="user" id="user" placeholder="Username"
+                    <% if(user.permission <=3) {%>
+                        <div id="add_user_form" class="d-f-c jc-c ai-c">
+                            <span style="font-size: 1.5rem;">Add Users</span>
+                            <form id="create_form" class="d-f-r ai-c" action="/user/create" method="POST">
+                                <input class="add_user_input" type="text" name="user" id="user" placeholder="Username"
                                     required>
-                                <input class="update_details" type="text" name="name" id="name" placeholder="Name"
+                                <input class="add_user_input" type="text" name="name" id="name" placeholder="Name"
                                     required>
-                                <input class="update_details" type="text" name="password" placeholder="Password"
+                                <input class="add_user_input" type="text" name="password" placeholder="Password"
                                     required>
-                                <input class="update_details" type="number" name="year" placeholder="Year">
-                                <input class="update_details" type="text" name="dept" placeholder="Department">
-                                <input class="update_details" type="text" name="position" placeholder="Position">
-                                <input type="checkbox" id="management" name="management" value="management">
-                                <label for="management">Management</label>
+                                <input class="add_user_input" type="number" name="year" placeholder="Year">
+                                <input class="add_user_input" type="text" name="dept" placeholder="Department">
+                                <input class="add_user_input" type="text" name="position" placeholder="Position">
+                                <span id="management">
+                                    <input type="checkbox" name="management" value="management">
+                                    <label for="management">Management</label>
+                                </span>
                                 <button id="submit">Submit</button>
                             </form>
                         </div>
