@@ -36,6 +36,11 @@
                             <li>Sponsors </li>
                             <%}%>
                     </div>
+                    <div onclick="cad()">
+                        <%if((locals.user.dept=='mechanical') || locals.user.user=='admin' ){%>
+                            <li>CAD Iterations</li>
+                            <%}%>
+                    </div>
                 </ul>
 
             </div>
@@ -136,7 +141,7 @@
                 <!-- Create User (permission level <= 1) -->
                 <div class="content" id="add_user">
                     <% if(user.permission <=1) {%>
-                        <div class="d-f-c jc-c ai-c" id="create_form">
+                        <div class="d-f-c jc-c ai-c">
                             Add Users
                             <form class="d-f-r" action="/user/create" method="POST">
                                 <input class="update_details" type="text" name="user" id="user" placeholder="Username"
@@ -164,41 +169,84 @@
                 <!-- Sponsors section (year >= 2 && dept == corporate) -->
                 <div class="content" id="sponsors">
                     <div>
-                        <div class="contain">
-                            <div class="table">
-                                <div class="table-header">
-                                    <div class="header__item"><span id="sponsor_name" class="filter__link">
-                                            Sponsor Name</span>
-                                    </div>
-                                    <div class="header__item"><span id="sponsor_logo"
-                                            class="filter__link filter__link--number">
-                                            Sponsor Logo
-                                        </span>
-                                    </div>
+                        <div class="content_section">
+                            <div>Add Sponsor</div>
+                            <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="logo" id="upload_file" class="upload-box" required>
+                                <input id="sponsor_name_input" type="text" name="sponsor_name"
+                                    placeholder="Sponsor Name" required>
+                                <input type="submit" value="Upload">
+                            </form>
+                        </div>
+                        <div class="table">
+                            <div class="table-header">
+                                <div class="header__item"><span id="sponsor_name" class="filter__link">
+                                        Sponsor Name</span>
                                 </div>
-                                <div class="table-content">
-                                    <% sponsors.forEach(function(sponsor){%>
-                                        <span class="table-row vaccine_hover">
-                                            <div class="table-data">
-                                                <%= sponsor.sponsor%>
-                                            </div>
-                                            <div class="table-data">
-                                                <a href="<%= sponsor.logo%>">logo</a>
-                                            </div>
-                                        </span>
-                                        <%})%>
+                                <div class="header__item"><span id="sponsor_logo"
+                                        class="filter__link filter__link--number">
+                                        Sponsor Logo
+                                    </span>
                                 </div>
+                            </div>
+                            <div class="table-content">
+                                <% sponsors.forEach(function(sponsor){%>
+                                    <span class="table-row vaccine_hover">
+                                        <div class="table-data">
+                                            <%= sponsor.sponsor%>
+                                        </div>
+                                        <div class="table-data">
+                                            <a href="<%= sponsor.logo%>">logo</a>
+                                        </div>
+                                    </span>
+                                    <%})%>
                             </div>
                         </div>
                     </div>
-                    <div id="add_sponsor">
-                        <div>Add Sponsor</div>
-                        <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="logo" id="upload_file" class="upload-box" required>
-                            <input id="sponsor_name_input" type="text" name="sponsor_name" placeholder="Sponsor Name"
+
+                </div>
+
+                <!-- CAD (department == mechanical) -->
+                <div class="content" id="cad">
+                    <div class="content_section">
+                        <div>Add CAD file</div>
+                        <form class="d-f-r" action="/mechanical/add_cad" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="file" class="upload-box" required>
+                            <input id="version_number" type="number" name="iteration" placeholder="Version No."
                                 required>
+                            <input id="remarks" type="text" name="remarks" placeholder="Remarks">
                             <input type="submit" value="Upload">
                         </form>
+                    </div>
+                    <div class="table">
+                        <div class="table-header">
+                            <div class="header__item">
+                                <span id="cad_version" class="filter__link">Iteration&numsp;(click to download)</span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Remarks
+                                </span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Uploaded By
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-content">
+                            <% cad_list.forEach(function(cad){%>
+                                <span class="table-row vaccine_hover">
+                                    <div class="table-data">
+                                        <a href="<%= cad.location %>">logo</a>
+                                    </div>
+                                    <div class="table-data">
+                                        <%= cad.remarks%>
+                                    </div>
+                                    <div class="table-data">
+                                        <%= cad.posted_by %>
+                                    </div>
+                                </span>
+                                <%})%>
+                        </div>
                     </div>
                 </div>
         </main>

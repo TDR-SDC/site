@@ -10,6 +10,7 @@ router.get('/contact', homeController.contact);
 router.use('/user', require('./user'));
 router.use('/login', require('./login'));
 router.use('/sponsors', require('./sponsor'));
+router.use('/mechanical', require('./mechanical'));
 
 router.get('*', homeController.not_found);
 

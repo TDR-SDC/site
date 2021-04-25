@@ -28,3 +28,8 @@ function sponsors() {
     current_element.style.display = "block";
 }
 
+function cad() {
+    hide_all();
+    var current_element = document.getElementById('cad');
+    current_element.style.display = "block";
+}

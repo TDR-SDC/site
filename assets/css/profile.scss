@@ -17,7 +17,7 @@ main {
 }
 
 #menu_list div {
-    width: 10vw;
+    width: 20vw;
     height: 5vh;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@ main {
     padding-left: 2rem;
     margin: 2rem 0;
     cursor: default;
-    width: 100%;
+    width: 30vw;
 }
 
 li::after {
@@ -141,15 +141,6 @@ li::after {
 
 // Sponsors
 
-.contain {
-    width: 120vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-}
-
 .table {
     width: 70%;
     border: 1px solid #eeeeee;
@@ -198,8 +189,7 @@ li::after {
     padding-right: 24px;
 }
 
-#add_sponsor > div {
-    margin-top: 10vh;
+.content_section > div {
     margin-bottom: 2vh;
     font-size: 1.5rem;
 }
@@ -214,4 +204,16 @@ li::after {
     padding: 0.5vh;
     width: 15vw;
     margin-right: 5vw;
+}
+
+// CAD
+
+#version_number {
+    all: unset;
+    border-bottom: 2px solid black;
+    width: 2vw;
+}
+
+#remarks {
+    width: 20vw;
 }

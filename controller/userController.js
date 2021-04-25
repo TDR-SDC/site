@@ -1,17 +1,22 @@
 const azure = require('azure-storage');
 const Users = require('../models/users');
 const Sponsors = require('../models/sponsors');
+const CAD = require('../models/cad');
 
 module.exports.profile = function (req, res) {
-    if (req.isAuthenticated())
-        Users.findById(req.user._id, function (err, user) {
-            Sponsors.find({}, function (err, sponsors) {
-                return res.render('profile', {
-                    profile_user: user,
-                    sponsors: sponsors
+    if (req.isAuthenticated()) {
+            Users.findById(req.user._id, function (err, user) {
+                Sponsors.find({}, function (err, sponsors) {
+                    CAD.find({}, function (err, cad) {
+                        return res.render('profile', {
+                            profile_user: user,
+                            sponsors: sponsors,
+                            cad_list: cad
+                        });
+                    });
                 });
-            })
-        });
+            });
+    }
     else res.redirect('/login');
 };
 
