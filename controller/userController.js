@@ -2,20 +2,24 @@ const azure = require('azure-storage');
 const Users = require('../models/users');
 const Sponsors = require('../models/sponsors');
 const CAD = require('../models/cad');
+const Docs = require('../models/team_documents');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
-            Users.findById(req.user._id, function (err, user) {
-                Sponsors.find({}, function (err, sponsors) {
-                    CAD.find({}, function (err, cad) {
+        Users.findById(req.user._id, function (err, user) {
+            Sponsors.find({}, function (err, sponsors) {
+                CAD.find({}, function (err, cad) {
+                    Docs.find({}, function (err, document) {
                         return res.render('profile', {
                             profile_user: user,
                             sponsors: sponsors,
-                            cad_list: cad
+                            cad_list: cad,
+                            documents: document
                         });
                     });
                 });
             });
+        });
     }
     else res.redirect('/login');
 };
@@ -49,6 +53,9 @@ module.exports.create = async function (req, res) {
         permission = 2;
     if (req.body.position.toLowerCase().includes('team lead'))
         permission = 1;
+    var management = false;
+    if (req.body.management)
+        management = true;
 
     await Users.create({
         "user": req.body.user,
@@ -100,4 +107,21 @@ module.exports.user_info = async function (req, res) {
 module.exports.logout = function (req, res) {
     req.logout();
     res.redirect('back');
+};
+
+module.exports.add_team_doc = function (req, res) {
+    const document = new Docs();
+    Docs.uploadedFile(req, res, async function (err) {
+        var blobService = azure.createBlobService();
+        var containerName = 'team-documents';
+        blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { });
+
+        var documentUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
+        document.file_name = req.file.originalname;
+        document.sponsor = req.body.sponsor_name;
+        document.location = documentUrl;
+        document.posted_by = req.user.user;
+        document.save();
+        res.redirect('back');
+    });
 };

@@ -147,7 +147,7 @@
                         <div>Add Document</div>
                         <form class="d-f-r" action="/user/add_team_doc" method="POST" enctype="multipart/form-data">
                             <input type="file" name="file" class="upload-box" required>
-                            <input id="version_number" type="number" name="iteration" placeholder="Version No."
+                            <input id="version_number" type="text" name="file_name" placeholder="File Name"
                                 required>
                             <input id="remarks" type="text" name="remarks" placeholder="Remarks">
                             <input type="submit" value="Upload">
@@ -156,7 +156,7 @@
                     <div class="table">
                         <div class="table-header">
                             <div class="header__item">
-                                <span id="cad_version" class="filter__link">Iteration&numsp;(click to download)</span>
+                                <span id="cad_version" class="filter__link">Document Name</span>
                             </div>
                             <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
                                     Remarks
@@ -168,16 +168,16 @@
                             </div>
                         </div>
                         <div class="table-content">
-                            <% cad_list.forEach(function(cad){%>
+                            <% documents.forEach(function(doc){%>
                                 <span class="table-row vaccine_hover">
                                     <div class="table-data">
-                                        <a href="<%= cad.location %>">logo</a>
+                                        <a href="<%= doc.location %>" target="_blank" download="<%= doc.file_name %>"><%= doc.file_name %></a>
                                     </div>
                                     <div class="table-data">
-                                        <%= cad.remarks%>
+                                        <%= doc.remarks %>
                                     </div>
                                     <div class="table-data">
-                                        <%= cad.posted_by %>
+                                        <%= doc.posted_by  %>
                                     </div>
                                 </span>
                                 <%})%>
@@ -285,7 +285,7 @@
                             <% cad_list.forEach(function(cad){%>
                                 <span class="table-row vaccine_hover">
                                     <div class="table-data">
-                                        <a href="<%= cad.location %>">logo</a>
+                                        <a href="<%= cad.location %>"><%= cad.iteration %></a>
                                     </div>
                                     <div class="table-data">
                                         <%= cad.remarks%>
