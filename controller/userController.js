@@ -118,7 +118,7 @@ module.exports.add_team_doc = function (req, res) {
 
         var documentUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
         document.file_name = req.file.originalname;
-        document.sponsor = req.body.sponsor_name;
+        document.remarks = req.body.remarks;
         document.location = documentUrl;
         document.posted_by = req.user.user;
         document.save();
