@@ -39,3 +39,9 @@ function team_docs() {
     var current_element = document.getElementById('team_docs');
     current_element.style.display = "block";
 }
+
+function team_members() {
+    hide_all();
+    var current_element = document.getElementById('team_members');
+    current_element.style.display = "block";
+}

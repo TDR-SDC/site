@@ -21,14 +21,17 @@
                     <div onclick="profile()">
                         <li style="visibility: visible;">Profile </li>
                     </div>
+                    <div onclick="team_members()">
+                        <li style="visibility: visible;">Team Members </li>
+                    </div>
+                    <div onclick="team_docs()">
+                        <li style="visibility: visible;">Team Documents </li>
+                    </div>
                     <%if(locals.user.permission <=3 ){%>
                         <div onclick="add_user()">
                             <li>Add User </li>
                         </div>
                         <%}%>
-                            <div onclick="team_docs()">
-                                <li style="visibility: visible;">Team Documents </li>
-                            </div>
                             <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user ==
                                 'admin' ){%>
                                 <div onclick="newsletters()">
@@ -140,6 +143,41 @@
                             <input class="update_details" type="text" name="twitter" placeholder="Twitter Link">
                             <button id="submit">Submit</button>
                         </form>
+                    </div>
+                </div>
+
+                <!-- Team Members (open to all) -->
+                <div class="content" id="team_members">
+                    <div class="table">
+                        <div class="table-header">
+                            <div class="header__item">
+                                <span id="cad_version" class="filter__link">Name</span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Year
+                                </span>
+                            </div>
+                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Department
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-content">
+                            <% profile_user.forEach(function(user){%>
+                                <% if(user.user !='admin' && user.user !='test' ) {%>
+                                    <span class="table-row vaccine_hover">
+                                        <div class="table-data">
+                                            <%= user.name %>
+                                        </div>
+                                        <div class="table-data">
+                                            <%= user.year %>
+                                        </div>
+                                        <div class="table-data" style="text-transform: capitalize;">
+                                            <%= user.dept %>
+                                        </div>
+                                    </span>
+                                    <%}})%>
+                        </div>
                     </div>
                 </div>
 

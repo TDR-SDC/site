@@ -6,7 +6,7 @@ const Docs = require('../models/team_documents');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
-        Users.findById(req.user._id, function (err, user) {
+        Users.find().sort({permission:1, name: 1}).then((user) => {
             Sponsors.find({}, function (err, sponsors) {
                 CAD.find({}, function (err, cad) {
                     Docs.find({}, function (err, document) {
