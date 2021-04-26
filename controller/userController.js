@@ -64,7 +64,8 @@ module.exports.create = async function (req, res) {
         "dept": req.body.dept,
         "year": req.body.year,
         "position": req.body.position,
-        "permission": permission
+        "permission": permission,
+        "management": management
     });
     res.redirect('/user/profile');
 };
