@@ -1,4 +1,5 @@
 # Team Defianz-DTUSDC racing
+[![Set Environment](https://github.com/krush11/defianz_site/actions/workflows/smoke_test.yaml/badge.svg)](https://github.com/krush11/defianz_site/actions/workflows/smoke_test.yaml)
 
 ## **Prerequisites**
 - NodeJS
@@ -6,8 +7,8 @@
 
 ## **Build and go live**
 ```bash
-git clone https://github.com/TDR-SDC/site2.0
-cd site
+git clone https://github.com/krush/defianz_site
+cd defianz_site
 npm install
 npm start
 ```
