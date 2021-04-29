@@ -1,0 +1,22 @@
+name: Set Environment
+
+on: [push, pull_request]
+
+jobs:
+    setup_environment:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: Install npm
+            run: |
+                sudo apt install npm
+                echo `npm -v`
+          - name: Install dependencies
+            env:
+                AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+                COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+                CRYPTO_SECRET: ${{ secrets.CRYPTO_SECRET }}
+                MONGO_URI: ${{ secrets.MONGO_URI }}
+            run: |
+                cd $GITHUB_WORKSPACE
+                npm install
