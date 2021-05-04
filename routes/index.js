@@ -6,6 +6,7 @@ router.get('/', homeController.home);
 router.get('/team', homeController.team);
 router.get('/gallery', homeController.gallery);
 router.get('/contact', homeController.contact);
+router.post('/contact', homeController.contact_form);
 
 router.use('/user', require('./user'));
 router.use('/login', require('./login'));

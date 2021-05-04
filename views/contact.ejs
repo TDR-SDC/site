@@ -19,10 +19,12 @@
             <div class="d-f-c jc-sa" id="contact_address">
                 <span class="contact_heading">Our Address</span>
                 <span class="contact_descript">
-                    #677, 1st Floor, Suite #663,
-                    13th Cross Road, 27th Main Rd,
-                    1st Sector, HSR Layout,
-                    Bengaluru, Karnataka 560102.
+                    Team Defianz-DTUSDC Racing,
+                    Wind Tunnel Workshops,<br>
+                    Delhi Technological University,<br>
+                    Shahbad Daulatpur, Bawana,<br>
+                    Delhi - 110042<br>
+                    India
                 </span>
                 <br>
                 <a class="contact_descript" id="google_location" href="https://goo.gl/maps/cKs9jecDmYivDtUz5">
@@ -30,33 +32,22 @@
                 </a>
                 <br>
                 <span class="contact_heading">Email</span>
-                <span class="contact_descript" style="margin-top: -0.5rem;">emailemail@email.com</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;"><a
+                        href="mailto:teamdefianz@dtu.ac.in">teamdefianz@dtu.ac.in</a></span>
                 <br>
                 <span class="contact_heading">Quick Call</span>
-                <span class="contact_descript" style="margin-top: -0.5rem;">+91-9999999999</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;">+91 93101 30619</span>
             </div>
 
             <div class="d-f-c jc-c ai-c" id="contact_form">
                 <span id="form_heading">Get in touch</span>
-                <form action="" method="POST">
-                    <label class="d-f-c">
-                        <input type="text" class="input" name="name" required>
-                        <span class="placeholder">Name</span>
-                    </label>
-                    <label class="d-f-c">
-                        <input type="text" class="input" name="email" required>
-                        <span class="placeholder">Email</span>
-                    </label>
-                    <label class="d-f-c">
-                        <input type="text" class="input" name="email" required>
-                        <span class="placeholder">Subject</span>
-                    </label>
-                    <label class="d-f-c">
-                        <input type="text" class="input" name="message" id="message" required>
-                        <span class="placeholder" id="message_label">Message</span>
-                    </label>
+                <form class="d-f-c" action="/contact" method="POST">
+                    <input type="text" class="input" name="name" placeholder="Name" required>
+                    <input type="text" class="input" name="email" placeholder="Email" required>
+                    <input type="text" class="input" name="subject" placeholder="Subject" required>
+                    <input type="text" class="input" name="message" id="message" placeholder="Message" required>
                     <br>
-                    <input type="button" name="submit" id="submit" value="Submit" onclick="tick()">
+                    <input type="submit" name="submit" id="submit" value="Submit" onclick="tick()">
                 </form>
             </div>
         </main>

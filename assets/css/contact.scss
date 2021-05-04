@@ -69,13 +69,16 @@ label:hover {
     margin-left: 1vw;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 1px solid black;
+    border: 2px solid navy;
+    box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.75);
+    color: navy;
     border-radius: 10px;
     transition: all 0.3s;
 }
 
 #submit:hover {
     cursor: pointer;
-    box-shadow: inset 0px 0px 0px 2px black;
+    box-shadow: unset;
+    transform: translate(1%, 1%);
 }
 
