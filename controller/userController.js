@@ -6,7 +6,7 @@ const Docs = require('../models/team_documents');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
-        Users.find().sort({permission:1, name: 1}).then((user) => {
+        Users.find().sort({ permission: 1, name: 1 }).then((user) => {
             Sponsors.find({}, function (err, sponsors) {
                 CAD.find({}, function (err, cad) {
                     Docs.find({}, function (err, document) {
@@ -71,7 +71,8 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.update_credentials = async function (req, res) {
-    var user = User.findById(req.user._id);
+    let user = req.user;
+    
     if (req.body.name)
         user.name = req.body.name;
     if (req.body.password)

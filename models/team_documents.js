@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const FILE_PATH = path.join('/assets/imgs/sponsors');
+const FILE_PATH = path.join('/assets/imgs/');
 
 const documentSchema = new mongoose.Schema({
     file_name: {

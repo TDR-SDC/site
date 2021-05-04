@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const LOGO_PATH = path.join('/assets/imgs/sponsors');
+const LOGO_PATH = path.join('/assets/imgs/');
 
 const sponsorSchema = new mongoose.Schema({
     sponsor: {

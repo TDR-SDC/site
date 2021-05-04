@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const AVATAR_PATH = path.join('/assets/imgs/team_members')
+const AVATAR_PATH = path.join('/assets/imgs/')
 
 const userSchema = new mongoose.Schema({
     user: {
