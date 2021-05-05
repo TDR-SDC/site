@@ -23,3 +23,13 @@ module.exports.add_sponsor = function (req, res) {
         res.redirect('back');
     });
 };
+
+module.exports.remove_sponsor = function (req, res) {
+    const parsed_url = req.url.split("/");
+    Sponsors.findByIdAndDelete(parsed_url[2], function (err, user) {
+        if (err)
+            res.render('error');
+        else
+            res.redirect('back');
+    });
+};

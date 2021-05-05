@@ -32,10 +32,9 @@
                             <li>Add User </li>
                         </div>
                         <%}%>
-                            <%if((locals.user.dept=='corporate' && locals.user.year>=2) || locals.user.user ==
-                                'admin' ){%>
-                                <div onclick="newsletters()">
-                                    <li style="visibility: visible;">Newletters </li>
+                            <%if(locals.user.dept=='corporate' || locals.user.user=='admin' ){%>
+                                <div onclick="misc_corpo()">
+                                    <li style="visibility: visible;">Misc. Corporate</li>
                                 </div>
                                 <%}%>
                                     <%if((locals.user.dept=='corporate' && locals.user.year>=2) ||
@@ -150,31 +149,42 @@
                 <div class="content" id="team_members">
                     <div class="table">
                         <div class="table-header">
-                            <div class="header__item">
+                            <div style="flex: 5;" class="header__item">
                                 <span id="cad_version" class="filter__link">Name</span>
                             </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Year
-                                </span>
+                            <div style="flex: 2;" class="header__item">
+                                <span id="sponsor_logo" class="filter__link filter__link--number">Year</span>
                             </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Department
-                                </span>
+                            <div style="flex: 5;" class="header__item">
+                                <span id="sponsor_logo" class="filter__link filter__link--number">Department</span>
                             </div>
+                            <% if(locals.user.permission <=3) {%>
+                                <div style="flex: 1;" class="header__item">
+                                    <span id="sponsor_logo" class="filter__link filter__link--number"></span>
+                                </div>
+                                <% } %>
                         </div>
                         <div class="table-content">
                             <% profile_user.forEach(function(user){%>
                                 <% if(user.user !='admin' && user.user !='test' ) {%>
                                     <span class="table-row vaccine_hover">
-                                        <div class="table-data">
+                                        <div style="flex: 5;" class="table-data">
                                             <%= user.name %>
                                         </div>
-                                        <div class="table-data">
+                                        <div style="flex: 3;" class="table-data">
                                             <%= user.year %>
                                         </div>
-                                        <div class="table-data" style="text-transform: capitalize;">
+                                        <div style="flex: 5; text-transform: capitalize;" class="table-data"
+                                            style="text-transform: capitalize;">
                                             <%= user.dept %>
                                         </div>
+                                        <% if(locals.user.permission <=3) {%>
+                                            <div style="flex: 1;" class="table-data"
+                                                style="text-transform: capitalize;">
+                                                <a href="/user/remove/<%= user._id %>"><img class="delete_icon"
+                                                        src="/imgs/icons/delete.svg"></a>
+                                            </div>
+                                            <% } %>
                                     </span>
                                     <%}})%>
                         </div>
@@ -252,48 +262,65 @@
                 </div>
 
                 <!-- Newsletters section (year >= 2 && dept == corporate)-->
-                <div class="content" id="newsletters">
-                    Newsletters
+                <div class="content" id="misc_corpo">
+                    <div class="content_section">
+                        <div>Add Gallery Photo</div>
+                        <form class="d-f-r" action="/corpo/add_photo" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="photo" id="upload_file" class="upload-box" required>
+                            <input id="sponsor_name_input" type="text" name="descript" placeholder="Photo Descript"
+                                required>
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Sponsors section (year >= 2 && dept == corporate) -->
                 <div class="content" id="sponsors">
-                    <div>
-                        <div class="content_section">
-                            <div>Add Sponsor</div>
-                            <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
-                                <input type="file" name="logo" id="upload_file" class="upload-box" required>
-                                <input id="sponsor_name_input" type="text" name="sponsor_name"
-                                    placeholder="Sponsor Name" required>
-                                <input type="submit" value="Upload">
-                            </form>
+                    <div class="content_section">
+                        <div>Add Sponsor</div>
+                        <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="logo" id="upload_file" class="upload-box" required>
+                            <input id="sponsor_name_input" type="text" name="sponsor_name" placeholder="Sponsor Name"
+                                required>
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
+                    <div class="table">
+                        <div class="table-header">
+                            <div style="flex: 6;" class="header__item">
+                                <span id="sponsor_name" class="filter__link">Sponsor Name</span>
+                            </div>
+                            <div style="flex: 3;" class="header__item">
+                                <span id="sponsor_logo" class="filter__link filter__link--number">
+                                    Sponsor Logo</span>
+                            </div>
+                            <% if(locals.user.year>= 2) {%>
+                                <div style="flex: 1;" class="header__item">
+                                    <span id="sponsor_name" class="filter__link"></span>
+                                </div>
+                                <%}%>
                         </div>
-                        <div class="table">
-                            <div class="table-header">
-                                <div class="header__item"><span id="sponsor_name" class="filter__link">
-                                        Sponsor Name</span>
-                                </div>
-                                <div class="header__item"><span id="sponsor_logo"
-                                        class="filter__link filter__link--number">
-                                        Sponsor Logo
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="table-content">
-                                <% sponsors.forEach(function(sponsor){%>
-                                    <span class="table-row vaccine_hover">
-                                        <div class="table-data">
-                                            <%= sponsor.sponsor%>
+                        <div class="table-content">
+                            <% sponsors.forEach(function(sponsor){%>
+                                <span class="table-row vaccine_hover">
+                                    <div style="flex: 6;" class="table-data">
+                                        <%= sponsor.sponsor%>
+                                    </div>
+                                    <div style="flex: 3;" class="table-data">
+                                        <a href="<%= sponsor.logo%>" target="_blank">logo</a>
+                                    </div>
+                                    <% if(locals.user.year>= 2) {%>
+                                        <div style="flex: 1;" class="header__item">
+                                            <span id="sponsor_name" class="filter__link">
+                                                <a href="/sponsors/remove/<%= sponsor._id %>">
+                                                    <img class="delete_icon" src="/imgs/icons/delete.svg"></a>
+                                            </span>
                                         </div>
-                                        <div class="table-data">
-                                            <a href="<%= sponsor.logo%>">logo</a>
-                                        </div>
-                                    </span>
-                                    <%})%>
-                            </div>
+                                        <%}%>
+                                </span>
+                                <%})%>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- CAD (department == mechanical) -->

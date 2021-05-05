@@ -16,9 +16,9 @@ function add_user() {
     current_element.style.display = "block";
 }
 
-function newsletters() {
+function misc_corpo() {
     hide_all();
-    var current_element = document.getElementById('newsletters');
+    var current_element = document.getElementById('misc_corpo');
     current_element.style.display = "block";
 }
 

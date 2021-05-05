@@ -76,7 +76,7 @@ li::after {
 
 #password {
     color: transparent;
-    text-shadow: 0 0 8px #000;
+    text-shadow: 0 0 1000px black;
 }
 
 #password:hover {
@@ -203,6 +203,11 @@ li::after {
 
 #logo {
     cursor: pointer;
+}
+
+.delete_icon {
+    width: 1rem;
+    height: 1rem;
 }
 
 #sponsor_name_input {

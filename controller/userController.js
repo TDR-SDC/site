@@ -72,7 +72,7 @@ module.exports.create = async function (req, res) {
 
 module.exports.update_credentials = async function (req, res) {
     let user = req.user;
-    
+
     if (req.body.name)
         user.name = req.body.name;
     if (req.body.password)
@@ -104,6 +104,16 @@ module.exports.user_info = async function (req, res) {
             error_code: 403,
             error_message: "Forbidden!! You do not have access to this page."
         });
+};
+
+module.exports.remove_user = function (req, res) {
+    const parsed_url = req.url.split("/");
+    Users.findByIdAndDelete(parsed_url[2], function (err, user) {
+        if (err)
+            res.render('error');
+        else
+            res.redirect('back');
+    });
 };
 
 module.exports.logout = function (req, res) {
