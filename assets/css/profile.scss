@@ -150,7 +150,6 @@ li::after {
 
 .table {
     width: 70%;
-    border: 1px solid #eeeeee;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,8 +172,11 @@ li::after {
     padding: (12px * 1.5) 0;
 }
 
-.table-row &:nth-of-type(even) {
-    background-color: #eeeeee;
+.table-row:nth-child(2n + 1) {
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.table-row:nth-child(2n) {
+    background-color: rgba(128, 128, 128, 0.05);
 }
 
 .table-data,
