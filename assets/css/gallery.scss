@@ -16,13 +16,7 @@
 }
 
 #photos img {
-    width: 15vw;
-    height: 30vh;
+    max-width: 15vw;
+    max-height: 30vh;
     margin: 1rem;
-    filter: brightness(0.4);
-    transition: all 0.2s;
-}
-
-#photos img:hover {
-    filter: none;
 }

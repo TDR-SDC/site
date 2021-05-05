@@ -12,6 +12,7 @@ router.use('/user', require('./user'));
 router.use('/login', require('./login'));
 router.use('/sponsors', require('./sponsor'));
 router.use('/mechanical', require('./mechanical'));
+router.use('/corpo', require('./corporate'));
 
 router.get('*', homeController.not_found);
 

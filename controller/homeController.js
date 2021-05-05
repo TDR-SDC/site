@@ -1,5 +1,6 @@
 const Users = require('../models/users');
 const Contact = require('../models/contact_us');
+const Photos = require('../models/photo');
 
 module.exports.home = function (req, res) {
     return res.render('home');
@@ -14,7 +15,11 @@ module.exports.team = function (req, res) {
 };
 
 module.exports.gallery = function (req, res) {
-    return res.render('gallery');
+    Photos.find({}, function (err, photos) {
+        res.render('gallery', {
+            photos: photos
+        })
+    });
 };
 
 module.exports.contact = function (req, res) {
