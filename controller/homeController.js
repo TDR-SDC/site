@@ -3,12 +3,12 @@ const Contact = require('../models/contact_us');
 const Photos = require('../models/photo');
 
 module.exports.home = function (req, res) {
-    return res.render('home');
+    return res.status(200).render('home');
 };
 
 module.exports.team = function (req, res) {
     Users.find().sort({ permission: 1 }).then((user) => {
-        res.render('team', {
+        res.status(200).render('team', {
             users: user
         })
     });
@@ -16,14 +16,14 @@ module.exports.team = function (req, res) {
 
 module.exports.gallery = function (req, res) {
     Photos.find({}, function (err, photos) {
-        res.render('gallery', {
+        res.status(200).render('gallery', {
             photos: photos
         })
     });
 };
 
 module.exports.contact = function (req, res) {
-    return res.render('contact');
+    return res.status(200).render('contact');
 };
 
 module.exports.contact_form = function (req, res) {
@@ -34,16 +34,16 @@ module.exports.contact_form = function (req, res) {
     contact.message = req.body.message;
     contact.save().then(promiseResult => {
         if (promiseResult !== contact)
-            res.render('error', {
+            res.status(502).render('error', {
                 error: true,
                 error_code: 502,
                 error_message: "Bad Gateway!! Unable to submit contact request to server."
             })
         else
-            res.redirect('back');
+            res.status(302).redirect('back');
     });
 };
 
 module.exports.not_found = function (req, res) {
-    return res.render('error');
+    return res.status(404).render('error');
 }

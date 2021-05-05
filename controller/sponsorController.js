@@ -3,7 +3,7 @@ const Sponsors = require('../models/sponsors');
 
 module.exports.sponsors = function (req, res) {
     Sponsors.find({}, function (err, sponsor) {
-        return res.render('sponsors', {
+        return res.status(200).render('sponsors', {
             sponsors: sponsor
         });
     });
@@ -20,7 +20,7 @@ module.exports.add_sponsor = function (req, res) {
         sponsor.sponsor = req.body.sponsor_name;
         sponsor.logo = logoUrl;
         sponsor.save();
-        res.redirect('back');
+        res.status(302).redirect('back');
     });
 };
 
@@ -28,8 +28,8 @@ module.exports.remove_sponsor = function (req, res) {
     const parsed_url = req.url.split("/");
     Sponsors.findByIdAndDelete(parsed_url[2], function (err, user) {
         if (err)
-            res.render('error');
+            res.status(503).render('error');
         else
-            res.redirect('back');
+            res.status(302).redirect('back');
     });
 };

@@ -48,7 +48,7 @@ passport.checkAuthentication = function (req, res, next) {
     }
 
     // if the user is not signed in
-    return res.redirect('/login');
+    return res.status(401).redirect('/login');
 }
 
 passport.setAuthenticatedUser = async function (req, res, next) {

@@ -14,6 +14,6 @@ module.exports.add_cad = function (req, res) {
         cad.location = cadUrl;
         cad.posted_by = req.user.user;
         cad.save();
-        res.redirect('back');
+        res.status(302).redirect('back');
     });
 };

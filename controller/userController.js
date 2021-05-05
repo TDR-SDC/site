@@ -10,7 +10,7 @@ module.exports.profile = function (req, res) {
             Sponsors.find({}, function (err, sponsors) {
                 CAD.find({}, function (err, cad) {
                     Docs.find({}, function (err, document) {
-                        return res.render('profile', {
+                        return res.status(200).render('profile', {
                             profile_user: user,
                             sponsors: sponsors,
                             cad_list: cad,
@@ -21,7 +21,7 @@ module.exports.profile = function (req, res) {
             });
         });
     }
-    else res.redirect('/login');
+    else res.status(401).redirect('/login');
 };
 
 module.exports.upload_avatar = async function (req, res) {
@@ -34,7 +34,7 @@ module.exports.upload_avatar = async function (req, res) {
         user.avatar = avatarUrl;
         user.save();
     });
-    res.redirect('/user');
+    res.status(200).redirect('/user');
 };
 
 module.exports.create = async function (req, res) {
@@ -67,7 +67,7 @@ module.exports.create = async function (req, res) {
         "permission": permission,
         "management": management
     });
-    res.redirect('/user/profile');
+    res.status(200).redirect('/user/profile');
 };
 
 module.exports.update_credentials = async function (req, res) {
@@ -85,7 +85,7 @@ module.exports.update_credentials = async function (req, res) {
         user.social.twitter = req.body.twitter;
     user.save();
 
-    res.redirect('back');
+    res.status(302).redirect('back');
 }
 
 // This function is solely for testing and mannual DB changes.
@@ -99,7 +99,7 @@ module.exports.user_info = async function (req, res) {
         });
     }
     else
-        res.render('error', {
+        res.status(403).render('error', {
             error: true,
             error_code: 403,
             error_message: "Forbidden!! You do not have access to this page."
@@ -110,15 +110,15 @@ module.exports.remove_user = function (req, res) {
     const parsed_url = req.url.split("/");
     Users.findByIdAndDelete(parsed_url[2], function (err, user) {
         if (err)
-            res.render('error');
+            res.status(503).render('error');
         else
-            res.redirect('back');
+            res.status(302).redirect('back');
     });
 };
 
 module.exports.logout = function (req, res) {
     req.logout();
-    res.redirect('back');
+    res.status(302).redirect('back');
 };
 
 module.exports.add_team_doc = function (req, res) {
@@ -134,6 +134,6 @@ module.exports.add_team_doc = function (req, res) {
         document.location = documentUrl;
         document.posted_by = req.user.user;
         document.save();
-        res.redirect('back');
+        res.status(302).redirect('back');
     });
 };

@@ -13,6 +13,6 @@ module.exports.add_photo = function (req, res) {
         photo.descript = req.body.descript;
         photo.photo = photoUrl;
         photo.save();
-        res.redirect('back');
+        res.status(200).redirect('back');
     });
 };

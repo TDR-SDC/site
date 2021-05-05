@@ -12,7 +12,7 @@ router.post('/create_session',
     }), function (req, res) {
         // console.log("\nLogged in successfully");
         req.session.save(() => {
-            res.redirect(`/user/profile`);
+            res.status(200).redirect(`/user/profile`);
         })
     });
 
