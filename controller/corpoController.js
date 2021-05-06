@@ -7,7 +7,14 @@ module.exports.add_photo = function (req, res) {
         console.log(req.file);
         var blobService = azure.createBlobService();
         var containerName = 'gallery';
-        blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { });
+        await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+            if (err)
+                res.status(503).render('error', {
+                    error: true,
+                    error_code: 503,
+                    error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
+                });
+        });
 
         var photoUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
         photo.descript = req.body.descript;

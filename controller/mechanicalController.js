@@ -6,7 +6,14 @@ module.exports.add_cad = function (req, res) {
     CAD.uploadedFile(req, res, async function (err) {
         var blobService = azure.createBlobService();
         var containerName = "cad";
-        blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { });
+        await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { 
+            if (err)
+            res.status(503).render('error', {
+                error: true,
+                error_code: 503,
+                error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
+            });
+        });
 
         var cadUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
         cad.remarks = req.body.remarks;
