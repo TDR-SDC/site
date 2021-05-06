@@ -2,13 +2,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="The official website for Team Defianz DTUSDC Racing">
+    <meta name="description" content="User profile for the team member of Team Defianz-DTUSDC Racing">
     <meta name="keywords"
         content="TDR-DTUSDC, Team Defianz Racing, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website">
     <meta name="author" content="Krushnal Patel">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile | TDR-DTUSDC Website</title>
+    <title>
+        <%= locals.user.name %> | TDR-DTUSDC Website
+    </title>
     <link rel="stylesheet" href="/css/common.scss">
     <link rel="stylesheet" href="/css/profile.scss">
     <link rel="stylesheet" href="/css/_header.scss">
@@ -36,18 +38,17 @@
                             <li>Add User </li>
                         </div>
                         <%}%>
-                            <%if(locals.user.dept=='corporate' || locals.user.user=='admin' ){%>
+                            <%if(checkCorporateUser){%>
                                 <div onclick="misc_corpo()">
                                     <li style="visibility: visible;">Misc. Corporate</li>
                                 </div>
                                 <%}%>
-                                    <%if((locals.user.dept=='corporate' && locals.user.year>=2) ||
-                                        locals.user.user=='admin' ){%>
+                                    <%if((checkCorporateUser && locals.user.year>=2) || locals.user.user=='admin' ){%>
                                         <div onclick="sponsors()">
                                             <li style="visibility: visible;">Sponsors </li>
                                         </div>
                                         <%}%>
-                                            <%if((locals.user.dept=='mechanical') || locals.user.user=='admin' ){%>
+                                            <%if(checkMechanicalUser || locals.user.user=='admin' ){%>
                                                 <div onclick="cad()">
                                                     <li style="visibility: visible;">CAD Iterations</li>
                                                 </div>
@@ -298,24 +299,25 @@
                                 <%}%>
                         </div>
                         <div class="table-content">
-                            <% sponsors.forEach(function(sponsor){%>
-                                <span class="table-row vaccine_hover">
-                                    <div style="flex: 6;" class="table-data">
-                                        <%= sponsor.sponsor%>
-                                    </div>
-                                    <div style="flex: 3;" class="table-data">
-                                        <a href="<%= sponsor.logo%>" target="_blank">logo</a>
-                                    </div>
-                                    <% if(locals.user.year>= 2) {%>
-                                        <div style="flex: 1;" class="header__item">
-                                            <span id="sponsor_name" class="filter__link">
-                                                <a href="/sponsors/remove/<%= sponsor._id %>">
-                                                    <img class="delete_icon" src="/imgs/icons/delete.svg"></a>
-                                            </span>
+                            <% if(checkCorporateUser) {%>
+                                <% sponsors.forEach(function(sponsor){%>
+                                    <span class="table-row vaccine_hover">
+                                        <div style="flex: 6;" class="table-data">
+                                            <%= sponsor.sponsor%>
                                         </div>
-                                        <%}%>
-                                </span>
-                                <%})%>
+                                        <div style="flex: 3;" class="table-data">
+                                            <a href="<%= sponsor.logo%>" target="_blank">logo</a>
+                                        </div>
+                                        <% if(locals.user.year>= 2) {%>
+                                            <div style="flex: 1;" class="header__item">
+                                                <span id="sponsor_name" class="filter__link">
+                                                    <a href="/sponsors/remove/<%= sponsor._id %>">
+                                                        <img class="delete_icon" src="/imgs/icons/delete.svg"></a>
+                                                </span>
+                                            </div>
+                                            <%}%>
+                                    </span>
+                                    <%})}%>
                         </div>
                     </div>
                 </div>
@@ -347,21 +349,22 @@
                             </div>
                         </div>
                         <div class="table-content">
-                            <% cad_list.forEach(function(cad){%>
-                                <span class="table-row vaccine_hover">
-                                    <div class="table-data">
-                                        <a href="<%= cad.location %>">
-                                            <%= cad.iteration %>
-                                        </a>
-                                    </div>
-                                    <div class="table-data">
-                                        <%= cad.remarks%>
-                                    </div>
-                                    <div class="table-data">
-                                        <%= cad.posted_by %>
-                                    </div>
-                                </span>
-                                <%})%>
+                            <% if(checkMechanicalUser) {%>
+                                <% cad_list.forEach(function(cad){%>
+                                    <span class="table-row vaccine_hover">
+                                        <div class="table-data">
+                                            <a href="<%= cad.location %>">
+                                                <%= cad.iteration %>
+                                            </a>
+                                        </div>
+                                        <div class="table-data">
+                                            <%= cad.remarks%>
+                                        </div>
+                                        <div class="table-data">
+                                            <%= cad.posted_by %>
+                                        </div>
+                                    </span>
+                                    <%})}%>
                         </div>
                     </div>
                 </div>

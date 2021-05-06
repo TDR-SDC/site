@@ -8,17 +8,37 @@ const bcrypt = require('bcrypt');
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
         Users.find().sort({ permission: 1, name: 1 }).then((user) => {
-            Sponsors.find({}, function (err, sponsors) {
-                CAD.find({}, function (err, cad) {
-                    Docs.find({}, function (err, document) {
+            Docs.find({}, function (err, document) {
+                if (req.user.dept == 'corporate' || req.user.user == 'admin') {
+                    Sponsors.find({}, function (err, sponsors) {
                         return res.status(200).render('profile', {
                             profile_user: user,
+                            checkMechanicalUser: false,
+                            checkCorporateUser: true,
                             sponsors: sponsors,
+                            documents: document
+                        });
+                    });
+                }
+                else if (req.user.dept == 'mechanical' || req.user.user == 'admin') {
+                    CAD.find({}, function (err, cad) {
+                        return res.status(200).render('profile', {
+                            profile_user: user,
+                            checkMechanicalUser: true,
+                            checkCorporateUser: false,
                             cad_list: cad,
                             documents: document
                         });
                     });
-                });
+                }
+                else {
+                    return res.status(200).render('profile', {
+                        profile_user: user,
+                        checkMechanicalUser: false,
+                        checkCorporateUser: false,
+                        documents: document
+                    });
+                }
             });
         });
     }
@@ -37,7 +57,7 @@ module.exports.upload_avatar = async function (req, res) {
                     error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
                 });
         });
-        var avatarUrl = blobService.getUrl("team-members", `${req.file.originalname}`);
+        var avatarUrl = blobService.getUrl("team-members", `${req.user.user}-${req.file.originalname}`);
         user.avatar = avatarUrl;
         user.save();
     });
