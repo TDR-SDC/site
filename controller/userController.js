@@ -29,8 +29,14 @@ module.exports.upload_avatar = async function (req, res) {
     var user = await Users.findById(req.user._id);
     Users.uploadedAvatar(req, res, async function (err) {
         var blobService = azure.createBlobService();
-        blobService.createBlockBlobFromLocalFile('team-members', `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) { });
-
+        await blobService.createBlockBlobFromLocalFile('team-members', `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+            if (err)
+                res.status(503).render('error', {
+                    error: true,
+                    error_code: 503,
+                    error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
+                });
+        });
         var avatarUrl = blobService.getUrl("team-members", `${req.file.originalname}`);
         user.avatar = avatarUrl;
         user.save();
@@ -99,7 +105,7 @@ module.exports.user_info = async function (req, res) {
     if (req.isAuthenticated() && (req.user.user == 'krush' || req.user.permission == 0)) {
         await Users.find().then(users => {
             res.send(users);
-            for(i in users) {
+            for (i in users) {
                 // console.log(users[i]);
             }
         });
