@@ -1,22 +1,32 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/users');
+const bcrypt = require('bcrypt');
 
 // authentication using passport
 passport.use(new LocalStrategy({
     usernameField: 'user',
     passwordField: 'password'
 },
-    async function (username, password, done) {
-        await User.findOne({ user: username }, function (err, user) {
+    function (username, password, done) {
+        User.findOne({ user: username }, async function (err, user) {
+            // Passport configuration error
             if (err) {
-                // console.log(`Error in configuring passport-local \n ${err}`);
                 return done(err);
             }
-            if (!user || user.password != password) {
-                // console.log(`Invalid username or password!!`)
+
+            //Check if password's hash matches database
+            let hashCheckResult = false;
+            await bcrypt.compare(user.password, password).then(function (result) {
+                hashCheckResult = result;
+            });
+
+            // Check is user dosent exist of hash dosen't match to DB
+            if (!user || hashCheckResult) {
                 return done(null, false);
             }
+
+            // Authentication success
             return done(null, user);
         });
     }

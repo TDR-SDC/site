@@ -74,17 +74,6 @@ li::after {
     margin: 0.2rem 0;
 }
 
-#password {
-    color: transparent;
-    text-shadow: 0 0 1000px black;
-}
-
-#password:hover {
-    color: black;
-    text-shadow: none;
-    cursor: default;
-}
-
 #add_user_form {
     height: fit-content;
     border: 2px solid black;

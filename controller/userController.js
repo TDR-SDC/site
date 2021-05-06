@@ -3,6 +3,7 @@ const Users = require('../models/users');
 const Sponsors = require('../models/sponsors');
 const CAD = require('../models/cad');
 const Docs = require('../models/team_documents');
+const bcrypt = require('bcrypt');
 
 module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
@@ -37,7 +38,7 @@ module.exports.upload_avatar = async function (req, res) {
     res.status(200).redirect('/user');
 };
 
-module.exports.create = async function (req, res) {
+module.exports.create = function (req, res) {
     var permission = 10;
     if (req.body.year == 1)
         permission = 9;
@@ -57,15 +58,17 @@ module.exports.create = async function (req, res) {
     if (req.body.management)
         management = true;
 
-    await Users.create({
-        "user": req.body.user,
-        "name": req.body.name,
-        "password": req.body.password,
-        "dept": req.body.dept,
-        "year": req.body.year,
-        "position": req.body.position,
-        "permission": permission,
-        "management": management
+    bcrypt.hash(req.body.password, 10).then(function (hash) {
+        Users.create({
+            "user": req.body.user,
+            "name": req.body.name,
+            "password": hash,
+            "dept": req.body.dept,
+            "year": req.body.year,
+            "position": req.body.position,
+            "permission": permission,
+            "management": management
+        });
     });
     res.status(200).redirect('/user/profile');
 };
@@ -76,7 +79,9 @@ module.exports.update_credentials = async function (req, res) {
     if (req.body.name)
         user.name = req.body.name;
     if (req.body.password)
-        user.password = req.body.password;
+        await bcrypt.hash(req.body.password, 10).then(function (hash) {
+            user.password = hash;
+        });
     if (req.body.insta)
         user.social.insta = req.body.insta;
     if (req.body.linkedin)
@@ -92,10 +97,11 @@ module.exports.update_credentials = async function (req, res) {
 // Tread carefully over this function.
 module.exports.user_info = async function (req, res) {
     if (req.isAuthenticated() && (req.user.user == 'krush' || req.user.permission == 0)) {
-        await Users.find({}, (err, user) => {
-            if (user.avatar == "https://defianzdtusdc.blob.core.windows.net/team-members/Screenshot%20from%202021-04-20%2012-17-05.png")
-                Users.findByIdAndUpdate(user._id, { avatar: "https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png" });
-            res.send(user);
+        await Users.find().then(users => {
+            res.send(users);
+            for(i in users) {
+                // console.log(users[i]);
+            }
         });
     }
     else
