@@ -11,25 +11,29 @@ footer {
 }
 
 .footer_section {
-    width: 20vw;
+    width: 30vw;
 }
 
 #about_description {
     width: 26vw;
     line-height: 2.25vh;
-    margin-left: -2.5vw;
 }
 
 #about_heading {
     font-size: 1.5rem;
-    margin: 1rem 0rem;
-    margin-left: -2.5vw;
+    margin: 0 0 1rem 0;
+    font-weight: 400;
 }
 
 #connect_heading {
     text-align: center;
     font-size: 1.5rem;
     margin: 1rem 0rem;
+}
+
+#social {
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 #social a {

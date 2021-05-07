@@ -41,3 +41,76 @@ a {
     font-size: 5rem;
     color: black;
 }
+
+#description {
+    width: 100vw;
+    height: fit-content;
+    margin: 2.5vh 0;
+}
+
+#newsletter_section {
+    width: 15vw;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    max-height: 40vh;
+    padding: 2.5vh 0;
+    height: fit-content;
+    overflow-y: scroll;
+}
+
+#newsletter_section ul {
+    width: 70%;
+    padding-left: unset;
+}
+
+#newsletter_section li {
+    margin: 2vh 0;
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#team_descriptions {
+    width: 70vw;
+}
+
+#individual_team_descript {
+    width: auto;
+    margin: 5vh 0;
+    align-items: baseline;
+    font-size: 1.15rem;
+    border-radius: 20px;
+    font-family: "Play";
+}
+
+#defianz_descript {
+    width: 45%;
+    padding: 0 0 0px 20px;
+    box-shadow: rgba(240, 46, 46, 0.4) -5px 5px, rgba(240, 46, 46, 0.3) -10px 10px, rgba(240, 46, 46, 0.2) -15px 15px,
+        rgba(240, 46, 46, 0.1) -20px 20px, rgba(240, 46, 46, 0.05) -25px 25px;
+    height: 35vh;
+}
+#sdc_descript {
+    height: 35vh;
+    width: 45%;
+    padding: 0 20px 8px 0;
+    box-shadow: rgba(40, 255, 255, 0.4) 5px 5px, rgba(0, 255, 255, 0.3) 10px 10px, rgba(0, 255, 255, 0.2) 15px 15px,
+        rgba(0, 255, 255, 0.1) 20px 20px, rgba(0, 255, 255, 0.05) 25px 25px;
+}
+
+#merge_team_descript {
+    width: 80%;
+    height: auto;
+    padding: 2vh;
+    background: rgb(255, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.30015756302521013) 10%,
+        rgba(0, 255, 255, 0.30015756302521013) 85%
+    );
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}

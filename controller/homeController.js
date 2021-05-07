@@ -1,9 +1,18 @@
 const Users = require('../models/users');
 const Contact = require('../models/contact_us');
 const Photos = require('../models/photo');
+const Newsletter = require('../models/newsletter');
 
 module.exports.home = function (req, res) {
-    return res.status(200).render('home');
+    Newsletter.find().sort({ date: -1 }).then((newsletters) => {
+        let monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        return res.status(200).render('home', {
+            newsletters: newsletters,
+            monthNames: monthNames
+        });
+    })
 };
 
 module.exports.team = function (req, res) {

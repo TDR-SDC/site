@@ -28,6 +28,65 @@
             <br><br><br><br>
             <span id="intro_3">Racing</span>
         </div>
+        <div class="d-f-r ai-c jc-se" id="description">
+            <aside class="d-f-c jc-c ai-c" id="newsletter_section">
+                <h2>Newsletters</h2>
+                <ul>
+                    <% newsletters.forEach(function(newsletter) {%>
+                        <li>
+                            <div>
+                                <%= monthNames[newsletter.date.getMonth()] %>&numsp;<%= newsletter.date.getFullYear() %>
+                            </div>
+                            <a style="color: blueviolet;" href="<%= newsletter.link %>" target="_blank">Link</a>
+                        </li>
+                        <% }) %>
+                </ul>
+            </aside>
+            <div class="d-f-c ai-c jc-c" id="team_descriptions">
+                <div class="d-f-r jc-se" id="individual_team_descript">
+                    <div class="d-f-c jc-c ai-c" id="defianz_descript">
+                        <h2>
+                            Team Defianz Racing
+                        </h2>
+                        <p>
+                            Team Defianz Racing is the Formula Student team of Delhi Technological University that
+                            builds progressively reliable and advanced, high-performance race-ready Formula style
+                            cars every year and competes in national and international Formula Student competitions. The
+                            team made a switch to the Electric Vehicle category under Formula Student this year, thus
+                            starting a new chapter. The team saw a very successful run in the FSEV Concept Challenge and
+                            is currently moving ahead with the research and development of electric vehicles, to
+                            translate the concept into a fully functional vehicle.
+                        </p>
+                    </div>
+                    <div class="d-f-c jc-c ai-c" id="sdc_descript">
+                        <h2>
+                            DTU Self Driving Cars
+                        </h2>
+                        <p>
+                            DTU-SDC (DTU Self Driving Car Project) was established in 2017 by a group of undergraduate
+                            students to create anenvironment for research, technical incubation, and development of
+                            state-of-the-art technology in the field of Autonomous Vehicles. The team is driven by a
+                            passion to lead the infusion of self-driving vehicles in India. Being a non-profit student
+                            team we believe that a problem set of this sort needs to have solutions being implemented at
+                            the grassroots level in India where highly stochastic conditions pose a multitude of
+                            challenges.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-f-c ai-c jc-c" id="merge_team_descript">
+                    <h1>
+                        Team Defianz-DTUSDC Racing Collaboration
+                    </h1>
+                    <p>
+                        Instead of procuring an Electric Vehicle from outside, Team DTU-SDC aims to procure the same
+                        from Team Defianz Racing [Electric] which would be developing its Formula Student Vehicle for FS
+                        Bharat. This would not just act as a cost-cutting measure but also highlight a sense of
+                        collaboration between the two teams. It would also go on to showcase the name of our University,
+                        DTU at the world stage.
+                    </p>
+                </div>
+            </div>
+        </div>
         <%- include('_footer'); %>
             <script type="text/javascript" src="/js/scroll.js"></script>
 </body>

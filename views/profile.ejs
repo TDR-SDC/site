@@ -40,7 +40,7 @@
                         <%}%>
                             <%if(checkCorporateUser){%>
                                 <div onclick="misc_corpo()">
-                                    <li style="visibility: visible;">Misc. Corporate</li>
+                                    <li style="visibility: visible;">Misc. Corporate </li>
                                 </div>
                                 <%}%>
                                     <%if((checkCorporateUser && locals.user.year>=2) || locals.user.user=='admin' ){%>
@@ -50,7 +50,7 @@
                                         <%}%>
                                             <%if(checkMechanicalUser || locals.user.user=='admin' ){%>
                                                 <div onclick="cad()">
-                                                    <li style="visibility: visible;">CAD Iterations</li>
+                                                    <li style="visibility: visible;">CAD Iterations </li>
                                                 </div>
                                                 <%}%>
                 </ul>
@@ -259,7 +259,7 @@
                         <% } %>
                 </div>
 
-                <!-- Newsletters section (year >= 2 && dept == corporate)-->
+                <!-- Miscellenous Corporate Stuff (year >= 2 && dept == corporate)-->
                 <div class="content" id="misc_corpo">
                     <div class="content_section">
                         <div>Add Gallery Photo</div>
@@ -267,6 +267,17 @@
                             <input type="file" name="photo" id="upload_file" class="upload-box" required>
                             <input id="sponsor_name_input" type="text" name="descript" placeholder="Photo Descript"
                                 required>
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
+                    <div class="content_section">
+                        <div>Add Newsletters</div>
+                        <form class="d-f-r jc-sb ai-c" id="newsletter_form" action="/corpo/add_newsletter" method="POST"
+                            enctype="multipart/form-data">
+                            <input type="file" name="newsletter" id="upload_file" class="upload-box" required>
+                            <div>
+                                Select date for newsletter: &numsp;<input type="date" name="date" id="date" name="date">
+                            </div>
                             <input type="submit" value="Upload">
                         </form>
                     </div>
