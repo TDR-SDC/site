@@ -22,7 +22,6 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     secure: true,
-    AZURE_STORAGE_CONNECTION_STRING: process.env.AZURE_STORAGE_CONNECTION_STRING,
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI,
         ttl: 24 * 60 * 60,   // 1 day
