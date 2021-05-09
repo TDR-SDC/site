@@ -63,7 +63,14 @@ module.exports.upload_avatar = async function (req, res) {
     var user = await Users.findById(req.user._id);
     Users.uploadedAvatar(req, res, async function (err) {
         var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
-        blobService.createBlockBlobFromLocalFile('team-members', `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+        const containerName = 'team-members';
+        if (user.avatar && user.avatar != 'https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png') {
+            const blobURL = user.avatar;
+            let blob = blobURL.split('/');
+            blob = blob[blob.length - 1];
+            blobService.deleteBlob(containerName, blob, function (error) { });
+        }
+        blobService.createBlockBlobFromLocalFile(containerName, `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err) {
                 res.status(503).render('error', {
                     error: true,
@@ -176,7 +183,7 @@ module.exports.add_team_doc = function (req, res) {
     Docs.uploadedFile(req, res, async function (err) {
         var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         var containerName = 'team-documents';
-        await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+        blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err)
                 res.status(503).render('error', {
                     error: true,
