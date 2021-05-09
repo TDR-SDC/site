@@ -6,7 +6,7 @@ module.exports.add_photo = function (req, res) {
     const photo = new Photos();
     Photos.uploadedPhoto(req, res, async function (err) {
         console.log(req.file);
-        var blobService = azure.createBlobService();
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         var containerName = 'gallery';
         await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err)
@@ -28,7 +28,7 @@ module.exports.add_photo = function (req, res) {
 module.exports.add_newsletter = function (req, res) {
     const newsletter = new Newsletter();
     Newsletter.uploadedNewsletter(req, res, async function (err) {
-        var blobService = azure.createBlobService();
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         var containerName = 'newsletters';
         await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err)
@@ -37,13 +37,14 @@ module.exports.add_newsletter = function (req, res) {
                     error_code: 503,
                     error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
                 });
+            else {
+                var Url = blobService.getUrl(containerName, `${req.file.originalname}`);
+                newsletter.date = req.body.date;
+                newsletter.link = Url;
+                newsletter.uploadedBy = req.user.user;
+                newsletter.save();
+                res.status(200).redirect('back');
+            }
         });
-
-        var Url = blobService.getUrl(containerName, `${req.file.originalname}`);
-        newsletter.date = req.body.date;
-        newsletter.link = Url;
-        newsletter.uploadedBy = req.user.user;
-        newsletter.save();
-        res.status(200).redirect('back');
     });
 };

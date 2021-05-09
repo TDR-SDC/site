@@ -12,7 +12,7 @@ module.exports.sponsors = function (req, res) {
 module.exports.add_sponsor = function (req, res) {
     const sponsor = new Sponsors();
     Sponsors.uploadedLogo(req, res, async function (err) {
-        var blobService = azure.createBlobService();
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         var containerName = 'sponsors';
         await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err)
@@ -21,13 +21,14 @@ module.exports.add_sponsor = function (req, res) {
                     error_code: 503,
                     error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
                 });
+            else {
+                var logoUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
+                sponsor.sponsor = req.body.sponsor_name;
+                sponsor.logo = logoUrl;
+                sponsor.save();
+                res.status(302).redirect('back');
+            }
         });
-
-        var logoUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
-        sponsor.sponsor = req.body.sponsor_name;
-        sponsor.logo = logoUrl;
-        sponsor.save();
-        res.status(302).redirect('back');
     });
 };
 
