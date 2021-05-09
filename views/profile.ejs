@@ -69,8 +69,7 @@
                                         <img id="profile_photo" src="/imgs/team_members/placeholder.png">
                                         <% } %>
                                             <br>
-                                            <form action="/user/upload_avatar" method="POST"
-                                                enctype="multipart/form-data">
+                                            <form action="/user/upload_avatar" method="POST" enctype="multipart/form-data">
                                                 <input type="file" name="avatar" placeholder="Update Photo" required>
                                                 <br><br>
                                                 <input type="submit" value="Upload">
@@ -176,11 +175,13 @@
                                             style="text-transform: capitalize;">
                                             <%= user.dept %>
                                         </div>
-                                        <% if(locals.user.permission <=3) {%>
+                                        <% if(locals.user.permission<=7){%>
                                             <div style="flex: 1;" class="table-data"
                                                 style="text-transform: capitalize;">
-                                                <a href="/user/remove/<%= user._id %>"><img class="delete_icon"
-                                                        src="/imgs/icons/delete.svg"></a>
+                                                <% if(locals.user.permission < user.permission){%>
+                                                    <a href="/user/remove/<%= user._id %>"><img class="delete_icon"
+                                                            src="/imgs/icons/delete.svg"></a>
+                                                    <% } %>
                                             </div>
                                             <% } %>
                                     </span>

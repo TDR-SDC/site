@@ -9,7 +9,21 @@ module.exports.profile = function (req, res) {
     if (req.isAuthenticated()) {
         Users.find().sort({ permission: 1, name: 1 }).then((user) => {
             Docs.find({}, function (err, document) {
-                if (req.user.dept == 'corporate' || req.user.user == 'admin') {
+                if (req.user.user == 'admin') {
+                    Sponsors.find({}, function (err, sponsors) {
+                        CAD.find({}, function (err, cad) {
+                            return res.status(200).render('profile', {
+                                profile_user: user,
+                                checkMechanicalUser: true,
+                                checkCorporateUser: true,
+                                sponsors: sponsors,
+                                cad_list: cad,
+                                documents: document
+                            });
+                        });
+                    });
+                }
+                else if (req.user.dept == 'corporate') {
                     Sponsors.find({}, function (err, sponsors) {
                         return res.status(200).render('profile', {
                             profile_user: user,
@@ -20,7 +34,7 @@ module.exports.profile = function (req, res) {
                         });
                     });
                 }
-                else if (req.user.dept == 'mechanical' || req.user.user == 'admin') {
+                else if (req.user.dept == 'mechanical') {
                     CAD.find({}, function (err, cad) {
                         return res.status(200).render('profile', {
                             profile_user: user,
@@ -48,20 +62,23 @@ module.exports.profile = function (req, res) {
 module.exports.upload_avatar = async function (req, res) {
     var user = await Users.findById(req.user._id);
     Users.uploadedAvatar(req, res, async function (err) {
-        var blobService = azure.createBlobService();
-        await blobService.createBlockBlobFromLocalFile('team-members', `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
-            if (err)
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
+        blobService.createBlockBlobFromLocalFile('team-members', `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+            if (err) {
                 res.status(503).render('error', {
                     error: true,
                     error_code: 503,
                     error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
                 });
+            }
+            else {
+                var avatarUrl = blobService.getUrl("team-members", `${req.user.user}-${req.file.originalname}`);
+                user.avatar = avatarUrl;
+                user.save();
+                res.status(201).redirect('/user');
+            }
         });
-        var avatarUrl = blobService.getUrl("team-members", `${req.user.user}-${req.file.originalname}`);
-        user.avatar = avatarUrl;
-        user.save();
     });
-    res.status(200).redirect('/user');
 };
 
 module.exports.create = function (req, res) {
@@ -127,6 +144,7 @@ module.exports.user_info = async function (req, res) {
             res.send(users);
             for (i in users) {
                 // console.log(users[i]);
+                //     users[i].save();
             }
         });
     }
@@ -156,7 +174,7 @@ module.exports.logout = function (req, res) {
 module.exports.add_team_doc = function (req, res) {
     const document = new Docs();
     Docs.uploadedFile(req, res, async function (err) {
-        var blobService = azure.createBlobService();
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         var containerName = 'team-documents';
         await blobService.createBlockBlobFromLocalFile(containerName, `${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
             if (err)
@@ -165,14 +183,15 @@ module.exports.add_team_doc = function (req, res) {
                     error_code: 503,
                     error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
                 });
+            else {
+                var documentUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
+                document.file_name = req.file.originalname;
+                document.remarks = req.body.remarks;
+                document.location = documentUrl;
+                document.posted_by = req.user.user;
+                document.save();
+                res.status(302).redirect('back');
+            }
         });
-
-        var documentUrl = blobService.getUrl(containerName, `${req.file.originalname}`);
-        document.file_name = req.file.originalname;
-        document.remarks = req.body.remarks;
-        document.location = documentUrl;
-        document.posted_by = req.user.user;
-        document.save();
-        res.status(302).redirect('back');
     });
 };
