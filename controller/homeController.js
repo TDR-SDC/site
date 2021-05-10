@@ -1,4 +1,5 @@
 const Users = require('../models/users');
+const Alum = require('../models/alum');
 const Contact = require('../models/contact_us');
 const Photos = require('../models/photo');
 const Newsletter = require('../models/newsletter');
@@ -17,9 +18,12 @@ module.exports.home = function (req, res) {
 
 module.exports.team = function (req, res) {
     Users.find().sort({ permission: 1 }).then((user) => {
-        res.status(200).render('team', {
-            users: user
-        })
+        Alum.find().sort({ name: 1 }).then((alumni) => {
+            res.status(200).render('team', {
+                users: user,
+                alumni: alumni
+            });
+        });
     });
 };
 

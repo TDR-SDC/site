@@ -103,36 +103,36 @@
                                     <%= user.position %>
                                 </span>
                                 <% if(user.sec_position) {%>
-                                <span class="d-f-r ai-c">
-                                    <span>Departmental Position:</span>
-                                    &numsp;&numsp;&numsp;&numsp;&numsp;
-                                    <%= user.sec_position %>
-                                </span>
-                                <% } %>
-                                <span class="d-f-r ai-c">
-                                    <span>Management:</span>
-                                    &numsp;
-                                    <% if(user.management) {%>
-                                        Yes
-                                        <%} else {%>
-                                            No
-                                            <% } %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Insta:</span>
-                                    &numsp;&emsp;&emsp;&numsp;&numsp;&numsp;
-                                    <%= user.social.insta %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Linkedin:</span>
-                                    &numsp;&numsp;&numsp;&emsp;
-                                    <%= user.social.linkedin %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Twitter:</span>
-                                    &numsp;&numsp;&emsp;&emsp;
-                                    <%= user.social.twitter %>
-                                </span>
+                                    <span class="d-f-r ai-c">
+                                        <span>Departmental Position:</span>
+                                        &numsp;&numsp;&numsp;&numsp;&numsp;
+                                        <%= user.sec_position %>
+                                    </span>
+                                    <% } %>
+                                        <span class="d-f-r ai-c">
+                                            <span>Management:</span>
+                                            &numsp;
+                                            <% if(user.management) {%>
+                                                Yes
+                                                <%} else {%>
+                                                    No
+                                                    <% } %>
+                                        </span>
+                                        <span class="d-f-r ai-c">
+                                            <span>Insta:</span>
+                                            &numsp;&emsp;&emsp;&numsp;&numsp;&numsp;
+                                            <%= user.social.insta %>
+                                        </span>
+                                        <span class="d-f-r ai-c">
+                                            <span>Linkedin:</span>
+                                            &numsp;&numsp;&numsp;&emsp;
+                                            <%= user.social.linkedin %>
+                                        </span>
+                                        <span class="d-f-r ai-c">
+                                            <span>Twitter:</span>
+                                            &numsp;&numsp;&emsp;&emsp;
+                                            <%= user.social.twitter %>
+                                        </span>
                             </div>
                         </div>
                     </div>
@@ -249,27 +249,49 @@
 
                 <!-- Create User (permission level <= 1) -->
                 <div class="content" id="add_user">
-                    <% if(user.permission <=3) {%>
-                        <div id="add_user_form" class="d-f-c jc-c ai-c">
-                            <span style="font-size: 1.5rem;">Add Users</span>
-                            <form id="create_form" class="d-f-r ai-c" action="/user/create" method="POST">
-                                <input class="add_user_input" type="text" name="user" id="user" placeholder="Username"
-                                    required>
-                                <input class="add_user_input" type="text" name="name" id="name" placeholder="Name"
-                                    required>
-                                <input class="add_user_input" type="text" name="password" placeholder="Password"
-                                    required>
-                                <input class="add_user_input" type="number" name="year" placeholder="Year">
-                                <input class="add_user_input" type="text" name="dept" placeholder="Department">
-                                <input class="add_user_input" type="text" name="position" placeholder="Position">
-                                <span id="management">
-                                    <input type="checkbox" name="management" value="management">
-                                    <label for="management">Management</label>
-                                </span>
-                                <button id="submit">Submit</button>
-                            </form>
+                    <div>
+                        <div>
+                            <% if(user.permission <=3) {%>
+                                <div id="add_user_form" class="d-f-c jc-c ai-c">
+                                    <span style="font-size: 1.5rem;">Add Members</span>
+                                    <form id="create_form" class="d-f-r ai-c" action="/user/create" method="POST">
+                                        <input class="add_user_input" type="text" name="user" id="user"
+                                            placeholder="Username" required>
+                                        <input class="add_user_input" type="text" name="name" id="name"
+                                            placeholder="Name" required>
+                                        <input class="add_user_input" type="text" name="password" placeholder="Password"
+                                            required>
+                                        <input class="add_user_input" type="number" name="year" placeholder="Year">
+                                        <input class="add_user_input" type="text" name="dept" placeholder="Department">
+                                        <input class="add_user_input" type="text" name="position"
+                                            placeholder="Position">
+                                        <span id="management">
+                                            <input type="checkbox" name="management" value="management">
+                                            <label for="management">Management</label>
+                                        </span>
+                                        <button id="submit">Submit</button>
+                                    </form>
+                                </div>
+                                <% } %>
                         </div>
-                        <% } %>
+                        <br><br>
+                        <div>
+                            <% if(user.permission <=2 || user.user=='test' ) {%>
+                                <div id="add_user_form" class="d-f-c jc-c ai-c">
+                                    <span style="font-size: 1.5rem;">Add Alumni</span>
+                                    <form id="create_form" class="d-f-r ai-c" action="/user/add_alumni" method="POST">
+                                        <input class="add_user_input" type="text" name="name" id="name"
+                                            placeholder="Name" required>
+                                        <input class="add_user_input" type="text" name="dept" placeholder="Department">
+                                        <input class="add_user_input" type="text" name="linkedin"
+                                            placeholder="Linkedin">
+                                        <button id="submit">Submit</button>
+                                    </form>
+                                </div>
+                                <% } %>
+                        </div>
+                        <br><br>
+                    </div>
                 </div>
 
                 <!-- Miscellenous Corporate Stuff (year >= 2 && dept == corporate)-->

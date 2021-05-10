@@ -9,6 +9,7 @@ router.get('/remove/:_id', userController.remove_user);
 router.get('/logout', userController.logout);
 
 router.post('/create', userController.create);
+router.post('/add_alumni', userController.add_alumni);
 router.post('/update_credentials', userController.update_credentials);
 router.post('/add_team_doc', userController.add_team_doc);
 router.post('/upload_avatar', passport.checkAuthentication, userController.upload_avatar);

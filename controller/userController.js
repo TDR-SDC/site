@@ -1,5 +1,6 @@
 const azure = require('azure-storage');
 const Users = require('../models/users');
+const Alum = require('../models/alum');
 const Sponsors = require('../models/sponsors');
 const CAD = require('../models/cad');
 const Docs = require('../models/team_documents');
@@ -119,6 +120,15 @@ module.exports.create = function (req, res) {
             "permission": permission,
             "management": management
         });
+    });
+    res.status(200).redirect('/user/profile');
+};
+
+module.exports.add_alumni = function (req, res) {
+    Alum.create({
+        "name": req.body.name,
+        "dept": req.body.dept,
+        "linkedin": req.body.linkedin
     });
     res.status(200).redirect('/user/profile');
 };

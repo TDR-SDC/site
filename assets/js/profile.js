@@ -45,3 +45,15 @@ function team_members() {
     var current_element = document.getElementById('team_members');
     current_element.style.display = "block";
 }
+
+function team() {
+    hide_all();
+    var current_element = document.getElementById('team');
+    current_element.style.display = "block";
+}
+
+function alumni() {
+    hide_all();
+    var current_element = document.getElementById('alumni');
+    current_element.style.display = "block";
+}
