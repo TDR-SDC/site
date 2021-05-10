@@ -21,14 +21,14 @@
         <main>
             <div id="heading_background"></div>
             <!-- <div id="menu_section"> -->
-                <ul class="d-f-r ai-c jc-c" id="menu_list" style="padding: 0;">
-                    <div onclick="team()">
-                        <li class="d-f ai-c jc-c" style="visibility: visible;">Current Team</li>
-                    </div>
-                    <div onclick="alumni()">
-                        <li class="d-f ai-c jc-c" style="visibility: visible;">Honorable Alumni</li>
-                    </div>
-                </ul>
+            <ul class="d-f-r ai-c jc-c" id="menu_list" style="padding: 0;">
+                <div onclick="team()">
+                    <li class="d-f ai-c jc-c" style="visibility: visible;">Current Team</li>
+                </div>
+                <div onclick="alumni()">
+                    <li class="d-f ai-c jc-c" style="visibility: visible;">Honorable Alumni</li>
+                </div>
+            </ul>
             <!-- </div> -->
 
             <div class="content" id="team">
@@ -279,37 +279,43 @@
 
             <!-- Alumni List (open to all) -->
             <div class="content" id="alumni">
-                <div class="table">
-                    <div class="table-header">
-                        <div style="flex: 5;" class="header__item">
-                            <span class="filter__link">Name</span>
+                <div class="d-f-c ai-c jc-c">
+                    <h1 style="text-align: center;">
+                        We will always remember you. The team will never forget your contributions.
+                    </h1>
+                    <div class="table d-f jc-c ai-c">
+                        <div class="table-header">
+                            <div style="flex: 5;" class="header__item">
+                                <span class="filter__link">Alumnus/Alumna Name</span>
+                            </div>
+                            <div style="flex: 5;" class="header__item">
+                                <span class="filter__link filter__link--number">Department</span>
+                            </div>
+                            <div style="flex: 1;" class="header__item">
+                                <span class="filter__link filter__link--number"></span>
+                            </div>
                         </div>
-                        <div style="flex: 5;" class="header__item">
-                            <span class="filter__link filter__link--number">Department</span>
-                        </div>
-                        <div style="flex: 1;" class="header__item">
-                            <span class="filter__link filter__link--number"></span>
+                        <div class="table-content">
+                            <% alumni.forEach(function(alum) {%>
+                                <span class="table-row">
+                                    <div style="flex: 5;" class="table-data">
+                                        <%= alum.name %>
+                                    </div>
+                                    <div style="flex: 5; text-transform: capitalize;" class="table-data">
+                                        <%= alum.dept %>
+                                    </div>
+                                    <div style="flex: 1;" class="table-data">
+                                        <% if(alum.linkedin) {%>
+                                            <a class="alum_linkedin" href="<%= alum.linkedin %>">
+                                                <img src="/imgs/icons/linkedin.svg">
+                                            </a>
+                                            <% } %>
+                                    </div>
+                                </span>
+                                <%})%>
                         </div>
                     </div>
-                    <div class="table-content">
-                        <% alumni.forEach(function(alum) {%>
-                            <span class="table-row">
-                                <div style="flex: 5;" class="table-data">
-                                    <%= alum.name %>
-                                </div>
-                                <div style="flex: 5; text-transform: capitalize;" class="table-data">
-                                    <%= alum.dept %>
-                                </div>
-                                <div style="flex: 1;" class="table-data">
-                                    <% if(alum.linkedin) {%>
-                                    <a class="alum_linkedin" href="<%= alum.linkedin %>">
-                                        <img src="/imgs/icons/linkedin.svg">
-                                    </a>
-                                    <% } %>
-                                </div>
-                            </span>
-                            <%})%>
-                    </div>
+                    <br><br>
                 </div>
             </div>
         </main>
