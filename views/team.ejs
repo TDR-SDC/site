@@ -44,14 +44,19 @@
                                                 </span>
                                                 <span class="member_social">
                                                     <% if(user.social.insta) {%>
-                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
                                                         <% } %>
-                                                        <% if(user.social.linkedin) {%>
-                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                                            <% } %>
-                                                            <% if(user.social.twitter) {%>
-                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
                                                                 <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
                                                 </span>
                                             </div>
                             </div>
@@ -79,18 +84,27 @@
                                                     <%= user.name %>
                                                 </span>
                                                 <span class="member_position">
-                                                    <%= user.position %>
+                                                    <% if(user.sec_position) {%>
+                                                        <%= user.sec_position %>
+                                                            <% }else {%>
+                                                                <%= user.position %>
+                                                                    <%}%>
                                                 </span>
                                                 <span class="member_social">
                                                     <% if(user.social.insta) {%>
-                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
                                                         <% } %>
-                                                        <% if(user.social.linkedin) {%>
-                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                                            <% } %>
-                                                            <% if(user.social.twitter) {%>
-                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
                                                                 <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
                                                 </span>
                                             </div>
                             </div>
@@ -118,18 +132,27 @@
                                                     <%= user.name %>
                                                 </span>
                                                 <span class="member_position">
-                                                    <%= user.position %>
+                                                    <% if(user.sec_position) {%>
+                                                        <%= user.sec_position %>
+                                                            <% }else {%>
+                                                                <%= user.position %>
+                                                                    <%}%>
                                                 </span>
                                                 <span class="member_social">
                                                     <% if(user.social.insta) {%>
-                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
                                                         <% } %>
-                                                        <% if(user.social.linkedin) {%>
-                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                                            <% } %>
-                                                            <% if(user.social.twitter) {%>
-                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
                                                                 <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
                                                 </span>
                                             </div>
                             </div>
@@ -157,18 +180,27 @@
                                                     <%= user.name %>
                                                 </span>
                                                 <span class="member_position">
-                                                    <%= user.position %>
+                                                    <% if(user.sec_position) {%>
+                                                        <%= user.sec_position %>
+                                                            <% }else {%>
+                                                                <%= user.position %>
+                                                                    <%}%>
                                                 </span>
                                                 <span class="member_social">
                                                     <% if(user.social.insta) {%>
-                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
                                                         <% } %>
-                                                        <% if(user.social.linkedin) {%>
-                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                                            <% } %>
-                                                            <% if(user.social.twitter) {%>
-                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
                                                                 <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
                                                 </span>
                                             </div>
                             </div>
@@ -196,18 +228,27 @@
                                                     <%= user.name %>
                                                 </span>
                                                 <span class="member_position">
-                                                    <%= user.position %>
+                                                    <% if(user.sec_position) {%>
+                                                        <%= user.sec_position %>
+                                                            <% }else {%>
+                                                                <%= user.position %>
+                                                                    <%}%>
                                                 </span>
                                                 <span class="member_social">
                                                     <% if(user.social.insta) {%>
-                                                        <a href="<%= user.social.insta %>" target="_blank"><img src="/imgs/icons/instagram.svg"></a>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
                                                         <% } %>
-                                                        <% if(user.social.linkedin) {%>
-                                                            <a href="<%= user.social.linkedin %>" target="_blank"><img src="/imgs/icons/linkedin.svg"></a>
-                                                            <% } %>
-                                                            <% if(user.social.twitter) {%>
-                                                                <a href="<%= user.social.twitter %>" target="_blank"><img src="/imgs/icons/twitter.svg"></a>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
                                                                 <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
                                                 </span>
                                             </div>
                             </div>

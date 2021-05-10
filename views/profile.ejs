@@ -69,7 +69,8 @@
                                         <img id="profile_photo" src="/imgs/team_members/placeholder.png">
                                         <% } %>
                                             <br>
-                                            <form action="/user/upload_avatar" method="POST" enctype="multipart/form-data">
+                                            <form action="/user/upload_avatar" method="POST"
+                                                enctype="multipart/form-data">
                                                 <input type="file" name="avatar" placeholder="Update Photo" required>
                                                 <br><br>
                                                 <input type="submit" value="Upload">
@@ -101,6 +102,13 @@
                                     &numsp;&numsp;&numsp;&numsp;&numsp;
                                     <%= user.position %>
                                 </span>
+                                <% if(user.sec_position) {%>
+                                <span class="d-f-r ai-c">
+                                    <span>Departmental Position:</span>
+                                    &numsp;&numsp;&numsp;&numsp;&numsp;
+                                    <%= user.sec_position %>
+                                </span>
+                                <% } %>
                                 <span class="d-f-r ai-c">
                                     <span>Management:</span>
                                     &numsp;
@@ -146,25 +154,29 @@
                 <div class="content" id="team_members">
                     <div class="table">
                         <div class="table-header">
+                            <div style="flex: 1;" class="table-data"></div>
                             <div style="flex: 5;" class="header__item">
                                 <span id="cad_version" class="filter__link">Name</span>
                             </div>
-                            <div style="flex: 2;" class="header__item">
+                            <div style="flex: 3;" class="header__item">
                                 <span id="sponsor_logo" class="filter__link filter__link--number">Year</span>
                             </div>
                             <div style="flex: 5;" class="header__item">
                                 <span id="sponsor_logo" class="filter__link filter__link--number">Department</span>
                             </div>
-                            <% if(locals.user.permission <=3) {%>
+                            <% if(locals.user.permission <=7) {%>
                                 <div style="flex: 1;" class="header__item">
                                     <span id="sponsor_logo" class="filter__link filter__link--number"></span>
                                 </div>
                                 <% } %>
                         </div>
                         <div class="table-content">
-                            <% profile_user.forEach(function(user){%>
+                            <%var i=0; profile_user.forEach(function(user){%>
                                 <% if(user.user !='admin' && user.user !='test' ) {%>
                                     <span class="table-row vaccine_hover">
+                                        <div style="flex: 1;" class="table-data">
+                                            <%= ++i %>
+                                        </div>
                                         <div style="flex: 5;" class="table-data">
                                             <%= user.name %>
                                         </div>
