@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
         default: "general"
     },
     position: String,
+    sec_position: String,
     management: {
         type: Boolean,
         default: false
@@ -62,7 +63,7 @@ let storage = multer.diskStorage({
     }
 });
 
-userSchema.statics.uploadedAvatar = multer ({storage: storage}).single('avatar');
+userSchema.statics.uploadedAvatar = multer({ storage: storage }).single('avatar');
 userSchema.statics.avatarPath = AVATAR_PATH;
 
 const Users = mongoose.model('member_list', userSchema);
