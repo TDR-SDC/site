@@ -17,7 +17,7 @@ module.exports.home = function (req, res) {
 };
 
 module.exports.team = function (req, res) {
-    Users.find().sort({ permission: 1 }).then((user) => {
+    Users.find().sort({ permission: 1, name: 1 }).then((user) => {
         Alum.find().sort({ name: 1 }).then((alumni) => {
             res.status(200).render('team', {
                 users: user,

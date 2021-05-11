@@ -277,6 +277,58 @@
                 </div>
             </div>
 
+            <div class="d-f ai-c jc-c">
+                <div class="dept_end"></div>
+            </div>
+            <div class="d-f-c ai-c">
+                <span class="dept_heading">Advisors</span>
+                <span class="dept_description">
+                    Behind-the-scenes
+                </span>
+
+                <span class="members_list d-f-r jc-c ai-c">
+                    <% users.forEach(function(user){ %>
+                        <% if(user.dept=='advisor' ) {%>
+                            <div class="member d-f-c jc-se ai-c">
+                                <% if(user.avatar) {%>
+                                    <img src="<%= user.avatar %>">
+                                    <%} else {%>
+                                        <img src="/imgs/team_members/placeholder.png">
+                                        <% } %>
+                                            <div class="d-f-c jc-sb ai-c">
+                                                <span class="member_name">
+                                                    <%= user.name %>
+                                                </span>
+                                                <span class="member_position">
+                                                    <% if(user.sec_position) {%>
+                                                        <%= user.sec_position %>
+                                                            <% }else {%>
+                                                                <%= user.position %>
+                                                                    <%}%>
+                                                </span>
+                                                <span class="member_social">
+                                                    <% if(user.social.insta) {%>
+                                                        <a href="<%= user.social.insta %>" target="_blank"><img
+                                                                src="/imgs/icons/instagram.svg"></a>
+                                                        <% } %>
+                                                            <% if(user.social.linkedin) {%>
+                                                                <a href="<%= user.social.linkedin %>"
+                                                                    target="_blank"><img
+                                                                        src="/imgs/icons/linkedin.svg"></a>
+                                                                <% } %>
+                                                                    <% if(user.social.twitter) {%>
+                                                                        <a href="<%= user.social.twitter %>"
+                                                                            target="_blank"><img
+                                                                                src="/imgs/icons/twitter.svg"></a>
+                                                                        <% } %>
+                                                </span>
+                                            </div>
+                            </div>
+                            <% }}) %>
+                </span>
+            </div>
+            </div>
+
             <!-- Alumni List (open to all) -->
             <div class="content" id="alumni">
                 <div class="d-f-c ai-c jc-c">
