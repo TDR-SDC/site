@@ -9,43 +9,78 @@ a {
     text-decoration: none;
 }
 
+@keyframes background_change {
+    0%, 100% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+    }
+    5% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+    }
+    20% {
+        background-image: url("/imgs/car.jpeg");
+    }
+    25% {
+        background-image: url("/imgs/car.jpeg");
+    }
+    30% {
+        background-image: url("/imgs/car.jpeg");
+    }
+    45% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG");
+    }
+    50% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG");
+    }
+    55% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG");
+    }
+    70% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg");
+    }
+    75% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg");
+    }
+    80% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg");
+    }
+    95% {
+        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+    }
+
+}
+
 #car_photo {
-    background-image: url("/imgs/car.jpeg");
+    // background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
     background-size: 100vw 100vh;
     height: 100vh;
     width: 100vw;
     font-weight: bold;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    animation: background_change 20s infinite;
 }
 
-#intro_1 {
-    margin-left: 42vw;
-    font-size: 5rem;
-    color: black;
-}
-
-#intro_21 {
-    font-size: 5rem;
-    color: red;
-    text-shadow: -8px 5px 3px black;
-    margin-left: 50vw;
-}
-
-#intro_22 {
-    font-size: 5rem;
-    text-shadow: -8px 5px 3px black;
-    color: aqua;
-}
-
-#intro_3 {
-    margin-left: 75vw;
-    font-size: 5rem;
-    color: black;
+@keyframes changeBg {
+    0%,
+    100% {
+        background-image: url("https://i.stack.imgur.com/YdrqG.png");
+    }
+    25% {
+        background-image: url("https://i.stack.imgur.com/2wKWi.png");
+    }
+    50% {
+        background-image: url("https://i.stack.imgur.com/HobHO.png");
+    }
+    75% {
+        background-image: url("https://i.stack.imgur.com/3hiHO.png");
+    }
 }
 
 #description {
     width: 100vw;
     height: fit-content;
-    margin: 2.5vh 0;
+    padding: 2.5vh 0;
+    color: rgb(238, 232, 170);
+    background-color: black;
 }
 
 #newsletter_section {
@@ -88,29 +123,38 @@ a {
 #defianz_descript {
     width: 45%;
     padding: 0 0 0px 20px;
-    box-shadow: rgba(240, 46, 46, 0.4) -5px 5px, rgba(240, 46, 46, 0.3) -10px 10px, rgba(240, 46, 46, 0.2) -15px 15px,
-        rgba(240, 46, 46, 0.1) -20px 20px, rgba(240, 46, 46, 0.05) -25px 25px;
+    box-shadow: #ffc42e -5px 5px, #ffc42e80 -10px 10px, #ffc42e3d -15px 15px, #ffc42e17 -20px 20px, #ffc42e00 -25px 25px;
     height: 35vh;
+    box-shadow: #b8860b;
 }
 #sdc_descript {
     height: 35vh;
     width: 45%;
     padding: 0 20px 8px 0;
-    box-shadow: rgba(40, 255, 255, 0.4) 5px 5px, rgba(0, 255, 255, 0.3) 10px 10px, rgba(0, 255, 255, 0.2) 15px 15px,
-        rgba(0, 255, 255, 0.1) 20px 20px, rgba(0, 255, 255, 0.05) 25px 25px;
+    box-shadow: #ffc42e 5px 5px, #ffc42e80 10px 10px, #ffc42e3d 15px 15px, #ffc42e17 20px 20px, #ffc42e00 25px 25px;
 }
 
 #merge_team_descript {
     width: 80%;
     height: auto;
-    padding: 2vh;
-    background: rgb(255, 0, 0);
+    margin: 3rem 0;
+    padding: 0vh 9rem;
+    box-sizing: border-box;
+    color: black;
+    font-weight: 700;
+    background: rgb(0, 0, 0);
     background: linear-gradient(
         90deg,
-        rgba(255, 0, 0, 0.30015756302521013) 10%,
-        rgba(0, 255, 255, 0.30015756302521013) 85%
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 196, 46, 1) 13%,
+        rgba(207, 170, 1, 0.811922268907563) 33%,
+        rgba(252, 194, 60, 1) 50%,
+        rgba(207, 170, 1, 0.811922268907563) 67%,
+        rgba(255, 196, 46, 1) 87%,
+        rgba(0, 0, 0, 0) 100%
     );
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#merge_team_descript p {
+    font-size: 1.3rem;
 }

@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="description" content="User profile for the team member of Team Defianz-DTUSDC Racing">
     <meta name="keywords"
-        content="TDR-DTUSDC, Team Defianz Racing, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website">
+        content="TDR-DTUSDC, Team Defianz Racing, defianz dtu, dtusdc dtu, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website, user, <%= locals.user %>, <%= locals.user.name %>">
     <meta name="author" content="Krushnal Patel">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= locals.user.name %> | TDR-DTUSDC Website
+        <%= locals.user.name %> | TDR-DTUSDC
     </title>
     <link rel="stylesheet" href="/css/common.scss">
     <link rel="stylesheet" href="/css/profile.scss">
     <link rel="stylesheet" href="/css/_header.scss">
     <link rel="stylesheet" href="/css/_footer.scss">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/load.js"></script>
 </head>
 
 <body id="body" onload="load(); hide_all(); profile()">
+    <div class="loader d-f ai-c jc-c"></div>
     <%- include('_header'); %>
         <div id="heading_background"></div>
         <main class="d-f-r">

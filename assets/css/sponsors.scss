@@ -1,18 +1,14 @@
-#dark_mode span {
-    width: 85vw;
-    height: 5vh;
-}
-
 #sponsor_list {
-    width: 70vw;
+    width: 75vw;
 }
 
 #sponsor_heading {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 900;
     color: #ffd700;
     text-transform: uppercase;
-    margin: 5vh 0;
+    margin: 15vh 0 5vh 0;
+    letter-spacing: 5px;
 }
 
 #sponsor_div {
@@ -24,68 +20,4 @@
     padding: 2rem;
     max-width: 15vw;
     max-height: 10vh;
-}
-
-.divider {
-    background-color: black;
-    width: 60vw;
-    height: 0.5vh;
-    margin: 10vh 0;
-}
-
-#sponsor_tier {
-    width: 60vw;
-}
-
-#tier_heading {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 5vh;
-    text-transform: uppercase;
-}
-
-#tiers_list {
-    flex-wrap: wrap;
-}
-
-.tier {
-    background-color: transparent;
-    width: 300px;
-    height: 300px;
-    perspective: 1000px;
-    margin: 2rem;
-}
-
-.tier_inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.tier:hover .tier_inner {
-    transform: rotateY(180deg);
-}
-
-.tier_front,
-.tier_back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.tier_front {
-    background-color: #bbb;
-    color: black;
-}
-
-.tier_back {
-    background-color: #2980b9;
-    color: white;
-    transform: rotateY(180deg);
 }
