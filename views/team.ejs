@@ -15,25 +15,23 @@
     <link rel="stylesheet" href="/css/_footer.scss">
     <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/profile.js"></script>
+    <script type="text/javascript" src="/js/team.js"></script>
     <script type="text/javascript" src="/js/load.js"></script>
 </head>
 
-<body id="body" onload="load(); team();">
+<body id="body" onload="team()">
     <div class="loader d-f ai-c jc-c"></div>
     <%- include('_header'); %>
         <main>
             <div id="heading_background"></div>
-            <!-- <div id="menu_section"> -->
             <ul class="d-f-r ai-c jc-c" id="menu_list" style="padding: 0;">
                 <div onclick="team()">
-                    <li class="d-f ai-c jc-c" style="visibility: visible;">Current Team</li>
+                    <li class="d-f ai-c jc-c">Current Team</li>
                 </div>
                 <div onclick="alumni()">
-                    <li class="d-f ai-c jc-c" style="visibility: visible;">Honorable Alumni</li>
+                    <li class="d-f ai-c jc-c">Honorable Alumni</li>
                 </div>
             </ul>
-            <!-- </div> -->
 
             <div class="content" id="team">
                 <div class="d-f-c ai-c">

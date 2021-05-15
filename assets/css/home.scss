@@ -50,29 +50,11 @@ a {
 }
 
 #car_photo {
-    // background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
     background-size: 100vw 100vh;
     height: 100vh;
     width: 100vw;
     font-weight: bold;
-    animation: name duration timing-function delay iteration-count direction fill-mode;
     animation: background_change 20s infinite;
-}
-
-@keyframes changeBg {
-    0%,
-    100% {
-        background-image: url("https://i.stack.imgur.com/YdrqG.png");
-    }
-    25% {
-        background-image: url("https://i.stack.imgur.com/2wKWi.png");
-    }
-    50% {
-        background-image: url("https://i.stack.imgur.com/HobHO.png");
-    }
-    75% {
-        background-image: url("https://i.stack.imgur.com/3hiHO.png");
-    }
 }
 
 #description {
@@ -124,11 +106,11 @@ a {
     width: 45%;
     padding: 0 0 0px 20px;
     box-shadow: #ffc42e -5px 5px, #ffc42e80 -10px 10px, #ffc42e3d -15px 15px, #ffc42e17 -20px 20px, #ffc42e00 -25px 25px;
-    height: 35vh;
+    height: fit-content;
     box-shadow: #b8860b;
 }
 #sdc_descript {
-    height: 35vh;
+    height: fit-content;
     width: 45%;
     padding: 0 20px 8px 0;
     box-shadow: #ffc42e 5px 5px, #ffc42e80 10px 10px, #ffc42e3d 15px 15px, #ffc42e17 20px 20px, #ffc42e00 25px 25px;

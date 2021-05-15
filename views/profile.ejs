@@ -19,7 +19,7 @@
     <script type="text/javascript" src="/js/load.js"></script>
 </head>
 
-<body id="body" onload="load(); hide_all(); profile()">
+<body id="body" onload="show_profile_section('display_update_profile')">
     <div class="loader d-f ai-c jc-c"></div>
     <%- include('_header'); %>
         <div id="heading_background"></div>
@@ -27,37 +27,36 @@
 
             <div class="d-f jc-c" id="menu_section">
                 <ul id="menu_list">
-                    <div onclick="profile()">
+                    <div onclick="show_profile_section('display_update_profile')">
                         <li style="visibility: visible;">Profile </li>
                     </div>
-                    <div onclick="team_members()">
+                    <div onclick="show_profile_section('team_members')">
                         <li style="visibility: visible;">Team Members </li>
                     </div>
-                    <div onclick="team_docs()">
+                    <div onclick="show_profile_section('team_docs')">
                         <li style="visibility: visible;">Team Documents </li>
                     </div>
                     <%if(locals.user.permission <=3 ){%>
-                        <div onclick="add_user()">
+                        <div onclick="show_profile_section('add_user')">
                             <li>Add User </li>
                         </div>
                         <%}%>
                             <%if(checkCorporateUser){%>
-                                <div onclick="misc_corpo()">
+                                <div onclick="show_profile_section('misc_corpo')">
                                     <li style="visibility: visible;">Misc. Corporate </li>
                                 </div>
                                 <%}%>
                                     <%if((checkCorporateUser && locals.user.year>=2) || locals.user.user=='admin' ){%>
-                                        <div onclick="sponsors()">
+                                        <div onclick="show_profile_section('sponsors')">
                                             <li style="visibility: visible;">Sponsors </li>
                                         </div>
                                         <%}%>
                                             <%if(checkMechanicalUser || locals.user.user=='admin' ){%>
-                                                <div onclick="cad()">
+                                                <div onclick="show_profile_section('cad')">
                                                     <li style="visibility: visible;">CAD Iterations </li>
                                                 </div>
                                                 <%}%>
                 </ul>
-
             </div>
 
             <div>

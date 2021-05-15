@@ -1,59 +1,8 @@
-function hide_all() {
-    var elements = document.getElementsByClassName('content');
-    for (var i = 0; i < elements.length; i++)
-        elements[i].style.display = "none";
-}
+var current_profile_element = document.getElementById('display_update_profile');
 
-function profile() {
-    hide_all();
-    var current_element = document.getElementById('display_update_profile');
-    current_element.style.display = "block";
-}
-
-function add_user() {
-    hide_all();
-    var current_element = document.getElementById('add_user');
-    current_element.style.display = "block";
-}
-
-function misc_corpo() {
-    hide_all();
-    var current_element = document.getElementById('misc_corpo');
-    current_element.style.display = "block";
-}
-
-function sponsors() {
-    hide_all();
-    var current_element = document.getElementById('sponsors');
-    current_element.style.display = "block";
-}
-
-function cad() {
-    hide_all();
-    var current_element = document.getElementById('cad');
-    current_element.style.display = "block";
-}
-
-function team_docs() {
-    hide_all();
-    var current_element = document.getElementById('team_docs');
-    current_element.style.display = "block";
-}
-
-function team_members() {
-    hide_all();
-    var current_element = document.getElementById('team_members');
-    current_element.style.display = "block";
-}
-
-function team() {
-    hide_all();
-    var current_element = document.getElementById('team');
-    current_element.style.display = "block";
-}
-
-function alumni() {
-    hide_all();
-    var current_element = document.getElementById('alumni');
-    current_element.style.display = "block";
+function show_profile_section(profile_section) {
+    var element = document.getElementById(profile_section);
+    current_profile_element.style.display = "none";
+    element.style.display = "revert";
+    current_profile_element = element;
 }
