@@ -46,7 +46,6 @@ a {
     95% {
         background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
     }
-
 }
 
 #car_photo {
@@ -89,6 +88,19 @@ a {
     justify-content: space-between;
 }
 
+#newsletter_section::-webkit-scrollbar {
+    width: 7px;
+}
+
+#newsletter_section::-webkit-scrollbar-track {
+    background: #000;
+}
+
+#newsletter_section::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #fff;
+}
+
 #team_descriptions {
     width: 70vw;
 }
@@ -99,7 +111,6 @@ a {
     align-items: baseline;
     font-size: 1.15rem;
     border-radius: 20px;
-    font-family: "Play";
 }
 
 #defianz_descript {
