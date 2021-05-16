@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Contact Us. Get in touch with one of our members. TDR_DTUSDC">
+    <meta name="keywords"
+        content="TDR-DTUSDC, Team Defianz Racing, defianz dtu, dtusdc dtu, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website, contact, contact us">
+    <meta name="author" content="Krushnal Patel">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | TDR-SDC</title>
+    <link rel="stylesheet" href="/css/common.scss">
+    <link rel="stylesheet" href="/css/contact.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/load.js"></script>
+</head>
+
+<body id="body" onload="load()">
+    <%- include('_header'); %>
+        <div id="heading_background"></div>
+        <main class="d-f-r jc-se">
+            <div class="d-f-c jc-sa" id="contact_address">
+                <span class="contact_heading">Our Address</span>
+                <span class="contact_descript">
+                    Team Defianz-DTUSDC Racing,
+                    Wind Tunnel Workshops,<br>
+                    Delhi Technological University,<br>
+                    Shahbad Daulatpur, Bawana,<br>
+                    Delhi - 110042<br>
+                    India
+                </span>
+                <br>
+                <a class="contact_descript" id="google_location" href="https://goo.gl/maps/cKs9jecDmYivDtUz5">
+                    <i class="fa fa-map-marker"></i>&numsp;Google Location
+                </a>
+                <br>
+                <span class="contact_heading">Email</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;"><a
+                        href="mailto:teamdefianz@dtu.ac.in">teamdefianz@dtu.ac.in</a></span>
+                <br>
+                <span class="contact_heading">Quick Call</span>
+                <span class="contact_descript" style="margin-top: -0.5rem;">+91 93101 30619</span>
+            </div>
+
+            <div class="d-f-c jc-c ai-c" id="contact_form">
+                <span id="form_heading">Get in touch</span>
+                <form class="d-f-c" action="/contact" method="POST">
+                    <input type="text" class="input" name="name" placeholder="Name" required>
+                    <input type="text" class="input" name="email" placeholder="Email" required>
+                    <input type="text" class="input" name="subject" placeholder="Subject" required>
+                    <input type="text" class="input" name="message" id="message" placeholder="Message" required>
+                    <br>
+                    <input type="submit" name="submit" id="submit" value="Submit" onclick="tick()">
+                </form>
+            </div>
+        </main>
+
+        <%- include('_footer'); %>
+            <script type="text/javascript" src="/js/contact.js"></script>
+            <script type="text/javascript" src="/js/load.js"></script>
+</body>
+
+</html>

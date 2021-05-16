@@ -1,0 +1,226 @@
+main {
+    padding: 10vh 0 0 5vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+#menu_section {
+    height: 70vh;
+    width: 20vw;
+    // background-color: rgb(196, 196, 196);
+}
+
+#menu_list {
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+#menu_list div {
+    width: 20vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+#menu_list li {
+    padding-left: 2rem;
+    margin: 2rem 0;
+    cursor: default;
+    width: 30vw;
+}
+
+li::after {
+    content: "\00bb";
+    opacity: 0;
+}
+
+#menu_list div:hover {
+    transform: translate(10%, 0);
+    color: red;
+}
+
+#menu_list div:hover li::after {
+    opacity: 1;
+}
+
+.content {
+    margin: 0 10vw 0 5vw;
+    display: none;
+}
+
+#profile {
+    width: 50vw;
+}
+
+#profile_photo {
+    border: 2px solid black;
+    width: 12vw;
+    height: 25vh;
+    margin-right: 3vw;
+}
+
+#details {
+    font-size: 1.2rem;
+    text-align: left;
+    width: max-content;
+}
+
+#details span span {
+    font-weight: 700;
+}
+
+#details span {
+    margin: 0.2rem 0;
+}
+
+#add_user_form {
+    height: fit-content;
+    border: 2px solid black;
+    background-color: rgb(238, 255, 255);
+    border-radius: 10px;
+    padding: 1rem 0;
+}
+
+#create_form {
+    width: 25vw;
+    flex-wrap: wrap;
+    margin: 2rem 0 0 0;
+    padding: 0 2rem;
+}
+
+.add_user_input {
+    all: unset;
+    border-bottom: 1px solid black;
+    margin: 1rem;
+}
+
+#management {
+    text-align: center;
+    width: 7.5vw;
+}
+
+#update_credentials {
+    height: fit-content;
+    width: 30vw;
+    margin: 5rem 0;
+    padding: 2rem 0 0 0;
+    border: 2px solid black;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: rgb(238, 255, 255);
+    transform: translate(0%, -10%);
+}
+
+#update_credentials form {
+    flex-wrap: wrap;
+}
+
+.update_details {
+    all: unset;
+    border-bottom: 2px solid black;
+    margin: 2rem 1rem;
+}
+
+#submit {
+    all: unset;
+    border: 1px solid black;
+    background-color: rgba(0, 110, 255, 0.8);
+    border-radius: 100px;
+    font-weight: 900;
+    width: 5rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: 1rem;
+    text-align: center;
+}
+
+#newsletter_form {
+    width: auto;
+    flex-wrap: wrap;
+}
+
+// Sponsors
+
+.table {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.table-header {
+    display: flex;
+    width: 50vw;
+    background: #000;
+    align-items: center;
+    height: 5vh;
+}
+
+.table-row {
+    display: flex;
+    align-items: center;
+    height: 4vh;
+    width: 50vw;
+}
+
+.table-row:nth-child(2n + 1) {
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.table-row:nth-child(2n) {
+    background-color: rgba(128, 128, 128, 0.05);
+}
+
+.table-data,
+.header__item {
+    flex: 1 1 20%;
+    text-align: center;
+}
+
+.header__item {
+    text-transform: uppercase;
+}
+
+.filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.content_section > div {
+    margin-bottom: 2vh;
+    font-size: 1.5rem;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+.delete_icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+#sponsor_name_input {
+    all: unset;
+    border-bottom: 1px solid black;
+    padding: 0.5vh;
+    width: 15vw;
+    margin-right: 5vw;
+}
+
+// CAD
+
+#version_number {
+    all: unset;
+    border-bottom: 2px solid black;
+    width: 2vw;
+}
+
+#remarks {
+    width: 20vw;
+}

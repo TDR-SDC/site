@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Gallery. List of photos and past memori">
+    <meta name="keywords"
+        content="TDR-DTUSDC, Team Defianz Racing, defianz dtu, dtusdc dtu, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website, gallery, photos, images">
+    <meta name="author" content="Krushnal Patel">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | TDR-SDC</title>
+    <link rel="stylesheet" href="/css/common.scss">
+    <link rel="stylesheet" href="/css/gallery.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/load.js"></script>
+</head>
+
+<body id="body" onload="load()">
+    <div class="loader d-f ai-c jc-c"></div>
+    <%- include('_header'); %>
+        <div id="heading_background"></div>
+        <main>
+            <div class="d-f-c ai-c" id="gallery">
+                <span id="gallery_heading">Past Memories</span>
+                <ul class="d-f-r jc-c" id="photos">
+                    <% photos.forEach(function(photo){ %>
+                        <li>
+                            <div>
+                                <img src="<%= photo.photo %>" alt="<%= photo.descript%>">
+                            </div>
+                        </li>
+                        <% }) %>
+                </ul>
+
+            </div>
+        </main>
+
+        <%- include('_footer'); %>
+</body>
+
+</html>

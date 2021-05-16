@@ -1,0 +1,37 @@
+{
+  "name": "defianz_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "local": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TDR-SDC/site.git"
+  },
+  "author": "Krushnal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TDR-SDC/site/issues"
+  },
+  "homepage": "https://github.com/TDR-SDC/site#readme",
+  "dependencies": {
+    "azure-storage": "^2.10.3",
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.5",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

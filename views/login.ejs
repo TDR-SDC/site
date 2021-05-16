@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="User login page. Only accessible to TDR-DTUSDC team members.">
+    <meta name="keywords"
+        content="TDR-DTUSDC, Team Defianz Racing, defianz dtu, dtusdc dtu, DTUSDC, DTU Self-Drving Car, Team Defianz-DTU Self Driving Car Project, Official TDR-DTUSDC Website, Official website">
+    <meta name="author" content="Krushnal Patel">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TDR-DTUSDC</title>
+    <link rel="stylesheet" href="/css/common.scss">
+    <link rel="stylesheet" href="/css/login.scss">
+    <link rel="stylesheet" href="/css/_header.scss">
+    <link rel="stylesheet" href="/css/_footer.scss">
+</head>
+
+<body id="body" onload="load()">
+    <%- include('_header'); %>
+        <main class="d-f jc-c">
+            <section>
+                <div class="login-box">
+                    <h1>Login</h1>
+                    <h4>*Only for team members</h4>
+                    <form action="/login/create_session" method="POST">
+                        <div class="user-box">
+                            <input type="text" name="user" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="password" name="password" required>
+                            <label>Password</label>
+                        </div>
+                        <a href="">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <input type="submit" id="submit" value="Log In">
+                        </a>
+                    </form>
+                </div>
+
+            </section>
+        </main>
+        <script type="text/javascript" src="/js/load.js"></script>
+</body>
+
+</html>

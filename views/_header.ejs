@@ -1,0 +1,28 @@
+<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet'>
+
+<header class="d-f-r jc-se" id="header">
+    <a href="/"><img id="logo" src="/imgs/logos/black_transparent.png"></a>
+    <div class="container borderYtoX d-f-r jc-sb ai-c" id="nav_bar">
+        <a href="/team">Team</a>
+        <a class="container borderYtoX" href="/sponsors">Sponsors</a>
+        <a class="container borderYtoX" href="/gallery">Gallery</a>
+        <a class="container borderYtoX" href="/contact">Contact Us</a>
+    </div>
+    <div class="d-f jc-c ai-c">
+        <% if(locals.user) {%>
+            <a href="/user/profile" class="d-f ai-c username" id="user">
+                <img src="/imgs/icons/user.png">
+                <%= user.user %>
+            </a>
+            <% }%>
+                <% if(locals.user) {%>
+                    <a class="d-f ai-c jc-c username" href="/user/logout">
+                        <img src="/imgs/icons/log.png">Logout
+                    </a>
+                    <% } else {%>
+                        <a class="d-f ai-c jc-c username" href="/login">
+                            <img src="/imgs/icons/log.png">Login
+                        </a>
+                        <% } %>
+    </div>
+</header>

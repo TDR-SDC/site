@@ -1,0 +1,5 @@
+.vscode
+node_modules
+.rest
+.env
+assets/imgs/team_members/

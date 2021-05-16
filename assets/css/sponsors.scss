@@ -1,0 +1,23 @@
+#sponsor_list {
+    width: 75vw;
+}
+
+#sponsor_heading {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffd700;
+    text-transform: uppercase;
+    margin: 15vh 0 5vh 0;
+    letter-spacing: 5px;
+}
+
+#sponsor_div {
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#sponsor_div img {
+    padding: 2rem;
+    max-width: 15vw;
+    max-height: 10vh;
+}
