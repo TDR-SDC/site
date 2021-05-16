@@ -60,9 +60,33 @@ module.exports.profile = function (req, res) {
     else res.status(401).redirect('/login');
 };
 
-module.exports.upload_avatar = async function (req, res) {
-    var user = await Users.findById(req.user._id);
-    Users.uploadedAvatar(req, res, async function (err) {
+module.exports.get_user = function (req, res) {
+    try {
+        Users.findOne({ user: `${req.params.username}` }, function (err, user) {
+            if (user) {
+                if (user.user != 'admin' && user.user != 'test') {
+                    user.password = undefined;
+                    user.permission = undefined;
+                    user.createdAt = undefined;
+                    user.updatedAt = undefined;
+                    user.__v = undefined;
+                    res.status(200).json(user);
+                }
+                else
+                    res.status(403).send('Forbidden');
+            }
+            else
+                res.status(404).send('User not found');
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server error');
+    }
+}
+
+module.exports.remove_user = function (req, res) {
+    const parsed_url = req.url.split("/");
+    Users.findByIdAndDelete(parsed_url[2], function (err, user) {
         var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         const containerName = 'team-members';
         if (user.avatar && user.avatar != 'https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png') {
@@ -71,22 +95,16 @@ module.exports.upload_avatar = async function (req, res) {
             blob = blob[blob.length - 1];
             blobService.deleteBlob(containerName, blob, function (error) { });
         }
-        blobService.createBlockBlobFromLocalFile(containerName, `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
-            if (err) {
-                res.status(503).render('error', {
-                    error: true,
-                    error_code: 503,
-                    error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
-                });
-            }
-            else {
-                var avatarUrl = blobService.getUrl("team-members", `${req.user.user}-${req.file.originalname}`);
-                user.avatar = avatarUrl;
-                user.save();
-                res.status(201).redirect('/user');
-            }
-        });
+        if (err)
+            res.status(503).render('error');
+        else
+            res.status(302).redirect('back');
     });
+};
+
+module.exports.logout = function (req, res) {
+    req.logout();
+    res.status(302).redirect('back');
 };
 
 module.exports.create = function (req, res) {
@@ -124,15 +142,6 @@ module.exports.create = function (req, res) {
     res.status(200).redirect('/user/profile');
 };
 
-module.exports.add_alumni = function (req, res) {
-    Alum.create({
-        "name": req.body.name,
-        "dept": req.body.dept,
-        "linkedin": req.body.linkedin
-    });
-    res.status(200).redirect('/user/profile');
-};
-
 module.exports.update_credentials = async function (req, res) {
     let user = req.user;
 
@@ -151,31 +160,11 @@ module.exports.update_credentials = async function (req, res) {
     user.save();
 
     res.status(302).redirect('back');
-}
-
-// This function is solely for testing and mannual DB changes.
-// Tread carefully over this function.
-module.exports.user_info = async function (req, res) {
-    if (req.isAuthenticated() && (req.user.user == 'krush' || req.user.permission == 0)) {
-        await Users.find().then(users => {
-            res.send(users);
-            for (i in users) {
-                // console.log(users[i]);
-                //     users[i].save();
-            }
-        });
-    }
-    else
-        res.status(403).render('error', {
-            error: true,
-            error_code: 403,
-            error_message: "Forbidden!! You do not have access to this page."
-        });
 };
 
-module.exports.remove_user = function (req, res) {
-    const parsed_url = req.url.split("/");
-    Users.findByIdAndDelete(parsed_url[2], function (err, user) {
+module.exports.upload_avatar = async function (req, res) {
+    var user = await Users.findById(req.user._id);
+    Users.uploadedAvatar(req, res, async function (err) {
         var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
         const containerName = 'team-members';
         if (user.avatar && user.avatar != 'https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png') {
@@ -184,16 +173,22 @@ module.exports.remove_user = function (req, res) {
             blob = blob[blob.length - 1];
             blobService.deleteBlob(containerName, blob, function (error) { });
         }
-        if (err)
-            res.status(503).render('error');
-        else
-            res.status(302).redirect('back');
+        blobService.createBlockBlobFromLocalFile(containerName, `${req.user.user}-${req.file.originalname}`, `${req.file.path}`, function (err, result, response) {
+            if (err) {
+                res.status(503).render('error', {
+                    error: true,
+                    error_code: 503,
+                    error_message: "The file you uploaded got destroyed in between. Please check your net connection speed or contact us if error still persists"
+                });
+            }
+            else {
+                var avatarUrl = blobService.getUrl("team-members", `${req.user.user}-${req.file.originalname}`);
+                user.avatar = avatarUrl;
+                user.save();
+                res.status(201).redirect('/user');
+            }
+        });
     });
-};
-
-module.exports.logout = function (req, res) {
-    req.logout();
-    res.status(302).redirect('back');
 };
 
 module.exports.add_team_doc = function (req, res) {
@@ -219,4 +214,33 @@ module.exports.add_team_doc = function (req, res) {
             }
         });
     });
+};
+
+module.exports.add_alumni = function (req, res) {
+    Alum.create({
+        "name": req.body.name,
+        "dept": req.body.dept,
+        "linkedin": req.body.linkedin
+    });
+    res.status(200).redirect('/user/profile');
+};
+
+// This function is solely for testing and mannual DB changes.
+// Tread carefully over this function.
+module.exports.user_info = async function (req, res) {
+    if (req.isAuthenticated() && (req.user.user == 'krush' || req.user.permission == 0)) {
+        await Users.find().then(users => {
+            res.status(200).send(users);
+            for (i in users) {
+                // console.log(users[i]);
+                //     users[i].save();
+            }
+        });
+    }
+    else
+        res.status(403).render('error', {
+            error: true,
+            error_code: 403,
+            error_message: "Forbidden!! You do not have access to this page."
+        });
 };
