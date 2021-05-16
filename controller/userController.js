@@ -176,6 +176,14 @@ module.exports.user_info = async function (req, res) {
 module.exports.remove_user = function (req, res) {
     const parsed_url = req.url.split("/");
     Users.findByIdAndDelete(parsed_url[2], function (err, user) {
+        var blobService = azure.createBlobService(process.env.AZURE_STORAGE_ACCOUNT, process.env.AZURE_STORAGE_ACCESS_KEY);
+        const containerName = 'team-members';
+        if (user.avatar && user.avatar != 'https://defianzdtusdc.blob.core.windows.net/team-members/placeholder.png') {
+            const blobURL = user.avatar;
+            let blob = blobURL.split('/');
+            blob = blob[blob.length - 1];
+            blobService.deleteBlob(containerName, blob, function (error) { });
+        }
         if (err)
             res.status(503).render('error');
         else
