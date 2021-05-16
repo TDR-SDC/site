@@ -139,7 +139,7 @@ module.exports.create = function (req, res) {
             "management": management
         });
     });
-    res.status(200).redirect('/user/profile');
+    res.status(200).redirect(`/user/profile/${req.user.user}`);
 };
 
 module.exports.update_credentials = async function (req, res) {
@@ -222,7 +222,7 @@ module.exports.add_alumni = function (req, res) {
         "dept": req.body.dept,
         "linkedin": req.body.linkedin
     });
-    res.status(200).redirect('/user/profile');
+    res.status(200).redirect(`/user/profile/${req.user.user}`);
 };
 
 // This function is solely for testing and mannual DB changes.

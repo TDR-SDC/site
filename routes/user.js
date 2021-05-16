@@ -3,11 +3,11 @@ const router = express.Router();
 const passport = require('passport');
 const userController = require('../controller/userController');
 
-router.get('/profile', passport.checkAuthentication, userController.profile);
-router.get('/:username', userController.get_user);
+router.get('/profile/:user', passport.checkAuthentication, userController.profile);
 router.get('/remove/:_id', userController.remove_user);
 router.get('/logout', userController.logout);
 router.get('/user_info', userController.user_info);
+router.get('/:username', userController.get_user);
 
 router.post('/create', userController.create);
 router.post('/update_credentials', userController.update_credentials);

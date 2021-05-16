@@ -10,7 +10,7 @@
     </div>
     <div class="d-f jc-c ai-c">
         <% if(locals.user) {%>
-            <a href="/user/profile" class="d-f ai-c username" id="user">
+            <a href="/user/profile/<%= locals.user.user %>" class="d-f ai-c username" id="user">
                 <img src="/imgs/icons/user.png">
                 <%= user.user %>
             </a>
