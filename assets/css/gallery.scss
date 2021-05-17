@@ -40,3 +40,17 @@ main {
     transform: scale(1);
     opacity: 1;
 }
+
+@media all and (max-width: 1200px) {
+    #photos img {
+        width: 50vw;
+        height: 30vw;
+    }
+}
+
+@media all and (max-width: 600px) {
+    #photos img {
+        width: 100vw;
+        height: 40vw;
+    }
+}
