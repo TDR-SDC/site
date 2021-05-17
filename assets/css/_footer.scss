@@ -1,6 +1,6 @@
 footer {
     background-color: rgb(212, 212, 212);
-    height: auto;
+    height: 35vh;
     width: 100vw;
 }
 
@@ -12,6 +12,18 @@ footer {
 
 .footer_section {
     width: 30vw;
+    padding: 4rem 0;
+    box-sizing: border-box;
+    text-overflow: clip;
+    max-height: 30vh;
+}
+
+#about {
+    overflow-y: scroll;
+}
+
+#about::-webkit-scrollbar {
+    width: 0px;
 }
 
 #about_description {
@@ -110,7 +122,7 @@ iframe {
 }
 #copyright {
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 2vh;
     background-color: black;
     color: aliceblue;
     width: 100vw;
@@ -119,4 +131,45 @@ iframe {
 
 #copyright span {
     margin-top: 1vh;
+}
+
+@media all and (max-width: 1450px) {
+    iframe {
+        display: none;
+    }
+    .social_icons {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+    #social a {
+        margin: 0.3rem;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .footer_section {
+        padding: 0;
+    }
+}
+
+@media all and (max-width: 700px) {
+    #copyright{
+        height: 10vh;
+        flex-direction: column;
+    }
+    #main_footer {
+        height: 25vh;
+    }
+    #main_footer div:not(:nth-child(3)){
+        display: none;
+    }
+    #about {
+        display: none;
+    }
+    .footer_section {
+        width: 70vw;
+    }
+    #social {
+        width: 80vw;
+    }
 }
