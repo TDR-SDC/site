@@ -1,14 +1,16 @@
 <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="/js/_header.js"></script>
 
-<header class="d-f-r jc-se" id="header">
+<header class="d-f-r jc-sb" onload="positionMenu()">
     <a href="/"><img id="logo" src="/imgs/logos/black_transparent.png"></a>
     <div class="container borderYtoX d-f-r jc-sb ai-c" id="nav_bar">
         <a href="/team">Team</a>
-        <a class="container borderYtoX" href="/sponsors">Sponsors</a>
-        <a class="container borderYtoX" href="/gallery">Gallery</a>
-        <a class="container borderYtoX" href="/contact">Contact Us</a>
+        <a href="/sponsors">Sponsors</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact Us</a>
     </div>
-    <div class="d-f jc-c ai-c">
+    <div class="d-f jc-c ai-c" id="login_bar">
         <% if(locals.user) {%>
             <a href="/user/profile/<%= locals.user.user %>" class="d-f ai-c username" id="user">
                 <img src="/imgs/icons/user.png">
@@ -24,5 +26,32 @@
                             <img src="/imgs/icons/log.png">Login
                         </a>
                         <% } %>
+    </div>
+    <span class="menu-btn d-f ai-c jc-c" onclick="toggleMenu()">&#9776; Menu</span>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="icon" onclick="toggleMenu()">&times;</a>
+        <div id="menu-opt">
+            <a href="/">Home</a>
+            <a href="/team">Team</a>
+            <a href="/sponsors">Sponsors</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+        <div style="margin-top: 5vh;">
+            <% if(locals.user) {%>
+                <a class="d-f-r ai-c jc-c" href="/user/profile/<%= locals.user.user %>">
+                    <img src="/imgs/icons/user.png">&numsp;<%= user.user %>
+                </a>
+                <% }%>
+                    <% if(locals.user) {%>
+                        <a class="d-f-r ai-c jc-c" href="/user/logout">
+                            <img src="/imgs/icons/log.png">&numsp;Logout
+                        </a>
+                        <% } else {%>
+                            <a class="d-f-r ai-c jc-c" href="/login">
+                                <img src="/imgs/icons/log.png">&numsp;Login
+                            </a>
+                            <% } %>
+        </div>
     </div>
 </header>

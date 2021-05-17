@@ -16,11 +16,9 @@
     <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/js/team.js"></script>
-    <script type="text/javascript" src="/js/load.js"></script>
 </head>
 
-<body id="body" onload="team()">
-    <div class="loader d-f ai-c jc-c"></div>
+<body onload="team()">
     <%- include('_header'); %>
         <main>
             <div id="heading_background"></div>
@@ -40,7 +38,7 @@
                         The conscience
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.management==true) {%>
                                 <div class="member d-f-c jc-c ai-c">
@@ -86,7 +84,7 @@
                         The Brains
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.dept=='software' ) {%>
                                 <div class="member d-f-c jc-c ai-c">
@@ -136,7 +134,7 @@
                         Nervous System
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.dept=='electrical' ) {%>
                                 <div class="member d-f-c jc-c ai-c">
@@ -186,7 +184,7 @@
                         Skeletal System and Muscles
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.dept=='mechanical' ) {%>
                                 <div class="member d-f-c jc-c ai-c">
@@ -236,7 +234,7 @@
                         The consciousness
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.dept=='corporate' ) {%>
                                 <div class="member d-f-c jc-se ai-c">
@@ -287,7 +285,7 @@
                         Behind-the-scenes
                     </span>
 
-                    <span class="members_list d-f-r jc-c ai-c">
+                    <span class="members_list d-f-r jc-c ai-c f-w">
                         <% users.forEach(function(user){ %>
                             <% if(user.dept=='advisor' ) {%>
                                 <div class="member d-f-c jc-se ai-c">

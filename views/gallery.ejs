@@ -14,17 +14,15 @@
     <link rel="stylesheet" href="/css/_header.scss">
     <link rel="stylesheet" href="/css/_footer.scss">
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/load.js"></script>
 </head>
 
-<body id="body" onload="load()">
-    <div class="loader d-f ai-c jc-c"></div>
+<body>
     <%- include('_header'); %>
         <div id="heading_background"></div>
         <main>
             <div class="d-f-c ai-c" id="gallery">
                 <span id="gallery_heading">Past Memories</span>
-                <ul class="d-f-r jc-c" id="photos">
+                <ul class="d-f-r jc-c f-w" id="photos">
                     <% photos.forEach(function(photo){ %>
                         <li>
                             <div>
