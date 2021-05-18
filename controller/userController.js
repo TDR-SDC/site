@@ -124,7 +124,7 @@ module.exports.create = function (req, res) {
     res.status(200).redirect(`/user/profile/${req.user.user}`);
 };
 
-module.exports.update_credentials = async function (req, res) {
+module.exports.update_details = async function (req, res) {
     let user = req.user;
 
     if (req.body.name)
