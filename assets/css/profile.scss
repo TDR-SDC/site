@@ -1,149 +1,143 @@
 main {
-    padding: 10vh 0 0 5vw;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
+    box-sizing: border-box;
+    padding: 5rem;
+    background-color: rgba(13, 17, 23);
+    line-height: 21px;
+    color: white;
 }
 
-#menu_section {
-    height: 70vh;
-    width: 20vw;
-    // background-color: rgb(196, 196, 196);
+#menu {
+    border: 1px #54575a solid;
+    border-radius: 3px;
 }
 
-#menu_list {
-    list-style: none;
-    font-size: 1.5rem;
+.menu-item {
+    border-bottom: 1px #54575a solid;
+    width: 200px;
+    font-weight: 400;
+    padding: 10px 20px;
+    color: #c9d1d9;
 }
 
-#menu_list div {
-    width: 20vw;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    transition: all 0.5s;
+.menu-item:hover:not(:first-child) {
+    background-color: rgba(88, 88, 88, 0.171);
+    cursor: pointer;
 }
 
-#menu_list li {
-    padding-left: 2rem;
-    margin: 2rem 0;
-    cursor: default;
-    width: 30vw;
-}
-
-li::after {
-    content: "\00bb";
-    opacity: 0;
-}
-
-#menu_list div:hover {
-    transform: translate(10%, 0);
-    color: red;
-}
-
-#menu_list div:hover li::after {
-    opacity: 1;
+.menu-item:first-child {
+    font-weight: 600;
+    color: #8b949e;
 }
 
 .content {
-    margin: 0 10vw 0 5vw;
+    margin: 0 5vw;
+    width: 1000px;
     display: none;
 }
 
-#profile {
-    width: 50vw;
+.content-heading {
+    font-weight: 500;
+    padding-bottom: 16px;
+    border-bottom: 2px #54575a solid;
+    margin-block-start: 0;
 }
 
-#profile_photo {
-    border: 2px solid black;
-    width: 12vw;
-    height: 25vh;
-    margin-right: 3vw;
+// Profile Section
+
+form {
+    display: flex;
+    flex-direction: row;
 }
 
-#details {
-    font-size: 1.2rem;
-    text-align: left;
-    width: max-content;
+#details-form {
+    width: 500px;
+    margin-right: 100px;
 }
 
-#details span span {
-    font-weight: 700;
+dt {
+    margin-bottom: 6px;
+    font-size: 1rem;
 }
 
-#details span {
-    margin: 0.2rem 0;
-}
-
-#add_user_form {
-    height: fit-content;
-    border: 2px solid black;
-    background-color: rgb(238, 255, 255);
-    border-radius: 10px;
-    padding: 1rem 0;
-}
-
-#create_form {
-    width: 25vw;
-    flex-wrap: wrap;
-    margin: 2rem 0 0 0;
-    padding: 0 2rem;
-}
-
-.add_user_input {
+.text-input {
     all: unset;
-    border-bottom: 1px solid black;
-    margin: 1rem;
+    border: 1px rgb(33, 38, 45) solid;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 5px 12px;
+    width: 400px;
+    background-color: rgb(1, 4, 9);
+    font-size: 1rem;
 }
 
-#management {
-    text-align: center;
-    width: 7.5vw;
+.text-input::placeholder {
+    color: #54575a;
 }
 
-#update_credentials {
-    height: fit-content;
-    width: 30vw;
-    margin: 5rem 0;
-    padding: 2rem 0 0 0;
-    border: 2px solid black;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    background-color: rgb(238, 255, 255);
-    transform: translate(0%, -10%);
+.note {
+    min-height: 17px;
+    margin: 4px 0 2px;
+    font-size: 12px;
+    color: rgb(139, 148, 158);
 }
 
-#update_credentials form {
-    flex-wrap: wrap;
+#avatar-form > input {
+    display: none;
 }
 
-.update_details {
-    all: unset;
-    border-bottom: 2px solid black;
-    margin: 2rem 1rem;
-}
-
-#submit {
-    all: unset;
-    border: 1px solid black;
-    background-color: rgba(0, 110, 255, 0.8);
-    border-radius: 100px;
-    font-weight: 900;
-    width: 5rem;
-    height: 2rem;
+label {
     cursor: pointer;
-    margin: 1rem;
-    text-align: center;
 }
 
-#newsletter_form {
-    width: auto;
-    flex-wrap: wrap;
+.submit-btn {
+    padding: 6px 12px;
+    background-color: rgb(35, 134, 54);
+    cursor: pointer;
+    color: white;
+    width: 90px;
+    height: 20px;
+    box-sizing: content-box;
+    font-family: inherit;
+    border: 1px rgb(0, 0, 0) solid;
+    transition: all 0.25s;
 }
+
+.submit-btn:hover {
+    background-color: rgba(13, 17, 23);
+    color: rgb(35, 134, 54);
+    border: 1px rgb(35, 134, 54) solid;
+}
+
+// Team Documents
+
+.content-section {
+    all: unset;
+    margin-bottom: 1rem;
+}
+
+.file {
+    visibility: hidden;
+}
+
+.custom-file-input {
+    border: 1px solid #999;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+}
+
+// Add Users
+
 
 // Sponsors
 
 .table {
-    width: 70%;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -151,7 +145,6 @@ li::after {
 
 .table-header {
     display: flex;
-    width: 50vw;
     background: #000;
     align-items: center;
     height: 5vh;
@@ -161,14 +154,16 @@ li::after {
     display: flex;
     align-items: center;
     height: 4vh;
-    width: 50vw;
 }
 
 .table-row:nth-child(2n + 1) {
-    background-color: rgba(128, 128, 128, 0.3);
+    background-color: rgba(190, 190, 190, 0.2);
 }
 .table-row:nth-child(2n) {
-    background-color: rgba(128, 128, 128, 0.05);
+    background-color: rgba(190, 190, 190, 0.3);
+}
+.table-row:hover:nth-child(n) {
+    background-color: rgba(190, 190, 190, 0.5);
 }
 
 .table-data,
@@ -190,15 +185,6 @@ li::after {
     padding-right: 24px;
 }
 
-.content_section > div {
-    margin-bottom: 2vh;
-    font-size: 1.5rem;
-}
-
-#logo {
-    cursor: pointer;
-}
-
 .delete_icon {
     width: 1rem;
     height: 1rem;
@@ -212,14 +198,7 @@ li::after {
     margin-right: 5vw;
 }
 
-// CAD
-
-#version_number {
-    all: unset;
-    border-bottom: 2px solid black;
-    width: 2vw;
-}
-
-#remarks {
-    width: 20vw;
+// Misc. Corporate
+#misc_corpo form {
+    max-width: fit-content;
 }

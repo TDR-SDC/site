@@ -12,407 +12,357 @@
         <%= locals.user.name %> | TDR-DTUSDC
     </title>
     <link rel="stylesheet" href="/css/common.scss">
-    <link rel="stylesheet" href="/css/profile.scss">
     <link rel="stylesheet" href="/css/_header.scss">
     <link rel="stylesheet" href="/css/_footer.scss">
+    <link rel="stylesheet" href="/css/profile.scss">
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 
-<body onload="show_profile_section('display_update_profile')">
+<body onload="show_profile_section('profile')">
     <%- include('_header'); %>
         <div id="heading_background"></div>
-        <main class="d-f-r f-w">
-            <div class="d-f jc-c" id="menu_section">
-                <ul id="menu_list">
-                    <div onclick="show_profile_section('display_update_profile')">
-                        <li style="visibility: visible;">Profile </li>
-                    </div>
-                    <div onclick="show_profile_section('team_members')">
-                        <li style="visibility: visible;">Team Members </li>
-                    </div>
-                    <div onclick="show_profile_section('team_docs')">
-                        <li style="visibility: visible;">Team Documents </li>
-                    </div>
-                    <%if(locals.user.permission <=3 ){%>
-                        <div onclick="show_profile_section('add_user')">
-                            <li>Add User </li>
-                        </div>
-                        <%}%>
-                            <%if(checkCorporateUser){%>
-                                <div onclick="show_profile_section('misc_corpo')">
-                                    <li style="visibility: visible;">Misc. Corporate </li>
-                                </div>
-                                <%}%>
-                                    <%if((checkCorporateUser && locals.user.year>=2) || locals.user.user=='admin' ){%>
-                                        <div onclick="show_profile_section('sponsors')">
-                                            <li style="visibility: visible;">Sponsors </li>
-                                        </div>
-                                        <%}%>
-                                            <%if(checkMechanicalUser || locals.user.user=='admin' ){%>
-                                                <div onclick="show_profile_section('cad')">
-                                                    <li style="visibility: visible;">CAD Iterations </li>
-                                                </div>
-                                                <%}%>
-                </ul>
+        <main class="d-f-r">
+            <!-- Profile Menu  -->
+            <div id="menu">
+                <div class="menu-item">Profile Menu</div>
+                <div class="menu-item" onclick="show_profile_section('profile')">Profile</div>
+                <div class="menu-item" onclick="show_profile_section('team_members')">Team Members</div>
+                <div class="menu-item" onclick="show_profile_section('team_docs')">Team Documents</div>
+                <%if(locals.user.permission <=3 ){%>
+                    <div class="menu-item" onclick="show_profile_section('add_user')">Add User</div>
+                    <%}%>
+                        <%if(checkCorporateUser){%>
+                            <div class="menu-item" onclick="show_profile_section('misc_corpo')">Misc. Corporate</div>
+                            <%}%>
+                                <%if((checkCorporateUser && locals.user.year>=2) || locals.user.user=='admin' ){%>
+                                    <div class="menu-item" onclick="show_profile_section('sponsors')">Sponsors</div>
+                                    <%}%>
             </div>
 
-            <div>
-                <!-- Profile display section -->
-                <div class="content" id="display_update_profile">
-                    <div class="d-f" id="profile">
-                        <div class="d-f-r">
-                            <div class="d-f-c">
-                                <% if(user.avatar) {%>
-                                    <img id="profile_photo" src="<%= user.avatar %>">
-                                    <%} else {%>
-                                        <img id="profile_photo" src="/imgs/team_members/placeholder.png">
-                                        <% } %>
-                                            <br>
-                                            <form action="/user/upload_avatar" method="POST"
-                                                enctype="multipart/form-data">
-                                                <input type="file" name="avatar" placeholder="Update Photo" required>
-                                                <br><br>
-                                                <input type="submit" value="Upload">
-                                            </form>
+            <!-- Profile display section -->
+            <section class="content" id="profile">
+                <h2 class="content-heading">Public Profile</h2>
+                <div class="d-f-r">
+                    <form id="details-form" action="/user/update_details" method="POST">
+                        <dl>
+                            <dt>Username</dt>
+                            <input class="text-input" type="text" placeholder="<%= locals.user.user %>" disabled>
+                            <div class="note">
+                                This is non-editable. To get a new username contact Krushnal.
                             </div>
-                            <div id="details">
-                                <span class="d-f-r ai-c">
-                                    <span>Username:</span>
-                                    &numsp;&numsp;&emsp;
-                                    <%= user.user %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Name:</span>
-                                    &emsp;&emsp;&emsp;&emsp;
-                                    <%= user.name %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Department:</span>
-                                    &numsp;&numsp;
-                                    <%= user.dept %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Year:</span>
-                                    &emsp;&emsp;&emsp;&emsp;&numsp;
-                                    <%= user.year %>
-                                </span>
-                                <span class="d-f-r ai-c">
-                                    <span>Position:</span>
-                                    &numsp;&numsp;&numsp;&numsp;&numsp;
-                                    <%= user.position %>
-                                </span>
-                                <% if(user.sec_position) {%>
-                                    <span class="d-f-r ai-c">
-                                        <span>Departmental Position:</span>
-                                        &numsp;&numsp;&numsp;&numsp;&numsp;
-                                        <%= user.sec_position %>
-                                    </span>
-                                    <% } %>
-                                        <span class="d-f-r ai-c">
-                                            <span>Management:</span>
-                                            &numsp;
-                                            <% if(user.management) {%>
-                                                Yes
-                                                <%} else {%>
-                                                    No
-                                                    <% } %>
-                                        </span>
-                                        <span class="d-f-r ai-c">
-                                            <span>Insta:</span>
-                                            &numsp;&emsp;&emsp;&numsp;&numsp;&numsp;
-                                            <%= user.social.insta %>
-                                        </span>
-                                        <span class="d-f-r ai-c">
-                                            <span>Linkedin:</span>
-                                            &numsp;&numsp;&numsp;&emsp;
-                                            <%= user.social.linkedin %>
-                                        </span>
-                                        <span class="d-f-r ai-c">
-                                            <span>Twitter:</span>
-                                            &numsp;&numsp;&emsp;&emsp;
-                                            <%= user.social.twitter %>
-                                        </span>
+                        </dl>
+                        <dl>
+                            <dt>Name</dt>
+                            <input class="text-input" type="text" value="<%= locals.user.name %>" placeholder="Name">
+                        </dl>
+                        <dl>
+                            <dt>Password</dt>
+                            <input class="text-input" type="text" placeholder="Password">
+                            <div class="note">
+                                Defaulted to 1234. Please change it if you haven't.
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="d-f-c jc-c ai-c" id="update_credentials">
-                        Update Credentials and Details
-                        <form class="d-f-r jc-c" action="/user/update_credentials" method="POST">
-                            <input class="update_details" type="text" name="name" id="name" placeholder="Name">
-                            <input class="update_details" type="text" name="password" placeholder="Password">
-                            <input class="update_details" type="text" name="insta" placeholder="Insta link">
-                            <input class="update_details" type="text" name="linkedin" placeholder="Linkedin link">
-                            <input class="update_details" type="text" name="twitter" placeholder="Twitter Link">
-                            <button id="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Team Members (open to all) -->
-                <div class="content" id="team_members">
-                    <div class="table">
-                        <div class="table-header">
-                            <div style="flex: 1;" class="table-data"></div>
-                            <div style="flex: 5;" class="header__item">
-                                <span id="cad_version" class="filter__link">Name</span>
+                        </dl>
+                        <dl>
+                            <dt>Instagram URL</dt>
+                            <input class="text-input" type="text" value="<%= locals.user.social.insta %>"
+                                placeholder="Name">
+                            <div class="note">
+                                Make sure the URL contains the protocol along with link. For eg.
+                                https://www.instagram.com/your_username_here.
                             </div>
-                            <div style="flex: 3;" class="header__item">
-                                <span id="sponsor_logo" class="filter__link filter__link--number">Year</span>
+                        </dl>
+                        <dl>
+                            <dt>Linkedin URL</dt>
+                            <input class="text-input" type="text" value="<%= locals.user.social.linkedin %>"
+                                placeholder="Name">
+                            <div class="note">
+                                Make sure the URL contains the protocol along with link. For eg.
+                                https://www.linkedin.com/in/your_username_here.
                             </div>
-                            <div style="flex: 5;" class="header__item">
-                                <span id="sponsor_logo" class="filter__link filter__link--number">Department</span>
+                        </dl>
+                        <dl>
+                            <dt>Twitter URL</dt>
+                            <input class="text-input" type="text" value="<%= locals.user.social.twitter %>"
+                                placeholder="Name">
+                            <div class="note">
+                                Make sure the URL contains the protocol along with link. For eg.
+                                https://twitter.com/your_username_here.
                             </div>
-                            <% if(locals.user.permission <=7) {%>
-                                <div style="flex: 1;" class="header__item">
-                                    <span id="sponsor_logo" class="filter__link filter__link--number"></span>
+                        </dl>
+                        <dl>
+                            <dt>Department</dt>
+                            <input class="text-input" type="text" placeholder="<%= locals.user.dept %>" disabled>
+                        </dl>
+                        <dl>
+                            <dt>Position</dt>
+                            <input class="text-input" type="text" placeholder="<%= locals.user.position %>" disabled>
+                        </dl>
+                        <% if(locals.user.sec_position) {%>
+                            <dl>
+                                <dt>Departmental Position</dt>
+                                <input class="text-input" type="text" placeholder="<%= locals.user.sec_position %>"
+                                    disabled>
+                                <div class="note">
+                                    Non-editable. If you are in management, this will be shown in the department section
+                                    <br> in
+                                    "Team" tab
                                 </div>
-                                <% } %>
-                        </div>
-                        <div class="table-content">
-                            <%var i=0; profile_user.forEach(function(user){%>
-                                <% if(user.user !='admin' && user.user !='test' ) {%>
-                                    <span class="table-row vaccine_hover">
-                                        <div style="flex: 1;" class="table-data">
-                                            <%= ++i %>
-                                        </div>
-                                        <div style="flex: 5;" class="table-data">
-                                            <%= user.name %>
-                                        </div>
-                                        <div style="flex: 3;" class="table-data">
-                                            <%= user.year %>
-                                        </div>
-                                        <div style="flex: 5; text-transform: capitalize;" class="table-data"
-                                            style="text-transform: capitalize;">
-                                            <%= user.dept %>
-                                        </div>
-                                        <% if(locals.user.permission<=7){%>
-                                            <div style="flex: 1;" class="table-data"
-                                                style="text-transform: capitalize;">
-                                                <% if(locals.user.permission < user.permission){%>
-                                                    <a href="/user/remove/<%= user._id %>"><img class="delete_icon"
-                                                            src="/imgs/icons/delete.svg"></a>
-                                                    <% } %>
-                                            </div>
-                                            <% } %>
-                                    </span>
-                                    <%}})%>
-                        </div>
-                    </div>
+                            </dl>
+                            <% } %>
+                                <dl>
+                                    <dt class="d-f-r">Year: <%= locals.user.year %>
+                                    </dt>
+                                </dl>
+                                <button class="submit-btn" type="submit">Update profile</button>
+                    </form>
+                    <form id="avatar-form" class="d-f-c jc-c" action="/user/upload_avatar" method="POST"
+                        enctype="multipart/form-data">
+                        <label for="file-input"><img src="<%= locals.user.avatar %>" /></label>
+                        <input id="file-input" type="file" />
+                        <input type="submit" value="Upload">
+                        <div class="note">Click the image to browse files</div>
+                        <br>
+                        <button class="submit-btn">Update avatar</button>
+                    </form>
                 </div>
+            </section>
 
-                <!-- Team Documents (open to all) -->
-                <div class="content" id="team_docs">
-                    <div class="content_section">
-                        <div>Add Document</div>
-                        <form class="d-f-r" action="/user/add_team_doc" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file" class="upload-box" required>
-                            <input id="version_number" type="text" name="file_name" placeholder="File Name" required>
-                            <input id="remarks" type="text" name="remarks" placeholder="Remarks">
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
-                    <div class="table">
-                        <div class="table-header">
-                            <div class="header__item">
-                                <span id="cad_version" class="filter__link">Document Name</span>
-                            </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Remarks
-                                </span>
-                            </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Uploaded By
-                                </span>
-                            </div>
+            <!-- Team Members (open to all) -->
+            <section class="content" id="team_members">
+                <h2 class="content-heading">Team Members List</h2>
+                <div class="table">
+                    <div class="table-header">
+                        <div style="flex: 1;" class="table-data"></div>
+                        <div style="flex: 5;" class="header__item">
+                            <span id="cad_version" class="filter__link">Name</span>
                         </div>
-                        <div class="table-content">
-                            <% documents.forEach(function(doc){%>
+                        <div style="flex: 3;" class="header__item">
+                            <span id="sponsor_logo" class="filter__link filter__link--number">Year</span>
+                        </div>
+                        <div style="flex: 5;" class="header__item">
+                            <span id="sponsor_logo" class="filter__link filter__link--number">Department</span>
+                        </div>
+                        <% if(locals.user.permission <=7) {%>
+                            <div style="flex: 1;" class="header__item">
+                                <span id="sponsor_logo" class="filter__link filter__link--number"></span>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="table-content">
+                        <%var i=0; profile_user.forEach(function(user){%>
+                            <% if(user.user !='admin' && user.user !='test' ) {%>
                                 <span class="table-row vaccine_hover">
-                                    <div class="table-data">
-                                        <a href="<%= doc.location %>" target="_blank" download="<%= doc.file_name %>">
-                                            <%= doc.file_name %>
-                                        </a>
+                                    <div style="flex: 1;" class="table-data">
+                                        <%= ++i %>
                                     </div>
-                                    <div class="table-data">
-                                        <%= doc.remarks %>
+                                    <div style="flex: 5;" class="table-data">
+                                        <%= user.name %>
                                     </div>
-                                    <div class="table-data">
-                                        <%= doc.posted_by %>
+                                    <div style="flex: 3;" class="table-data">
+                                        <%= user.year %>
                                     </div>
+                                    <div style="flex: 5; text-transform: capitalize;" class="table-data"
+                                        style="text-transform: capitalize;">
+                                        <%= user.dept %>
+                                    </div>
+                                    <% if(locals.user.permission<=7){%>
+                                        <div style="flex: 1;" class="table-data" style="text-transform: capitalize;">
+                                            <% if(locals.user.permission < user.permission){%>
+                                                <a href="/user/remove/<%= user._id %>"><img class="delete_icon"
+                                                        src="/imgs/icons/delete.svg"></a>
+                                                <% } %>
+                                        </div>
+                                        <% } %>
                                 </span>
-                                <%})%>
-                        </div>
+                                <%}})%>
                     </div>
                 </div>
+            </section>
 
-                <!-- Create User (permission level <= 1) -->
-                <div class="content" id="add_user">
-                    <div>
-                        <div>
-                            <% if(user.permission <=3) {%>
-                                <div id="add_user_form" class="d-f-c jc-c ai-c">
-                                    <span style="font-size: 1.5rem;">Add Members</span>
-                                    <form id="create_form" class="d-f-r ai-c" action="/user/create" method="POST">
-                                        <input class="add_user_input" type="text" name="user" id="user"
-                                            placeholder="Username" required>
-                                        <input class="add_user_input" type="text" name="name" id="name"
-                                            placeholder="Name" required>
-                                        <input class="add_user_input" type="text" name="password" placeholder="Password"
-                                            required>
-                                        <input class="add_user_input" type="number" name="year" placeholder="Year">
-                                        <input class="add_user_input" type="text" name="dept" placeholder="Department">
-                                        <input class="add_user_input" type="text" name="position"
-                                            placeholder="Position">
-                                        <span id="management">
-                                            <input type="checkbox" name="management" value="management">
-                                            <label for="management">Management</label>
-                                        </span>
-                                        <button id="submit">Submit</button>
-                                    </form>
-                                </div>
-                                <% } %>
+            <!-- Team Documents (open to all) -->
+            <div class="content" id="team_docs">
+                <div class="content-section">
+                    <dl>Add Document</dl>
+                    <form class="d-f-c" action="/user/add_team_doc" method="POST" enctype="multipart/form-data">
+                        <label for="file" class="custom-file-input">Select some files</label>
+                        <input id="file" class="file" type="file" name="file">
+                        <dt>Version Number</dt>
+                        <input class="text-input" name="file_name" type="text" placeholder="version">
+                        <dt>Remarks</dt>
+                        <input class="text-input" name="remarks" type="text" placeholder="remarks"><br>
+                        <button class="submit-btn" type="submit">Upload file</button>
+                    </form>
+                </div>
+                <h2 class="content-heading">Team Documents List</h2>
+                <div class="table">
+                    <div class="table-header">
+                        <div class="header__item">
+                            <span id="cad_version" class="filter__link">Document Name</span>
                         </div>
-                        <br><br>
-                        <div>
-                            <% if(user.permission <=2 || user.user=='test' ) {%>
-                                <div id="add_user_form" class="d-f-c jc-c ai-c">
-                                    <span style="font-size: 1.5rem;">Add Alumni</span>
-                                    <form id="create_form" class="d-f-r ai-c" action="/user/add_alumni" method="POST">
-                                        <input class="add_user_input" type="text" name="name" id="name"
-                                            placeholder="Name" required>
-                                        <input class="add_user_input" type="text" name="dept" placeholder="Department">
-                                        <input class="add_user_input" type="text" name="linkedin"
-                                            placeholder="Linkedin">
-                                        <button id="submit">Submit</button>
-                                    </form>
-                                </div>
-                                <% } %>
+                        <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                Remarks
+                            </span>
                         </div>
-                        <br><br>
+                        <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
+                                Uploaded By
+                            </span>
+                        </div>
+                    </div>
+                    <div class="table-content">
+                        <% documents.forEach(function(doc){%>
+                            <span class="table-row vaccine_hover">
+                                <div class="table-data">
+                                    <a href="<%= doc.location %>" target="_blank" download="<%= doc.file_name %>">
+                                        <%= doc.file_name %>
+                                    </a>
+                                </div>
+                                <div class="table-data">
+                                    <%= doc.remarks %>
+                                </div>
+                                <div class="table-data">
+                                    <%= doc.posted_by %>
+                                </div>
+                            </span>
+                            <%})%>
                     </div>
                 </div>
+            </div>
 
-                <!-- Miscellenous Corporate Stuff (year >= 2 && dept == corporate)-->
-                <div class="content" id="misc_corpo">
-                    <div class="content_section">
-                        <div>Add Gallery Photo</div>
-                        <form class="d-f-r" action="/corpo/add_photo" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="photo" id="upload_file" class="upload-box" required>
-                            <input id="sponsor_name_input" type="text" name="descript" placeholder="Photo Descript"
-                                required>
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
-                    <div class="content_section">
-                        <div>Add Newsletters</div>
-                        <form class="d-f-r jc-sb ai-c" id="newsletter_form" action="/corpo/add_newsletter" method="POST"
-                            enctype="multipart/form-data">
-                            <input type="file" name="newsletter" id="upload_file" class="upload-box" required>
-                            <div>
-                                Select date for newsletter: &numsp;<input type="date" name="date" id="date" name="date">
-                            </div>
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Sponsors section (year >= 2 && dept == corporate) -->
-                <div class="content" id="sponsors">
-                    <div class="content_section">
-                        <div>Add Sponsor</div>
-                        <form class="d-f-r" action="/sponsors/add" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="logo" id="upload_file" class="upload-box" required>
-                            <input id="sponsor_name_input" type="text" name="sponsor_name" placeholder="Sponsor Name"
-                                required>
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
-                    <div class="table">
-                        <div class="table-header">
-                            <div style="flex: 6;" class="header__item">
-                                <span id="sponsor_name" class="filter__link">Sponsor Name</span>
-                            </div>
-                            <div style="flex: 3;" class="header__item">
-                                <span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Sponsor Logo</span>
-                            </div>
-                            <% if(locals.user.year>= 2) {%>
-                                <div style="flex: 1;" class="header__item">
-                                    <span id="sponsor_name" class="filter__link"></span>
+            <!-- Create User (permission level <= 1) -->
+            <div class="content" id="add_user">
+                <h2 class="content-heading">Public Profile</h2>
+                <div class="d-f-r">
+                    <form id="details-form" action="/user/create" method="POST">
+                        <h2>Add team member</h2>
+                        <dl>
+                            <dt>Username</dt>
+                            <input class="text-input" name="user" type="text" placeholder="Username">
+                            <div class="note">*Required</div>
+                        </dl>
+                        <dl>
+                            <dt>Name</dt>
+                            <input class="text-input" name="name" type="text" value="<%= locals.user.name %>"
+                                placeholder="Name">
+                            <div class="note">*Required</div>
+                        </dl>
+                        <dl>
+                            <dt>Password</dt>
+                            <input class="text-input" name="password" type="text" placeholder="Password">
+                            <div class="note">*Required</div>
+                        </dl>
+                        <dl>
+                            <dt>Year</dt>
+                            <input class="text-input" name="year" type="number" placeholder="Year(number)">
+                        </dl>
+                        <dl>
+                            <dt>Department</dt>
+                            <input class="text-input" name="dept" type="text" placeholder="Department">
+                        </dl>
+                        <dl>
+                            <dt>Position</dt>
+                            <input class="text-input" name="position" type="text" placeholder="Password">
+                        </dl>
+                        <button class="submit-btn" type="submit">Add User</button>
+                    </form>
+                    <% if(user.permission<=2 || user.user=='test' ) {%>
+                        <form id="avatar-form" class="d-f-c" action="/user/add_alumni" method="POST">
+                            <h2>Add Alumni</h2>
+                            <dl>
+                                <dt>Name</dt>
+                                <input class="text-input" name="name" type="text" placeholder="Name">
+                                <div class="note">*Required</div>
+                            </dl>
+                            <dl>
+                                <dt>Department</dt>
+                                <input class="text-input" name="dept" type="text" placeholder="Department">
+                                <div class="note">*Required</div>
+                            </dl>
+                            <dl>
+                                <dt>Linkedin</dt>
+                                <input class="text-input" name="linkedin" type="text" placeholder="Linkedin Link">
+                                <div class="note">
+                                    Make sure the URL contains the protocol along with link. For eg.
+                                    https://www.linkedin.com/in/your_username_here.
                                 </div>
-                                <%}%>
+                            </dl>
+                            <button class="submit-btn">Add Alumni</button>
+                        </form>
+                        <% } %>
+                </div>
+            </div>
+
+            <!-- Miscellenous Corporate Stuff (year >= 2 && dept == corporate)-->
+            <div class="content" id="misc_corpo">
+                <div class="content_section">
+                    <h2>Add Gallery Photo</h2>
+                    <form class="d-f-r" action="/corpo/add_photo" method="POST" enctype="multipart/form-data">
+                        <label for="file" class="custom-file-input">Select some files</label>
+                        <input id="file" class="file" type="file" name="photo">
+                        <button class="submit-btn" type="submit">Upload file</button>
+                    </form>
+                </div>
+                <div class="content_section">
+                    <h2>Add Newsletters</h2>
+                    <form class="d-f-r" action="/corpo/add_newsletter" method="POST" enctype="multipart/form-data">
+                        <label for="file" class="custom-file-input">Select some files</label>
+                        <input id="file" class="file" type="file" name="newsletter">
+                        <dt>Select date for newsletter:</dt>
+                        <input style="max-width: fit-content;" name="date" type="date"><br>
+                        <button class="submit-btn" type="submit">Upload file</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sponsors section (year >= 2 && dept == corporate) -->
+            <div class="content" id="sponsors">
+                <div class="content_section">
+                    <dl>Add Sponsor</dl>
+                    <form class="d-f-c" action="/sponsors/add" method="POST" enctype="multipart/form-data">
+                        <label for="file" class="custom-file-input">Select some files</label>
+                        <input id="file" class="file" type="file" name="logo" required>
+                        <dt>Sponsor Name</dt>
+                        <input class="text-input" name="sponsor_name" type="text" placeholder="Sponsor">
+                        <button class="submit-btn" type="submit">Upload file</button>
+                    </form>
+                </div>
+                <div class="table">
+                    <div class="table-header">
+                        <div style="flex: 6;" class="header__item">
+                            <span id="sponsor_name" class="filter__link">Sponsor Name</span>
                         </div>
-                        <div class="table-content">
-                            <% if(checkCorporateUser) {%>
-                                <% sponsors.forEach(function(sponsor){%>
-                                    <span class="table-row vaccine_hover">
-                                        <div style="flex: 6;" class="table-data">
-                                            <%= sponsor.sponsor%>
+                        <div style="flex: 3;" class="header__item">
+                            <span id="sponsor_logo" class="filter__link filter__link--number">
+                                Sponsor Logo</span>
+                        </div>
+                        <% if(locals.user.year>= 2) {%>
+                            <div style="flex: 1;" class="header__item">
+                                <span id="sponsor_name" class="filter__link"></span>
+                            </div>
+                            <%}%>
+                    </div>
+                    <div class="table-content">
+                        <% if(checkCorporateUser) {%>
+                            <% sponsors.forEach(function(sponsor){%>
+                                <span class="table-row vaccine_hover">
+                                    <div style="flex: 6;" class="table-data">
+                                        <%= sponsor.sponsor%>
+                                    </div>
+                                    <div style="flex: 3;" class="table-data">
+                                        <a href="<%= sponsor.logo%>" target="_blank">logo</a>
+                                    </div>
+                                    <% if(locals.user.year>= 2) {%>
+                                        <div style="flex: 1;" class="header__item">
+                                            <span id="sponsor_name" class="filter__link">
+                                                <a href="/sponsors/remove/<%= sponsor._id %>">
+                                                    <img class="delete_icon" src="/imgs/icons/delete.svg"></a>
+                                            </span>
                                         </div>
-                                        <div style="flex: 3;" class="table-data">
-                                            <a href="<%= sponsor.logo%>" target="_blank">logo</a>
-                                        </div>
-                                        <% if(locals.user.year>= 2) {%>
-                                            <div style="flex: 1;" class="header__item">
-                                                <span id="sponsor_name" class="filter__link">
-                                                    <a href="/sponsors/remove/<%= sponsor._id %>">
-                                                        <img class="delete_icon" src="/imgs/icons/delete.svg"></a>
-                                                </span>
-                                            </div>
-                                            <%}%>
-                                    </span>
-                                    <%})}%>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CAD (department == mechanical) -->
-                <div class="content" id="cad">
-                    <div class="content_section">
-                        <div>Add CAD file</div>
-                        <form class="d-f-r" action="/mechanical/add_cad" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file" class="upload-box" required>
-                            <input id="version_number" type="number" name="iteration" placeholder="Version No."
-                                required>
-                            <input id="remarks" type="text" name="remarks" placeholder="Remarks">
-                            <input type="submit" value="Upload">
-                        </form>
-                    </div>
-                    <div class="table">
-                        <div class="table-header">
-                            <div class="header__item">
-                                <span id="cad_version" class="filter__link">Iteration&numsp;(click to download)</span>
-                            </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Remarks
+                                        <%}%>
                                 </span>
-                            </div>
-                            <div class="header__item"><span id="sponsor_logo" class="filter__link filter__link--number">
-                                    Uploaded By
-                                </span>
-                            </div>
-                        </div>
-                        <div class="table-content">
-                            <% if(checkMechanicalUser) {%>
-                                <% cad_list.forEach(function(cad){%>
-                                    <span class="table-row vaccine_hover">
-                                        <div class="table-data">
-                                            <a href="<%= cad.location %>">
-                                                <%= cad.iteration %>
-                                            </a>
-                                        </div>
-                                        <div class="table-data">
-                                            <%= cad.remarks%>
-                                        </div>
-                                        <div class="table-data">
-                                            <%= cad.posted_by %>
-                                        </div>
-                                    </span>
-                                    <%})}%>
-                        </div>
+                                <%})}%>
                     </div>
                 </div>
+            </div>
         </main>
 
         <%- include('_footer'); %>
