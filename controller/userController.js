@@ -2,7 +2,6 @@ const azure = require('azure-storage');
 const Users = require('../models/users');
 const Alum = require('../models/alum');
 const Sponsors = require('../models/sponsors');
-const CAD = require('../models/cad');
 const Docs = require('../models/team_documents');
 const bcrypt = require('bcrypt');
 
@@ -12,36 +11,20 @@ module.exports.profile = function (req, res) {
             Docs.find({}, function (err, document) {
                 if (req.user.user == 'admin') {
                     Sponsors.find({}, function (err, sponsors) {
-                        CAD.find({}, function (err, cad) {
                             return res.status(200).render('profile', {
                                 profile_user: user,
-                                checkMechanicalUser: true,
                                 checkCorporateUser: true,
                                 sponsors: sponsors,
-                                cad_list: cad,
                                 documents: document
                             });
                         });
-                    });
                 }
                 else if (req.user.dept == 'corporate') {
                     Sponsors.find({}, function (err, sponsors) {
                         return res.status(200).render('profile', {
                             profile_user: user,
-                            checkMechanicalUser: false,
                             checkCorporateUser: true,
                             sponsors: sponsors,
-                            documents: document
-                        });
-                    });
-                }
-                else if (req.user.dept == 'mechanical') {
-                    CAD.find({}, function (err, cad) {
-                        return res.status(200).render('profile', {
-                            profile_user: user,
-                            checkMechanicalUser: true,
-                            checkCorporateUser: false,
-                            cad_list: cad,
                             documents: document
                         });
                     });
@@ -49,7 +32,6 @@ module.exports.profile = function (req, res) {
                 else {
                     return res.status(200).render('profile', {
                         profile_user: user,
-                        checkMechanicalUser: false,
                         checkCorporateUser: false,
                         documents: document
                     });
