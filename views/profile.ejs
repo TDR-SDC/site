@@ -116,10 +116,10 @@
                                 </dl>
                                 <button class="submit-btn" type="submit">Update profile</button>
                     </form>
-                    <form id="avatar-form" class="d-f-c jc-c" action="/user/upload_avatar" method="POST"
+                    <form id="avatar-form" class="d-f-c" action="/user/upload_avatar" method="POST"
                         enctype="multipart/form-data">
-                        <label for="file-input"><img src="<%= locals.user.avatar %>" /></label>
-                        <input id="file-input" type="file" />
+                        <label for="file-input"><img id="avatar" src="<%= locals.user.avatar %>" /></label>
+                        <input id="file-input" name="avatar" type="file" />
                         <input type="submit" value="Upload">
                         <div class="note">Click the image to browse files</div>
                         <br>
