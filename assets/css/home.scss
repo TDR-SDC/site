@@ -6,31 +6,31 @@ body {
 
 @keyframes background_change {
     0% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg');
     }
     5% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg');
     }
     20% {
-        background-image: url("/imgs/car.jpeg");
+        background-image: url('/imgs/car.jpeg');
     }
     30% {
-        background-image: url("/imgs/car.jpeg");
+        background-image: url('/imgs/car.jpeg');
     }
     45% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG');
     }
     55% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/DR%20(2).JPG');
     }
     70% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg');
     }
     80% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz2.jpg');
     }
     95% {
-        background-image: url("https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg");
+        background-image: url('https://defianzdtusdc.blob.core.windows.net/gallery/TDR_Cz.jpg');
     }
 }
 
@@ -98,40 +98,86 @@ body {
     padding: 5vh;
     box-sizing: border-box;
     width: 100vw;
+    flex-wrap: wrap;
 }
 
 .achivement-card {
-    height: 270px;
-    width: 270px;
-    margin: 2rem;
-    font-size: 1rem;
-    background-color: rgba(70, 101, 255, 0.7);
+    height: 230px;
+    width: 230px;
+    margin: 1rem;
     color: white;
     border: 3px currentColor solid;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .achivement-card:hover {
     background-color: #fff;
-    color: rgb(70, 101, 255);
-    border: 3px rgba(70, 101, 255, 0.7) solid;
+    color: rgb(101, 219, 255);
+    border: 3px rgb(101, 219, 255) solid;
     cursor: pointer;
+}
+
+.achivement-card:nth-child(2n) {
+    background-color: red;
+}
+
+.achivement-card:nth-child(2n + 1) {
+    background-color: black;
 }
 
 .achievement-count {
     height: 200px;
-    font-size: 5rem;
+    font-size: 3.5rem;
 }
 
 .achievement-desc {
-    height: 30px;
-    font-size: 1.5rem;
+    height: 10px;
+    font-size: 1.3rem;
     text-align: center;
 }
 
 .achievement-desc img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+}
+
+@media all and (max-width: 1700px) {
+    #achievements {
+        padding: 2vw 30vh;
+    }
+    .achivement-card {
+        width: 270px;
+        height: 270px;
+    }
+}
+
+@media all and (max-width: 1450px) {
+    #achievements {
+        padding: 2vw 20vh;
+    }
+}
+
+@media all and (max-width: 1300px) {
+    .achivement-card {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media all and (max-width: 1150px) {
+	#achievements {
+		padding: 5vw 0vh;
+	}
+    .achivement-card {
+        width: 250px;
+        height: 250px;
+    }
+	.achievement-count {
+		height: 220px;
+	}
+	.achievement-desc{
+		height: 10px;
+	}
 }
 
 @media all and (max-width: 1000px) {
@@ -160,6 +206,25 @@ body {
         margin-block-start: 0;
         font-weight: 200;
     }
+	#achievements {
+		padding: 5vw;
+	}
+    .achivement-card {
+        width: 170px;
+        height: 170px;
+    }
+	.achievement-count {
+		height: 140px;
+		font-size: 2rem;
+	}
+	.achievement-desc{
+		height: 10px;
+		font-size: 0.8rem;
+	}
+	.achievement-desc img {
+		width: 20px;
+		height: 20px;
+	}
 }
 
 @media all and (max-width: 700px) {
@@ -170,22 +235,22 @@ body {
         width: 80vw;
         margin: 1rem;
     }
-    #achievements{
-        padding: 3vh;
+    #achievements {
+        padding: 2vh;
     }
     .achivement-card {
-        height: 200px;
-        width: 200px;
+        height: 140px;
+        width: 140px;
         margin: 1rem;
         font-size: 1rem;
     }
     .achievement-count {
-        height: 150px;
-        font-size: 2.5rem;
+        height: 120px;
+        font-size: 1.5rem;
     }
     .achievement-desc {
-        height: 50px;
-        font-size: 1rem;
+        height: 0px;
+        // font-size: 0.7rem;
     }
 }
 

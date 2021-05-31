@@ -14,7 +14,10 @@ function animate(obj, initVal, lastVal, duration) {
         const progress = Math.min((currentTime - startTime) / duration, 1);
 
         //calculate what to be displayed using the value gotten above
-        obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
+        if (obj.id == 'achievement' || obj.id == 'alumni')
+            obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal) + "+";
+        else
+            obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
 
         //checking to make sure the counter does not exceed the last value (lastVal)
         if (progress < 1) {
@@ -31,13 +34,17 @@ function animate(obj, initVal, lastVal, duration) {
 
 function increment_counter() {
     let text1 = document.getElementById('cars');
-    let text2 = document.getElementById('team-members');
-    let text3 = document.getElementById('achievement-counter');
-    let text4 = document.getElementById('awards');
-    animate(text1, 1, 04, 2000);
-    animate(text2, 1, 35, 2000);
-    animate(text3, 1, 10, 2000);
-    animate(text4, 1, 40, 2000);
+    let text2 = document.getElementById('achievement');
+    let text3 = document.getElementById('awards');
+    let text4 = document.getElementById('team-members');
+    let text5 = document.getElementById('sponsors');
+    let text6 = document.getElementById('alumni');
+    animate(text1, 1, 12, 2000);
+    animate(text2, 1, 15, 2000);
+    animate(text3, 1, 20, 2000);
+    animate(text4, 1, 26, 2000);
+    animate(text5, 1, 35, 2000);
+    animate(text6, 1, 120, 2000);
 }
 
 function reset_counter() {
