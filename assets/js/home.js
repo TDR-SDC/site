@@ -49,9 +49,11 @@ function increment_counter() {
 
 function reset_counter() {
     document.getElementById('cars').innerHTML = 0;
-    document.getElementById('team-members').innerHTML = 0;
-    document.getElementById('achievement-counter').innerHTML = 0;
+    document.getElementById('achievement').innerHTML = 0;
     document.getElementById('awards').innerHTML = 0;
+    document.getElementById('team-members').innerHTML = 0;
+    document.getElementById('sponsors').innerHTML = 0;
+    document.getElementById('alumni').innerHTML = 0;
 }
 
 var executed = false;
