@@ -3,6 +3,7 @@ const router = express.Router();
 const homeController = require('../controller/homeController');
 
 router.get('/', homeController.home);
+router.get('/about_fs', homeController.about);
 router.get('/team', homeController.team);
 router.get('/gallery', homeController.gallery);
 router.get('/contact', homeController.contact);
