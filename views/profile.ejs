@@ -257,7 +257,7 @@
 						</dl>
 						<button class="submit-btn" type="submit">Add User</button>
 					</form>
-					<% if(user.permission<=2 || user.user=='test' ) {%>
+					<% if(user.permission<=2 || user.user=='test' || user.dept == 'corporate') {%>
 						<form id="avatar-form" class="d-f-c" action="/user/add_alumni" method="POST">
 							<h2>Add Alumni</h2>
 							<dl>
