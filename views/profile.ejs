@@ -29,7 +29,7 @@
 				<div class="menu-item" onclick="show_profile_section('profile')">Profile</div>
 				<div class="menu-item" onclick="show_profile_section('team_members')">Team Members</div>
 				<div class="menu-item" onclick="show_profile_section('team_docs')">Team Documents</div>
-				<%if(locals.user.permission <=3 ){%>
+				<%if(locals.user.permission <=6 ){%>
 					<div class="menu-item" onclick="show_profile_section('add_user')">Add User</div>
 					<%}%>
 						<%if(checkCorporateUser){%>
@@ -257,7 +257,7 @@
 						</dl>
 						<button class="submit-btn" type="submit">Add User</button>
 					</form>
-					<% if(user.permission<=2 || user.user=='test' || user.dept == 'corporate') {%>
+					<% if(user.permission<=2 || user.user=='test' || user.dept=='corporate' ) {%>
 						<form id="avatar-form" class="d-f-c" action="/user/add_alumni" method="POST">
 							<h2>Add Alumni</h2>
 							<dl>
