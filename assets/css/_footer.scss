@@ -1,6 +1,6 @@
 footer {
     background-color: rgb(212, 212, 212);
-    height: 35vh;
+    height: 32vh;
     width: 100vw;
 }
 
@@ -18,14 +18,6 @@ footer {
     max-height: 30vh;
 }
 
-#about {
-    overflow-y: scroll;
-}
-
-#about::-webkit-scrollbar {
-    width: 0px;
-}
-
 #about_description {
     width: 26vw;
     line-height: 2.25vh;
@@ -38,7 +30,6 @@ footer {
 }
 
 #connect_heading {
-    text-align: center;
     font-size: 1.5rem;
     margin: 1rem 0rem;
 }
@@ -118,18 +109,6 @@ footer {
 iframe {
     width: 16rem;
     height: 16rem;
-}
-#copyright {
-    font-family: monospace;
-    font-size: 2vh;
-    background-color: black;
-    color: aliceblue;
-    width: 100vw;
-    height: 5vh;
-}
-
-#copyright span {
-    margin-top: 1vh;
 }
 
 @media all and (max-width: 1450px) {
